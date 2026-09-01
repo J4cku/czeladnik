@@ -31,8 +31,9 @@ const chart = [
     acuity: "6/6",
     node: (
       <span className="block max-w-xl text-[15px] leading-relaxed text-ink-soft">
-        Losuj test ABC, ćwicz odpowiedzi ustne na fiszkach, przeglądaj zadania
-        praktyczne. Kolejność pytań i odpowiedzi jest inna przy każdym podejściu.
+        Złóż arkusz jak na egzaminie albo własny zestaw, ćwicz odpowiedzi ustne
+        na fiszkach, przeglądaj zadania praktyczne. Kolejność pytań i odpowiedzi
+        jest inna przy każdym podejściu.
       </span>
     ),
   },
@@ -69,6 +70,9 @@ export default function Home() {
             <div className="resolve resolve-4 mt-8 flex flex-wrap items-center gap-3">
               <LinkBtn href="/test" variant="accent" className="px-6 py-3 text-base">
                 Losuj test ABC
+              </LinkBtn>
+              <LinkBtn href="/test?arkusz=1" variant="ghost">
+                Arkusz egzaminacyjny
               </LinkBtn>
               <LinkBtn href="/fiszki" variant="ghost">
                 Fiszki ustne

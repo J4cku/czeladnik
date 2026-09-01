@@ -11,6 +11,14 @@ import {
   questionsWord,
   type AbcQuestion,
 } from "@/lib/data";
+import {
+  buildExam,
+  EXAM_LENGTH,
+  EXAM_PER_CATEGORY,
+  EXAM_SPLIT,
+  examPlan,
+  PASS_THRESHOLD,
+} from "@/lib/exam";
 import { sample, shuffle } from "@/lib/rng";
 import { isWeak, recordAnswer, recordSession, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
@@ -33,7 +41,9 @@ export default function TestClient() {
     return ids.length ? ids : abcCategories.map((c) => c.id);
   });
   const [length, setLength] = useState<number>(20);
-  const [exam, setExam] = useState(false);
+  // /test?arkusz=1 otwiera od razu tryb arkusza egzaminacyjnego
+  const [sheet, setSheet] = useState(() => params.get("arkusz") === "1");
+  const [exam, setExam] = useState(() => params.get("arkusz") === "1");
   const [onlyWeak, setOnlyWeak] = useState(() => params.get("tryb") === "bledne");
 
   const [stage, setStage] = useState<Stage>("setup");
@@ -56,8 +66,10 @@ export default function TestClient() {
   );
 
   const start = useCallback(
-    (questions: AbcQuestion[], count: number) => {
-      const picked = sample(questions, count > 0 ? count : questions.length);
+    (questions: AbcQuestion[], count: number, keepOrder = false) => {
+      const picked = keepOrder
+        ? questions
+        : sample(questions, count > 0 ? count : questions.length);
       setItems(picked.map((q) => ({ q, order: shuffle([0, 1, 2]) })));
       setPicks(new Array(picked.length).fill(null));
       setIndex(0);
@@ -72,15 +84,24 @@ export default function TestClient() {
         (sum, item, i) => sum + (finalPicks[i] === item.q.answer ? 1 : 0),
         0,
       );
-      recordSession({ score, total: list.length, categories: selected });
+      const covered = sheet ? abcCategories.map((c) => c.id) : selected;
+      recordSession({ score, total: list.length, categories: covered });
       setStage("done");
     },
-    [selected],
+    [selected, sheet],
   );
 
   if (stage === "setup") {
     return (
       <Setup
+        sheet={sheet}
+        setSheet={(next) => {
+          setSheet(next);
+          if (next) {
+            setExam(true);
+            setOnlyWeak(false);
+          }
+        }}
         selected={selected}
         setSelected={setSelected}
         length={length}
@@ -91,7 +112,7 @@ export default function TestClient() {
         setOnlyWeak={setOnlyWeak}
         poolSize={pool.length}
         weakSize={ready ? weakIds.size : 0}
-        onStart={() => start(pool, length)}
+        onStart={() => (sheet ? start(buildExam(), 0, true) : start(pool, length))}
       />
     );
   }
@@ -125,6 +146,7 @@ export default function TestClient() {
 
   return (
     <Summary
+      sheet={sheet}
       items={items}
       picks={picks}
       onRetryWrong={() => {
@@ -169,7 +191,57 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
+function SheetPlan() {
+  const plan = examPlan();
+  const split = EXAM_SPLIT.map((s) => s.count).join(" / ");
+
+  return (
+    <div className="mt-2">
+      <table className="w-full text-left">
+        <thead>
+          <tr className="border-b rule">
+            <th className="meta pb-2 font-normal text-ink-faint">Temat</th>
+            <th className="meta pb-2 text-right font-normal text-ink-faint">
+              Ł / Ś / T
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          {plan.map(({ category, graded }) => (
+            <tr key={category.id} className="border-b rule">
+              <td className="py-2.5 text-[15px]">{category.label}</td>
+              <td className="py-2.5 text-right font-mono text-[13px]">
+                {graded ? (
+                  split
+                ) : (
+                  <span className="text-amber">{EXAM_PER_CATEGORY} losowo</span>
+                )}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+
+      <p className="mt-5 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
+        Arkusz źródłowy oznacza trudność tylko w Rachunkowości i Dokumentacji —
+        tam podział {split} jest zachowany. W pozostałych tematach losuję{" "}
+        {EXAM_PER_CATEGORY} pytań z całego działu.
+      </p>
+      <p className="mt-3 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
+        Rysunku zawodowego tu nie ma: pytania z tego tematu odsyłają do rysunków
+        i nie mają wariantów A/B/C, więc nie da się ich punktować.{" "}
+        <a href="/fiszki?dzialy=rysunek" className="text-flash underline underline-offset-4">
+          Przerób go na fiszkach
+        </a>
+        .
+      </p>
+    </div>
+  );
+}
+
 function Setup({
+  sheet,
+  setSheet,
   selected,
   setSelected,
   length,
@@ -182,6 +254,8 @@ function Setup({
   weakSize,
   onStart,
 }: {
+  sheet: boolean;
+  setSheet: (v: boolean) => void;
   selected: string[];
   setSelected: (v: string[]) => void;
   length: number;
@@ -195,13 +269,94 @@ function Setup({
   onStart: () => void;
 }) {
   const all = selected.length === abcCategories.length;
-  const planned = length === 0 ? poolSize : Math.min(length, poolSize);
+  const planned = sheet ? EXAM_LENGTH : length === 0 ? poolSize : Math.min(length, poolSize);
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
       <Eyebrow>Część pisemna</Eyebrow>
       <h1 className="optotype mt-3 text-4xl sm:text-5xl">Ustaw test</h1>
 
+      <Field label="Rodzaj">
+        <div className="flex flex-wrap gap-2">
+          <Toggle active={!sheet} onClick={() => setSheet(false)}>
+            Własny zestaw
+          </Toggle>
+          <Toggle active={sheet} onClick={() => setSheet(true)}>
+            Arkusz egzaminacyjny
+            <span className="ml-2 font-mono text-[11px] opacity-60">{EXAM_LENGTH}</span>
+          </Toggle>
+        </div>
+      </Field>
+
+      {sheet ? (
+        <Field label="Skład arkusza">
+          <SheetPlan />
+        </Field>
+      ) : (
+        <SetupCustom
+          selected={selected}
+          setSelected={setSelected}
+          all={all}
+          length={length}
+          setLength={setLength}
+        />
+      )}
+
+      <Field label="Tryb">
+        <div className="flex flex-wrap gap-2">
+          <Toggle active={!exam} onClick={() => setExam(false)}>
+            Nauka — odpowiedź od razu
+          </Toggle>
+          <Toggle active={exam} onClick={() => setExam(true)}>
+            Egzamin — wynik na końcu
+          </Toggle>
+        </div>
+        {!sheet && weakSize > 0 && (
+          <div className="mt-4">
+            <Toggle active={onlyWeak} onClick={() => setOnlyWeak(!onlyWeak)}>
+              Tylko pytania z błędami
+              <span className="ml-2 font-mono text-[11px] opacity-60">{weakSize}</span>
+            </Toggle>
+          </div>
+        )}
+      </Field>
+
+      <div className="mt-8 flex flex-wrap items-center gap-4">
+        <Btn
+          variant="accent"
+          className="px-7 py-3 text-base"
+          disabled={planned === 0}
+          onClick={onStart}
+        >
+          Zaczynamy
+        </Btn>
+        <p className="text-sm text-ink-soft">
+          {planned === 0
+            ? "Wybierz przynajmniej jeden dział."
+            : sheet
+              ? `${planned} pytań, temat po temacie.`
+              : `${planned} ${questionsWord(planned)} w losowej kolejności.`}
+        </p>
+      </div>
+    </main>
+  );
+}
+
+function SetupCustom({
+  selected,
+  setSelected,
+  all,
+  length,
+  setLength,
+}: {
+  selected: string[];
+  setSelected: (v: string[]) => void;
+  all: boolean;
+  length: number;
+  setLength: (v: number) => void;
+}) {
+  return (
+    <>
       <Field label="Działy">
         <div className="flex flex-wrap gap-2">
           {abcCategories.map((cat) => (
@@ -238,42 +393,7 @@ function Setup({
           ))}
         </div>
       </Field>
-
-      <Field label="Tryb">
-        <div className="flex flex-wrap gap-2">
-          <Toggle active={!exam} onClick={() => setExam(false)}>
-            Nauka — odpowiedź od razu
-          </Toggle>
-          <Toggle active={exam} onClick={() => setExam(true)}>
-            Egzamin — wynik na końcu
-          </Toggle>
-        </div>
-        {weakSize > 0 && (
-          <div className="mt-4">
-            <Toggle active={onlyWeak} onClick={() => setOnlyWeak(!onlyWeak)}>
-              Tylko pytania z błędami
-              <span className="ml-2 font-mono text-[11px] opacity-60">{weakSize}</span>
-            </Toggle>
-          </div>
-        )}
-      </Field>
-
-      <div className="mt-8 flex flex-wrap items-center gap-4">
-        <Btn
-          variant="accent"
-          className="px-7 py-3 text-base"
-          disabled={planned === 0}
-          onClick={onStart}
-        >
-          Zaczynamy
-        </Btn>
-        <p className="text-sm text-ink-soft">
-          {planned === 0
-            ? "Wybierz przynajmniej jeden dział."
-            : `${planned} ${questionsWord(planned)} w losowej kolejności.`}
-        </p>
-      </div>
-    </main>
+    </>
   );
 }
 
@@ -462,11 +582,13 @@ function verdict(pct: number) {
 }
 
 function Summary({
+  sheet,
   items,
   picks,
   onRetryWrong,
   onNewTest,
 }: {
+  sheet: boolean;
   items: Item[];
   picks: (number | null)[];
   onRetryWrong: () => void;
@@ -475,6 +597,18 @@ function Summary({
   const wrong = items.filter((item, i) => picks[i] !== item.q.answer);
   const score = items.length - wrong.length;
   const pct = Math.round((score / items.length) * 100);
+  const passed = score / items.length >= PASS_THRESHOLD;
+
+  const perCategory = abcCategories
+    .map((category) => {
+      const own = items.filter((item) => item.q.category === category.id);
+      return {
+        category,
+        total: own.length,
+        ok: own.filter((item) => picks[items.indexOf(item)] === item.q.answer).length,
+      };
+    })
+    .filter((row) => row.total > 0);
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
@@ -488,7 +622,49 @@ function Summary({
         <p className="optotype text-3xl text-flash">{pct}%</p>
       </div>
 
-      <p className="resolve-1 resolve mt-5 text-lg text-ink-soft">{verdict(pct)}</p>
+      {sheet ? (
+        <p
+          className={`resolve-1 resolve ui mt-5 text-lg font-semibold ${
+            passed ? "text-duo-green" : "text-duo-red"
+          }`}
+        >
+          {passed ? "Zdane" : "Niezdane"}
+          <span className="ml-3 font-normal text-ink-soft">
+            próg przyjęty w aplikacji: {Math.round(PASS_THRESHOLD * 100)}%
+          </span>
+        </p>
+      ) : (
+        <p className="resolve-1 resolve mt-5 text-lg text-ink-soft">{verdict(pct)}</p>
+      )}
+
+      {perCategory.length > 1 && (
+        <section className="mt-10">
+          <Eyebrow>Wynik po tematach</Eyebrow>
+          <ul className="mt-4 border-t rule">
+            {perCategory.map((row) => (
+              <li
+                key={row.category.id}
+                className="grid grid-cols-[1fr_auto] items-center gap-x-4 border-b rule py-3"
+              >
+                <div>
+                  <p className="text-[15px]">{row.category.label}</p>
+                  <div className="mt-2 h-[3px] w-full max-w-xs bg-ink/10">
+                    <div
+                      className={`h-full ${
+                        row.ok / row.total >= PASS_THRESHOLD ? "bg-duo-green" : "bg-duo-red"
+                      }`}
+                      style={{ width: `${(row.ok / row.total) * 100}%` }}
+                    />
+                  </div>
+                </div>
+                <span className="font-mono text-[14px]">
+                  {row.ok}/{row.total}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <div className="mt-8 flex flex-wrap gap-3">
         {wrong.length > 0 && (
