@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-ink: #121a22;
+  --color-ink-soft: #4b5661;
+  --color-ink-faint: #838e98;
+  --color-paper: #eef1ec;
+  --color-card: #fbfcfa;
+  --color-glass: #d5dfd8;
+  --color-flash: #5b3fd1;
+  --color-duo-green: #14755a;
+  --color-duo-red: #c02e24;
+  --color-amber: #a97410;
+
+  --font-display: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-literata), Georgia, serif;
+  --font-mono: var(--font-plex), ui-monospace, "SF Mono", monospace;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    font-optical-sizing: auto;
+    text-rendering: optimizeLegibility;
+  }
+
+  ::selection {
+    background: color-mix(in oklab, var(--color-flash) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-flash);
+    outline-offset: 3px;
+  }
+
+  button {
+    cursor: pointer;
+  }
+}
+
+@layer components {
+  /* Optotype: the letterforms on an acuity chart are wide, even-stroked and tight-set. */
+  .optotype {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-stretch: 118%;
+    letter-spacing: -0.035em;
+    line-height: 0.84;
+    text-transform: uppercase;
+  }
+
+  .ui {
+    font-family: var(--font-display);
+    font-stretch: 100%;
+  }
+
+  .meta {
+    font-family: var(--font-mono);
+    font-size: 0.6875rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  .rule {
+    border-color: color-mix(in oklab, var(--color-ink) 14%, transparent);
+  }
+
+  .surface {
+    background: var(--color-card);
+    border: 1px solid color-mix(in oklab, var(--color-ink) 11%, transparent);
+  }
+}
+
+/* The one motion idea: text arrives out of focus and resolves, like a refraction check. */
+@keyframes resolve {
+  from {
+    opacity: 0;
+    filter: blur(7px);
+    transform: translateY(6px) scale(0.995);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0);
+    transform: none;
+  }
+}
+
+.resolve {
+  animation: resolve 380ms cubic-bezier(0.16, 0.84, 0.44, 1) both;
+}
+
+.resolve-1 { animation-delay: 60ms; }
+.resolve-2 { animation-delay: 120ms; }
+.resolve-3 { animation-delay: 180ms; }
+.resolve-4 { animation-delay: 240ms; }
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .resolve,
+  .resolve-1,
+  .resolve-2,
+  .resolve-3,
+  .resolve-4 {
+    animation: none;
+  }
+  *, *::before, *::after {
+    transition-duration: 1ms !important;
+  }
+}
