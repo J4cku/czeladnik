@@ -194,6 +194,10 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 function SheetPlan() {
   const plan = examPlan();
   const split = EXAM_SPLIT.map((s) => s.count).join(" / ");
+  const gradedCategories = plan
+    .filter(({ graded }) => graded)
+    .map(({ category }) => category.label)
+    .join(", ");
 
   return (
     <div className="mt-2">
@@ -223,8 +227,8 @@ function SheetPlan() {
       </table>
 
       <p className="mt-5 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
-        Arkusz źródłowy oznacza trudność tylko w Rachunkowości i Dokumentacji —
-        tam podział {split} jest zachowany. W pozostałych tematach losuję{" "}
+        Podział {split} jest zachowany w działach: {gradedCategories}. W pozostałych
+        tematach losuję{" "}
         {EXAM_PER_CATEGORY} pytań z całego działu.
       </p>
       <p className="mt-3 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">

@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "test": "python3 -B -m unittest discover -s scripts -p 'test_*.py'",
     "lint": "eslint",
     "data": "python3 scripts/extract.py"
   },

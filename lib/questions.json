@@ -2692,7 +2692,9 @@
     "Sąd Pracy",
     "Państwowa Inspekcja Pracy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81331
   },
   {
    "id": "bhp-2",
@@ -2705,7 +2707,9 @@
     "26 dni roboczych",
     "12 dni roboczych"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81332
   },
   {
    "id": "bhp-3",
@@ -2718,7 +2722,9 @@
     "gaśnicy śniegowej",
     "koca gaśniczego"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81333
   },
   {
    "id": "bhp-4",
@@ -2731,7 +2737,9 @@
     "luks",
     "lumen"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81334
   },
   {
    "id": "bhp-5",
@@ -2744,7 +2752,9 @@
     "wyłącznie ratownik medyczny",
     "każdy, kto jest świadkiem zdarzenia"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81335
   },
   {
    "id": "bhp-6",
@@ -2757,7 +2767,9 @@
     "ostrzeżenie",
     "bezpieczne przejścia i drogi ewakuacyjne"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81336
   },
   {
    "id": "bhp-7",
@@ -2770,7 +2782,9 @@
     "23:00 a 7:00",
     "20:00 a 6:00"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81337
   },
   {
    "id": "bhp-8",
@@ -2783,7 +2797,9 @@
     "998",
     "999"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81338
   },
   {
    "id": "bhp-9",
@@ -2796,7 +2812,9 @@
     "gazy jałowej",
     "chusteczki higienicznej"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81339
   },
   {
    "id": "bhp-10",
@@ -2809,7 +2827,9 @@
     "żółty",
     "czerwony"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81340
   },
   {
    "id": "bhp-11",
@@ -2822,7 +2842,9 @@
     "trójkątny",
     "kwadratowy"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81341
   },
   {
    "id": "bhp-12",
@@ -2835,7 +2857,9 @@
     "związek zawodowy",
     "pracodawca nieodpłatnie"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81342
   },
   {
    "id": "bhp-13",
@@ -2848,7 +2872,9 @@
     "podać poszkodowanemu wodę",
     "natychmiast rozpocząć masaż serca"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81343
   },
   {
    "id": "bhp-14",
@@ -2861,7 +2887,9 @@
     "wodnej",
     "proszkowej lub śniegowej"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81344
   },
   {
    "id": "bhp-15",
@@ -2874,7 +2902,9 @@
     "pracodawca",
     "społeczny inspektor pracy"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81345
   },
   {
    "id": "bhp-16",
@@ -2887,7 +2917,9 @@
     "pracodawca",
     "po połowie"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81346
   },
   {
    "id": "bhp-17",
@@ -2900,7 +2932,9 @@
     "podnosić na ugiętych nogach, trzymając ciężar blisko tułowia",
     "podnosić szarpnięciem"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81347
   },
   {
    "id": "bhp-18",
@@ -2913,7 +2947,9 @@
     "okresowe",
     "specjalistyczne"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81348
   },
   {
    "id": "bhp-19",
@@ -2926,7 +2962,9 @@
     "nie może dopuścić do pracy",
     "może dopuścić za jego zgodą"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81349
   },
   {
    "id": "bhp-20",
@@ -2939,7 +2977,9 @@
     "wstępnego",
     "podstawowego"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81350
   },
   {
    "id": "bhp-21",
@@ -2952,7 +2992,9 @@
     "zależne od decyzji pracodawcy",
     "obowiązkowe z mocy prawa"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81351
   },
   {
    "id": "bhp-22",
@@ -2965,7 +3007,9 @@
     "12 kg",
     "30 kg"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81352
   },
   {
    "id": "bhp-23",
@@ -2978,7 +3022,9 @@
     "2,0 m nad poziomem podłogi lub ziemi",
     "3,0 m nad poziomem podłogi lub ziemi"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81353
   },
   {
    "id": "bhp-24",
@@ -2991,7 +3037,9 @@
     "40 kg",
     "30 kg"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81354
   },
   {
    "id": "bhp-25",
@@ -3004,7 +3052,9 @@
     "18°C",
     "20°C"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81355
   },
   {
    "id": "bhp-26",
@@ -3017,7 +3067,9 @@
     "instrukcja obsługi",
     "protokół odbioru"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81356
   },
   {
    "id": "bhp-27",
@@ -3030,7 +3082,9 @@
     "21:00 a 7:00",
     "22:00 a 6:00"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81357
   },
   {
    "id": "bhp-28",
@@ -3043,7 +3097,9 @@
     "30 sekund",
     "1 minutę"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81358
   },
   {
    "id": "bhp-29",
@@ -3056,7 +3112,9 @@
     "poszkodowanym",
     "świadku zdarzenia"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81359
   },
   {
    "id": "bhp-30",
@@ -3069,7 +3127,9 @@
     "tlenkiem węgla",
     "ozonem"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81360
   },
   {
    "id": "bhp-31",
@@ -3082,7 +3142,9 @@
     "wszyscy pracownicy",
     "tylko pracownicy powyżej 50 roku życia"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81361
   },
   {
    "id": "bhp-32",
@@ -3095,7 +3157,9 @@
     "wyłącznie dźwięk powyżej 100 dB",
     "dźwięk o częstotliwości powyżej 20 kHz"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81362
   },
   {
    "id": "bhp-33",
@@ -3108,7 +3172,9 @@
     "delegowanie poza stałe miejsce pracy bez jej zgody",
     "ustalenie czasu pracy w godzinach 7:00-11:00"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81363
   },
   {
    "id": "bhp-34",
@@ -3121,7 +3187,9 @@
     "dostępna wyłącznie dla służby bhp",
     "oznakowana i łatwo dostępna dla pracowników"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81364
   },
   {
    "id": "bhp-35",
@@ -3134,7 +3202,9 @@
     "85 dB",
     "95 dB"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81365
   },
   {
    "id": "bhp-36",
@@ -3147,7 +3217,9 @@
     "dopuszczalne przy krótkich czynnościach",
     "niedopuszczalne w żadnym przypadku"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81366
   },
   {
    "id": "bhp-37",
@@ -3160,7 +3232,9 @@
     "kara porządkowa (upomnienie lub nagana)",
     "wyłącznie rozwiązanie umowy"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81367
   },
   {
    "id": "bhp-38",
@@ -3173,7 +3247,9 @@
     "w pozycji siedzącej",
     "w pozycji bocznej ustalonej (bezpiecznej)"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81368
   },
   {
    "id": "bhp-39",
@@ -3186,7 +3262,9 @@
     "lodem",
     "maścią"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81369
   },
   {
    "id": "bhp-40",
@@ -3199,7 +3277,9 @@
     "14 dni",
     "30 dni"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81370
   },
   {
    "id": "bhp-41",
@@ -3212,7 +3292,9 @@
     "tylko chemiczne",
     "fizyczne, chemiczne, biologiczne i psychofizyczne"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81371
   },
   {
    "id": "bhp-42",
@@ -3225,7 +3307,9 @@
     "niebieski",
     "zielony"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81372
   },
   {
    "id": "bhp-43",
@@ -3238,7 +3322,9 @@
     "5 kg",
     "12 kg"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81373
   },
   {
    "id": "bhp-44",
@@ -3251,7 +3337,9 @@
     "70% podstawy",
     "100% podstawy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81374
   },
   {
    "id": "bhp-45",
@@ -3264,7 +3352,9 @@
     "pracowniku",
     "związkach zawodowych"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81375
   },
   {
    "id": "bhp-46",
@@ -3277,7 +3367,9 @@
     "wypadek w drodze do pracy",
     "zdarzenie losowe"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81376
   },
   {
    "id": "bhp-47",
@@ -3290,7 +3382,9 @@
     "6 miesięcy od zatrudnienia",
     "12 miesięcy od zatrudnienia"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81378
   },
   {
    "id": "bhp-48",
@@ -3303,7 +3397,9 @@
     "fartuch",
     "okulary ochronne"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81381
   },
   {
    "id": "bhp-49",
@@ -3316,7 +3412,9 @@
     "wyłącznie osuszanie powietrza",
     "usuwanie zanieczyszczeń i wymianę powietrza"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81382
   },
   {
    "id": "bhp-50",
@@ -3329,7 +3427,9 @@
     "30 dni od zawiadomienia o wypadku",
     "7 dni od zawiadomienia o wypadku"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81383
   },
   {
    "id": "bhp-51",
@@ -3342,7 +3442,9 @@
     "Urząd Dozoru Technicznego",
     "Państwowa Inspekcja Sanitarna"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81384
   },
   {
    "id": "bhp-52",
@@ -3355,7 +3457,9 @@
     "dostępne dla pracowników na stanowisku pracy",
     "znane wyłącznie kierownikowi"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81385
   },
   {
    "id": "bhp-53",
@@ -3368,7 +3472,9 @@
     "wymieniona w wykazie chorób zawodowych, spowodowana czynnikami środowiska pracy",
     "wyłącznie choroba układu ruchu"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81386
   },
   {
    "id": "bhp-54",
@@ -3381,7 +3487,9 @@
     "co najmniej 3 osoby",
     "co najmniej 5 osób"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81387
   },
   {
    "id": "bhp-55",
@@ -3394,7 +3502,9 @@
     "Państwowa Inspekcja Pracy",
     "Zakład Ubezpieczeń Społecznych"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81388
   },
   {
    "id": "bhp-56",
@@ -3407,7 +3517,9 @@
     "15 minut po każdych 2 godzinach",
     "10 minut po każdych 3 godzinach"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81390
   },
   {
    "id": "bhp-57",
@@ -3420,7 +3532,9 @@
     "dodatkowy urlop",
     "okulary korygujące wzrok, jeśli badania wykażą taką potrzebę"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81391
   },
   {
    "id": "bhp-58",
@@ -3433,7 +3547,9 @@
     "raz na 3 lata",
     "nie rzadziej niż raz w roku"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81392
   },
   {
    "id": "bhp-59",
@@ -3446,7 +3562,9 @@
     "zamykane poza godzinami pracy",
     "wykorzystywane jako magazyn"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 81394
   },
   {
    "id": "bhp-60",
@@ -3459,7 +3577,9 @@
     "5 uciśnięć i 1 oddech",
     "30 uciśnięć i 2 oddechy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81396
   },
   {
    "id": "bhp-61",
@@ -3472,7 +3592,9 @@
     "50 kg",
     "70 kg"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81397
   },
   {
    "id": "bhp-62",
@@ -3485,7 +3607,9 @@
     "II stopnia",
     "III stopnia"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81398
   },
   {
    "id": "bhp-63",
@@ -3498,7 +3622,9 @@
     "tygodniowe wynagrodzenie",
     "jednodniowe wynagrodzenie pracownika"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81399
   },
   {
    "id": "bhp-64",
@@ -3511,7 +3637,9 @@
     "w naczyniach po napojach",
     "w oryginalnych, oznakowanych opakowaniach"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81400
   },
   {
    "id": "bhp-65",
@@ -3524,7 +3652,9 @@
     "wyłącznie fartuch",
     "okulary lub osłony chroniące przed promieniowaniem UV"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81401
   },
   {
    "id": "bhp-66",
@@ -3537,7 +3667,9 @@
     "społeczny inspektor pracy",
     "pracodawca"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81402
   },
   {
    "id": "bhp-67",
@@ -3550,7 +3682,9 @@
     "zasiłek wyrównawczy",
     "jednorazowe odszkodowanie"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81403
   },
   {
    "id": "bhp-68",
@@ -3563,7 +3697,9 @@
     "praca jest dla niego niewygodna",
     "otrzymał zbyt niskie wynagrodzenie"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 81404
   },
   {
    "id": "bhp-69",
@@ -3576,7 +3712,9 @@
     "ciał stałych pochodzenia organicznego",
     "gazów"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81405
   },
   {
    "id": "bhp-70",
@@ -3589,7 +3727,9 @@
     "w pobliżu źródeł ciepła",
     "w pozycji stojącej, zabezpieczone przed przewróceniem"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81408
   },
   {
    "id": "bhp-71",
@@ -3602,7 +3742,9 @@
     "metali",
     "gazów"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81409
   },
   {
    "id": "bhp-72",
@@ -3680,7 +3822,9 @@
     "zbieraniu odpadów w podziale na frakcje surowcowe",
     "składowaniu wszystkich odpadów razem"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81650
   },
   {
    "id": "srodowisko-2",
@@ -3693,7 +3837,9 @@
     "na żądanie lub w wyznaczonych terminach",
     "wyłącznie w punktach skupu"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81651
   },
   {
    "id": "srodowisko-3",
@@ -3706,7 +3852,9 @@
     "składowanie odpadów",
     "ponowne przetworzenie odpadów na surowce lub produkty"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81652
   },
   {
    "id": "srodowisko-4",
@@ -3719,7 +3867,9 @@
     "uprawnionemu odbiorcy posiadającemu zezwolenie",
     "do kanalizacji"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81654
   },
   {
    "id": "srodowisko-5",
@@ -3732,7 +3882,9 @@
     "odpadów zielonych",
     "odpadów medycznych i niebezpiecznych"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81655
   },
   {
    "id": "srodowisko-6",
@@ -3745,7 +3897,9 @@
     "tlen i azot",
     "dwutlenek węgla i tlenki azotu"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81656
   },
   {
    "id": "srodowisko-7",
@@ -3758,7 +3912,9 @@
     "nadmierna emisja dwutlenku węgla",
     "wycinanie lasów"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81657
   },
   {
    "id": "srodowisko-8",
@@ -3771,7 +3927,9 @@
     "wybuchów wulkanów",
     "pożarów lasów wywołanych przez pioruny"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81658
   },
   {
    "id": "srodowisko-9",
@@ -3784,7 +3942,9 @@
     "dwutlenku węgla",
     "metanu"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81659
   },
   {
    "id": "srodowisko-10",
@@ -3797,7 +3957,9 @@
     "kwaśnych deszczy",
     "efektu cieplarnianego"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81660
   },
   {
    "id": "srodowisko-11",
@@ -3810,7 +3972,9 @@
     "ludzie i ich najbliższe otoczenie przyrodnicze",
     "elementy przyrodnicze, w tym przekształcone przez człowieka"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81661
   },
   {
    "id": "srodowisko-12",
@@ -3823,7 +3987,9 @@
     "wyłącznie tworzenie parków narodowych",
     "wyłącznie oczyszczanie ścieków"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81662
   },
   {
    "id": "srodowisko-13",
@@ -3836,7 +4002,9 @@
     "sprawca zanieczyszczenia",
     "samorząd lokalny"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81663
   },
   {
    "id": "srodowisko-14",
@@ -3849,7 +4017,9 @@
     "zakopać",
     "przekazać do punktu zbierania ZSEE"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81664
   },
   {
    "id": "srodowisko-15",
@@ -3862,7 +4032,9 @@
     "pochłanianiu promieniowania UV",
     "odbijaniu światła przez chmury"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81665
   },
   {
    "id": "srodowisko-16",
@@ -3875,7 +4047,9 @@
     "zimą przy dużej wilgotności",
     "wyłącznie nad terenami leśnymi"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81666
   },
   {
    "id": "srodowisko-17",
@@ -3888,7 +4062,9 @@
     "gaz ziemny",
     "energia wiatru"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81667
   },
   {
    "id": "srodowisko-18",
@@ -3901,7 +4077,9 @@
     "pobieranie próbek powietrza",
     "stężenie substancji w powietrzu"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81668
   },
   {
    "id": "srodowisko-19",
@@ -3914,7 +4092,9 @@
     "ilość substancji wprowadzonej do środowiska",
     "wielkość opłaty środowiskowej"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81669
   },
   {
    "id": "srodowisko-20",
@@ -3927,7 +4107,9 @@
     "wyłącznie spalanie",
     "unieszkodliwianie lub gospodarcze wykorzystanie odpadów"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81670
   },
   {
    "id": "srodowisko-21",
@@ -3940,7 +4122,9 @@
     "eutrofizacji",
     "zasolenia"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81671
   },
   {
    "id": "srodowisko-22",
@@ -3953,7 +4137,9 @@
     "mechanicznie oraz przy udziale mikroorganizmów",
     "wyłącznie chemicznie"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81672
   },
   {
    "id": "srodowisko-23",
@@ -3966,7 +4152,9 @@
     "fizycznym",
     "biologicznym"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81673
   },
   {
    "id": "srodowisko-24",
@@ -3979,7 +4167,9 @@
     "rezerwat przyrody",
     "park rozrywki"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81674
   },
   {
    "id": "srodowisko-25",
@@ -3992,7 +4182,9 @@
     "żółtego",
     "zielonego"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81675
   },
   {
    "id": "srodowisko-26",
@@ -4005,7 +4197,9 @@
     "szkło",
     "odpady biodegradowalne"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81676
   },
   {
    "id": "srodowisko-27",
@@ -4018,7 +4212,9 @@
     "rozwój zaspokajający potrzeby obecnych pokoleń bez ograniczania możliwości przyszłych",
     "rezygnację z rozwoju gospodarczego"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81677
   },
   {
    "id": "srodowisko-28",
@@ -4031,7 +4227,9 @@
     "Państwowa Inspekcja Pracy",
     "marszałek województwa lub starosta"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81678
   },
   {
    "id": "srodowisko-29",
@@ -4044,7 +4242,9 @@
     "transport lotniczy",
     "rolnictwo"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81679
   },
   {
    "id": "srodowisko-30",
@@ -4057,7 +4257,9 @@
     "Inspekcja Ochrony Środowiska",
     "Urząd Statystyczny"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81680
   },
   {
    "id": "srodowisko-31",
@@ -4070,7 +4272,9 @@
     "odpady biodegradowalne",
     "odpady z tworzyw sztucznych przekazywane uprawnionemu odbiorcy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81681
   },
   {
    "id": "srodowisko-32",
@@ -4083,7 +4287,9 @@
     "zimą, przy dużej wilgotności i spalaniu paliw stałych",
     "wyłącznie nad morzem"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81682
   },
   {
    "id": "srodowisko-33",
@@ -4096,7 +4302,9 @@
     "spalanie w wysokiej temperaturze",
     "rozpuszczanie w wodzie"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81683
   },
   {
    "id": "srodowisko-34",
@@ -4109,7 +4317,9 @@
     "wyłącznie gmina",
     "podmiot korzystający ze środowiska"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81684
   },
   {
    "id": "srodowisko-35",
@@ -4122,7 +4332,9 @@
     "energia jądrowa",
     "energia słoneczna"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81685
   },
   {
    "id": "srodowisko-36",
@@ -4135,7 +4347,9 @@
     "metan",
     "azot"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81686
   },
   {
    "id": "srodowisko-37",
@@ -4148,7 +4362,9 @@
     "nagrodą ekologiczną",
     "opłatą podwyższoną lub administracyjną karą pieniężną"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81687
   },
   {
    "id": "srodowisko-38",
@@ -4161,7 +4377,9 @@
     "rtęć",
     "kadm"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81688
   },
   {
    "id": "srodowisko-39",
@@ -4174,7 +4392,9 @@
     "spalić",
     "przekazać do wyznaczonych punktów zbiórki"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81689
   },
   {
    "id": "srodowisko-40",
@@ -4187,7 +4407,9 @@
     "pole magnetyczne",
     "warstwa ozonowa"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81690
   },
   {
    "id": "srodowisko-41",
@@ -4200,7 +4422,9 @@
     "detergenty",
     "bakterie chorobotwórcze"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81691
   },
   {
    "id": "srodowisko-42",
@@ -4213,7 +4437,9 @@
     "zakup surowca",
     "opłatę za wodę"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81692
   },
   {
    "id": "srodowisko-43",
@@ -4226,7 +4452,9 @@
     "na otwartym terenie",
     "w wydzielonym, oznakowanym i zabezpieczonym miejscu"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81693
   },
   {
    "id": "srodowisko-44",
@@ -4239,7 +4467,9 @@
     "instalację odciągu miejscowego z filtrem",
     "wentylator biurkowy"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81694
   },
   {
    "id": "srodowisko-45",
@@ -4252,7 +4482,9 @@
     "obudowy dźwiękochłonne i konserwację urządzeń",
     "wydłużenie czasu pracy"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81695
   },
   {
    "id": "srodowisko-46",
@@ -4265,7 +4497,9 @@
     "ogrzewanie",
     "obróbka i mycie soczewek"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81696
   },
   {
    "id": "srodowisko-47",
@@ -4278,7 +4512,9 @@
     "wylać do gruntu",
     "przekazać uprawnionemu odbiorcy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81697
   },
   {
    "id": "srodowisko-48",
@@ -4291,7 +4527,9 @@
     "zielonego",
     "brązowego"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81698
   },
   {
    "id": "srodowisko-49",
@@ -4304,7 +4542,9 @@
     "z tworzyw sztucznych",
     "niebezpiecznych"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81699
   },
   {
    "id": "srodowisko-50",
@@ -4317,7 +4557,9 @@
     "wyłącznie państwo",
     "wyłącznie firma wywozowa"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81700
   },
   {
    "id": "srodowisko-51",
@@ -4330,7 +4572,9 @@
     "troposferze",
     "stratosferze"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81702
   },
   {
    "id": "srodowisko-52",
@@ -4343,7 +4587,9 @@
     "freony (CFC) i halony",
     "tlenki azotu"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81703
   },
   {
    "id": "srodowisko-53",
@@ -4356,7 +4602,9 @@
     "eksploatacja złóż",
     "przywracanie terenom zdegradowanym wartości użytkowych lub przyrodniczych"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81704
   },
   {
    "id": "srodowisko-54",
@@ -4369,7 +4617,9 @@
     "poziom hałasu",
     "biologiczne zapotrzebowanie na tlen (BZT5)"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 81705
   },
   {
    "id": "srodowisko-55",
@@ -4382,7 +4632,9 @@
     "rolnictwo",
     "gospodarka odpadami"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81706
   },
   {
    "id": "srodowisko-56",
@@ -4395,7 +4647,9 @@
     "papier",
     "metale"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81707
   },
   {
    "id": "srodowisko-57",
@@ -4408,7 +4662,9 @@
     "stosowanie oświetlenia LED i urządzeń energooszczędnych",
     "całodobową pracę urządzeń"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 81708
   },
   {
    "id": "srodowisko-58",
@@ -4421,7 +4677,9 @@
     "transport lotniczy",
     "transport samochodowy"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 81709
   },
   {
    "id": "srodowisko-59",
@@ -4434,7 +4692,9 @@
     "spadek temperatury i zlodowacenie",
     "uwolnienie substancji toksycznych i ropopochodnych"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81712
   },
   {
    "id": "srodowisko-60",
@@ -4447,7 +4707,9 @@
     "biotop",
     "biocenoza"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 81713
   },
   {
    "id": "srodowisko-61",
@@ -4460,7 +4722,9 @@
     "rejestrze VAT",
     "ewidencji odpadów (BDO)"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81715
   },
   {
    "id": "srodowisko-62",
@@ -4473,7 +4737,9 @@
     "rośliny, zwierzęta i grzyby",
     "wyłącznie drzewa"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81716
   },
   {
    "id": "srodowisko-63",
@@ -4486,7 +4752,9 @@
     "emisję pyłów",
     "zanieczyszczenie świetlne"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81717
   },
   {
    "id": "srodowisko-64",
@@ -4499,7 +4767,9 @@
     "użyta ponownie do picia",
     "podczyszczona przed odprowadzeniem"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81718
   },
   {
    "id": "srodowisko-65",
@@ -4512,7 +4782,9 @@
     "ograniczaj, użyj ponownie, przetwarzaj (reduce, reuse, recycle)",
     "rejestruj, rozliczaj, raportuj"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81719
   },
   {
    "id": "srodowisko-66",
@@ -4525,7 +4797,9 @@
     "ozon",
     "radon"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 81720
   },
   {
    "id": "srodowisko-67",
@@ -4538,7 +4812,9 @@
     "dopuszczonym do stosowania",
     "niebezpiecznym, wymagającym usuwania przez uprawnione firmy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81722
   },
   {
    "id": "srodowisko-68",
@@ -4551,7 +4827,9 @@
     "wymieniać raz na 10 lat",
     "użytkować bezterminowo"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 81723
   },
   {
    "id": "srodowisko-69",
@@ -4564,7 +4842,9 @@
     "sejmik województwa",
     "Sejm RP"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81724
   },
   {
    "id": "srodowisko-70",
@@ -4577,7 +4857,9 @@
     "gromadzeniu zanieczyszczeń przy powierzchni ziemi",
     "oczyszczaniu powietrza"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 81725
   },
   {
    "id": "srodowisko-71",
@@ -4590,7 +4872,9 @@
     "z rur wydechowych",
     "niewprowadzana przez wyznaczone emitory (np. z powierzchni składowisk)"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81728
   },
   {
    "id": "srodowisko-72",
@@ -4603,7 +4887,9 @@
     "populacja",
     "ekosystem"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "trudne",
+   "officialNr": 81729
   },
   {
    "id": "prawo-pracy-1",
@@ -4629,7 +4915,8 @@
     "do ukończenia 17 lat",
     "do ukończenia 18 lat"
    ],
-   "answer": 2
+   "answer": 2,
+   "officialNr": 81836
   },
   {
    "id": "prawo-pracy-3",

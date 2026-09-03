@@ -39,18 +39,19 @@ powtórzy się identyfikator pytania.
 
 Dwie rzeczy, których nie da się odtworzyć z arkusza źródłowego:
 
-1. **Trudność pytań** jest oznaczona (Ł/Ś/T) tylko w Rachunkowości i
-   Dokumentacji. Tylko tam arkusz egzaminacyjny trzyma podział 3 łatwe /
-   3 średnie / 2 trudne — w pozostałych czterech tematach losuje 8 pytań
-   z całego działu. Aplikacja pisze o tym wprost na ekranie składu arkusza.
+1. **Trudność pytań** jest oznaczona (Ł/Ś/T) w Rachunkowości, Dokumentacji,
+   BHP i ppoż. oraz Ochronie środowiska. Tam arkusz egzaminacyjny trzyma podział
+   3 łatwe / 3 średnie / 2 trudne — w Prawie pracy i Działalności gospodarczej
+   losuje 8 pytań z całego działu. Aplikacja pokazuje aktualny podział na ekranie
+   składu arkusza.
 2. **Rysunek zawodowy** (oficjalnie temat 3) nie ma w arkuszu wariantów
    A/B/C — same treści pytań i opis prawidłowej odpowiedzi. Nie da się go
    punktować w teście zamkniętym, więc arkusz ma 48 pytań z 6 tematów, a rysunek
    przerabia się na fiszkach.
 
-Jeśli dojdą oznaczenia trudności dla pozostałych działów albo warianty odpowiedzi
-dla rysunku, wystarczy uzupełnić kolumny w xlsx i przeliczyć dane —
-`lib/exam.ts` sam zacznie trzymać podział 3/3/2 wszędzie.
+Jeśli dojdą oznaczenia trudności dla Prawa pracy lub Działalności gospodarczej
+albo warianty odpowiedzi dla rysunku, wystarczy uzupełnić kolumny w xlsx
+i przeliczyć dane — `lib/exam.ts` sam zacznie trzymać podział 3/3/2 wszędzie.
 
 ## Deploy
 
