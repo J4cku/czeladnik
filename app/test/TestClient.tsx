@@ -6,7 +6,6 @@ import {
   abcCategories,
   abcQuestions,
   categoryById,
-  difficultyLabel,
   LETTERS,
   questionsWord,
   type AbcQuestion,
@@ -22,6 +21,7 @@ import {
 import { sample, shuffle } from "@/lib/rng";
 import { isWeak, recordAnswer, recordSession, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
+import { QuestionMeta } from "@/components/QuestionMeta";
 
 type Item = { q: AbcQuestion; order: number[] };
 type Stage = "setup" | "running" | "done";
@@ -496,12 +496,7 @@ function Runner({
       </div>
 
       <article key={item.q.id} className="resolve flex flex-1 flex-col justify-center py-10">
-        <div className="flex flex-wrap items-center gap-3">
-          <Eyebrow>{category?.label}</Eyebrow>
-          {item.q.difficulty && (
-            <span className="meta text-amber">{difficultyLabel[item.q.difficulty]}</span>
-          )}
-        </div>
+        <QuestionMeta category={category?.label} difficulty={item.q.difficulty} />
 
         <h1 className="mt-4 text-[1.4rem] leading-snug font-medium sm:text-[1.65rem]">
           {item.q.prompt}

@@ -990,7 +990,8 @@
     "REGON",
     "PESEL"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-2",
@@ -1003,7 +1004,8 @@
     "dyplom mistrzowski",
     "zaświadczenie o ukończeniu kursu"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-3",
@@ -1016,7 +1018,8 @@
     "20 lat",
     "50 lat"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-4",
@@ -1029,7 +1032,8 @@
     "ofertą",
     "zapytaniem ofertowym"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-5",
@@ -1042,7 +1046,8 @@
     "Urzędu Skarbowego",
     "Zakładu Ubezpieczeń Społecznych"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-6",
@@ -1055,7 +1060,8 @@
     "RW",
     "PZ"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-7",
@@ -1068,7 +1074,8 @@
     "Wójt, burmistrz lub prezydent miasta",
     "Dyrektor Izby Celnej"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-8",
@@ -1081,7 +1088,8 @@
     "Ustawa Prawo przedsiębiorców",
     "Ustawa Kodeks cywilny"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-9",
@@ -1094,7 +1102,8 @@
     "deklaracji podatkowej",
     "ewidencji środków trwałych"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-10",
@@ -1107,7 +1116,8 @@
     "20 lat",
     "50 lat"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-11",
@@ -1120,7 +1130,8 @@
     "ustawa o swobodzie działalności gospodarczej",
     "Kodeks spółek handlowych"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe"
   },
   {
    "id": "dokumentacja-12",
@@ -5865,7 +5876,9 @@
     "Pan Mors - pracujący na umowę o pracę w wymiarze 1/2 etatu",
     "Pani Nowak - przebywająca na urlopie rodzicielskim"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81985
   },
   {
    "id": "dzialalnosc-2",
@@ -5878,7 +5891,9 @@
     "ustawa o swobodzie działalności gospodarczej",
     "ustawa Kodeks pracy"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81990
   },
   {
    "id": "dzialalnosc-3",
@@ -5891,7 +5906,9 @@
     "duża elastyczność gospodarki",
     "brak konkurencji"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81970
   },
   {
    "id": "dzialalnosc-4",
@@ -5904,7 +5921,9 @@
     "podaż",
     "popyt"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81971
   },
   {
    "id": "dzialalnosc-5",
@@ -5917,7 +5936,9 @@
     "buty i spodnie",
     "chleb i masło"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81972
   },
   {
    "id": "dzialalnosc-6",
@@ -5930,7 +5951,9 @@
     "buty i kapelusz",
     "chleb i bułki"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81973
   },
   {
    "id": "dzialalnosc-7",
@@ -5943,7 +5966,9 @@
     "wpływów i wydatków państwa",
     "podatków i wydatków państwa"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81974
   },
   {
    "id": "dzialalnosc-8",
@@ -5956,7 +5981,9 @@
     "hossa",
     "bessa"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81975
   },
   {
    "id": "dzialalnosc-9",
@@ -5969,7 +5996,9 @@
     "składki na emerytury i renty",
     "podatki"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81976
   },
   {
    "id": "dzialalnosc-10",
@@ -5982,7 +6011,9 @@
     "usługi zegarmistrzowskie",
     "usługi pocztowe"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81977
   },
   {
    "id": "dzialalnosc-11",
@@ -5995,7 +6026,9 @@
     "amortyzację",
     "alokację"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81978
   },
   {
    "id": "dzialalnosc-12",
@@ -6008,7 +6041,9 @@
     "PKB i dług publiczny",
     "PKB i PNB"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81979
   },
   {
    "id": "dzialalnosc-13",
@@ -6021,7 +6056,9 @@
     "pełzającą",
     "kroczącą"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81980
   },
   {
    "id": "dzialalnosc-14",
@@ -6034,7 +6071,9 @@
     "rejestracji indywidualnej działalności gospodarczej",
     "nadania numeru identyfikacji podatkowej"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81981
   },
   {
    "id": "dzialalnosc-15",
@@ -6047,7 +6086,9 @@
     "P > K",
     "P = 0"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81982
   },
   {
    "id": "dzialalnosc-16",
@@ -6060,7 +6101,9 @@
     "NIP i REGON",
     "NIP i PESEL"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81983
   },
   {
    "id": "dzialalnosc-17",
@@ -6073,7 +6116,9 @@
     "polecenie przelewu",
     "polecenie przelewu i czek rozrachunkowy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81984
   },
   {
    "id": "dzialalnosc-18",
@@ -6138,7 +6183,9 @@
     "akcyzę",
     "VAT"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81991
   },
   {
    "id": "dzialalnosc-23",
@@ -6151,7 +6198,9 @@
     "dzieło",
     "o pracę"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81992
   },
   {
    "id": "dzialalnosc-24",
@@ -6164,7 +6213,9 @@
     "wypadkowe",
     "emerytalne"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81993
   },
   {
    "id": "dzialalnosc-25",
@@ -6177,7 +6228,9 @@
     "przychodów",
     "podatku"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "latwe",
+   "officialNr": 81994
   },
   {
    "id": "dzialalnosc-26",
@@ -6190,7 +6243,9 @@
     "NIP",
     "REGON"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81995
   },
   {
    "id": "dzialalnosc-27",
@@ -6203,7 +6258,9 @@
     "19%",
     "23%"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81996
   },
   {
    "id": "dzialalnosc-28",
@@ -6216,7 +6273,9 @@
     "18%, 32%",
     "23%, 30%"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "latwe",
+   "officialNr": 81997
   },
   {
    "id": "dzialalnosc-29",
@@ -6229,7 +6288,9 @@
     "osoby fizyczne i spółdzielnie",
     "spółdzielnie i spółki"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "latwe",
+   "officialNr": 81998
   },
   {
    "id": "dzialalnosc-30",
@@ -6242,7 +6303,9 @@
     "ogół transakcji kupna i sprzedaży",
     "miejsce, gdzie są narzucone ceny"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82000
   },
   {
    "id": "dzialalnosc-31",
@@ -6255,7 +6318,9 @@
     "gdzie popyt na dobra i usługi jest większy od podaży",
     "gdzie popyt i podaż są równe w każdej sytuacji"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82001
   },
   {
    "id": "dzialalnosc-32",
@@ -6268,7 +6333,9 @@
     "maszyny, narzędzia i dobra konsumpcyjne",
     "dobra konsumpcyjne i dobra produkcyjne"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82002
   },
   {
    "id": "dzialalnosc-33",
@@ -6281,7 +6348,9 @@
     "jeśli rośnie podaż to popyt maleje",
     "jeśli cena rośnie to popyt maleje"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82003
   },
   {
    "id": "dzialalnosc-34",
@@ -6294,7 +6363,9 @@
     "popyt równa się cenie",
     "podaż równa się cenie"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82004
   },
   {
    "id": "dzialalnosc-35",
@@ -6307,7 +6378,9 @@
     "ludzie mniej wydają",
     "spada popyt"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82005
   },
   {
    "id": "dzialalnosc-36",
@@ -6320,7 +6393,9 @@
     "brutto",
     "netto"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 82006
   },
   {
    "id": "dzialalnosc-37",
@@ -6333,7 +6408,9 @@
     "sezonowym",
     "cyklicznym"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82007
   },
   {
    "id": "dzialalnosc-38",
@@ -6346,7 +6423,9 @@
     "dziennik giełdowy",
     "raport"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82008
   },
   {
    "id": "dzialalnosc-39",
@@ -6359,7 +6438,9 @@
     "Rada Polityki Pieniężnej",
     "Skarb Państwa"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82009
   },
   {
    "id": "dzialalnosc-40",
@@ -6372,7 +6453,9 @@
     "wniosek o uzyskanie numeru REGON",
     "wniosek o uzyskanie numeru NIP"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82010
   },
   {
    "id": "dzialalnosc-41",
@@ -6385,7 +6468,9 @@
     "VAT należny",
     "dochodowy"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 82011
   },
   {
    "id": "dzialalnosc-42",
@@ -6398,7 +6483,9 @@
     "polecenie wypłaty",
     "polecenie nadania"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82012
   },
   {
    "id": "dzialalnosc-43",
@@ -6411,7 +6498,9 @@
     "sprzedaż paliw i wyrobów alkoholowych",
     "sprzedaż alkoholu i transport miejski"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82014
   },
   {
    "id": "dzialalnosc-44",
@@ -6424,7 +6513,9 @@
     "rachunek",
     "akcja"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82015
   },
   {
    "id": "dzialalnosc-45",
@@ -6437,7 +6528,9 @@
     "100 000 zł",
     "500 000 zł"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82016
   },
   {
    "id": "dzialalnosc-46",
@@ -6450,7 +6543,9 @@
     "zakup obligacji i akcji",
     "zakup obligacji i złota"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82017
   },
   {
    "id": "dzialalnosc-47",
@@ -6463,7 +6558,9 @@
     "zakupione meble nie pasują do koloru ścian",
     "w zakupionych butach odkleiła się podeszwa"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82020
   },
   {
    "id": "dzialalnosc-48",
@@ -6476,7 +6573,9 @@
     "zaopatrzenie, wytwarzanie, sprzedaż",
     "reklama, publicity, akwizycja"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82021
   },
   {
    "id": "dzialalnosc-49",
@@ -6489,7 +6588,9 @@
     "pracownikowi",
     "ZUS"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82023
   },
   {
    "id": "dzialalnosc-50",
@@ -6502,7 +6603,9 @@
     "architekci, prawnicy, lekarze",
     "tylko osoby prawne"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82025
   },
   {
    "id": "dzialalnosc-51",
@@ -6515,7 +6618,9 @@
     "controlling",
     "marketing"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82026
   },
   {
    "id": "dzialalnosc-52",
@@ -6528,7 +6633,9 @@
     "średnim szczeblu zarządzania",
     "niskim szczeblu zarządzania"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "srednie",
+   "officialNr": 82027
   },
   {
    "id": "dzialalnosc-53",
@@ -6541,7 +6648,9 @@
     "standaryzacja",
     "segmentacja"
    ],
-   "answer": 2
+   "answer": 2,
+   "difficulty": "srednie",
+   "officialNr": 82028
   },
   {
    "id": "dzialalnosc-54",
@@ -6554,7 +6663,9 @@
     "rekrutacji, selekcji oraz wprowadzenia do pracy",
     "rekrutacji, systemu wynagrodzeń oraz szkolenia"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "srednie",
+   "officialNr": 82029
   },
   {
    "id": "dzialalnosc-55",
@@ -6567,7 +6678,9 @@
     "20%",
     "15%"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 82030
   },
   {
    "id": "dzialalnosc-56",
@@ -6580,7 +6693,9 @@
     "3,46 zł",
     "3,00 zł"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 82034
   },
   {
    "id": "dzialalnosc-57",
@@ -6593,7 +6708,9 @@
     "planowanie, organizowanie, monitorowanie, kontrolowanie",
     "planowanie, organizowanie, przewodzenie, ocenianie"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 82039
   },
   {
    "id": "dzialalnosc-58",
@@ -6606,7 +6723,9 @@
     "160 zł",
     "80 zł"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 82042
   },
   {
    "id": "dzialalnosc-59",
@@ -6619,7 +6738,9 @@
     "spółka partnerska",
     "spółka akcyjna"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 82043
   },
   {
    "id": "dzialalnosc-60",
@@ -6632,7 +6753,9 @@
     "wpłacenia kwoty należnego podatku wynikającej z zeznania do 30 kwietnia roku, w którym składane jest zeznanie",
     "wpłacenia kwoty należnego podatku po 15 maja roku, w którym składane jest zeznanie"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 82044
   },
   {
    "id": "dzialalnosc-61",
@@ -6645,7 +6768,9 @@
     "obowiązkowe, bezzwrotne świadczenie pieniężne płacone tylko przez osoby fizyczne",
     "obowiązkowe, bezzwrotne świadczenie pieniężne pobierane przez państwo"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 82045
   },
   {
    "id": "dzialalnosc-62",
@@ -6658,7 +6783,9 @@
     "Podatek akcyzowy jest nakładany w Polsce na niektóre artykuły spożywcze, np. alkohol",
     "CIT w Polsce jest przykładem podatku proporcjonalnego"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 82046
   },
   {
    "id": "dzialalnosc-63",
@@ -6671,7 +6798,9 @@
     "fundusz stabilnego wzrostu, lokata bankowa, obligacje skarbowe",
     "obligacje skarbowe, fundusz stabilnego wzrostu, lokata bankowa"
    ],
-   "answer": 0
+   "answer": 0,
+   "difficulty": "trudne",
+   "officialNr": 82047
   },
   {
    "id": "dzialalnosc-64",
@@ -6684,7 +6813,9 @@
     "rentowe, chorobowe, emerytalne i wypadkowe",
     "majątkowe, emerytalne, rentowe, chorobowe"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 82048
   },
   {
    "id": "dzialalnosc-65",
@@ -6697,7 +6828,9 @@
     "należności długoterminowe, zapasy",
     "kapitał podstawowy, zapasy"
    ],
-   "answer": 1
+   "answer": 1,
+   "difficulty": "trudne",
+   "officialNr": 82049
   },
   {
    "id": "ustny-technologia-1",
@@ -6705,7 +6838,9 @@
    "kind": "open",
    "nr": 1,
    "prompt": "Wymień elementy układu optycznego oka.",
-   "answer": "Rogówka, ciecz wodnista komory przedniej, źrenica (przesłona), soczewka oczna oraz ciało szkliste. Elementami załamującymi światło są przede wszystkim rogówka (ok. +40 do +43 dpt) i soczewka (ok. +20 dpt); łączna moc oka miarowego to ok. +60 dpt."
+   "answer": "Rogówka, ciecz wodnista komory przedniej, źrenica (przesłona), soczewka oczna oraz ciało szkliste. Elementami załamującymi światło są przede wszystkim rogówka (ok. +40 do +43 dpt) i soczewka (ok. +20 dpt); łączna moc oka miarowego to ok. +60 dpt.",
+   "difficulty": "latwe",
+   "officialNr": 249086
   },
   {
    "id": "ustny-technologia-2",
@@ -6713,7 +6848,9 @@
    "kind": "open",
    "nr": 2,
    "prompt": "Wyjaśnij, jaką rolę pełni soczewka wewnątrzgałkowa oka.",
-   "answer": "Soczewka oczna jest drugim co do siły elementem łamiącym oka (ok. +20 dpt) i jedynym o zmiennej mocy. Dzięki zmianie krzywizny pod wpływem mięśnia rzęskowego umożliwia akomodację, czyli ostre widzenie przedmiotów z różnych odległości. Ogniskuje wiązkę na siatkówce, uzupełniając działanie rogówki."
+   "answer": "Soczewka oczna jest drugim co do siły elementem łamiącym oka (ok. +20 dpt) i jedynym o zmiennej mocy. Dzięki zmianie krzywizny pod wpływem mięśnia rzęskowego umożliwia akomodację, czyli ostre widzenie przedmiotów z różnych odległości. Ogniskuje wiązkę na siatkówce, uzupełniając działanie rogówki.",
+   "difficulty": "latwe",
+   "officialNr": 249087
   },
   {
    "id": "ustny-technologia-3",
@@ -6721,7 +6858,9 @@
    "kind": "open",
    "nr": 3,
    "prompt": "Wyjaśnij, jak bez pomocy dioptriomierza można określić położenie osi cylindra w soczewce okularowej.",
-   "answer": "Metodą ruchu pozornego: patrząc przez soczewkę na prostą linię (np. krawędź stołu lub krzyż) i przesuwając soczewkę, obserwuje się przełamanie i obrót obrazu linii. W przekrojach głównych obraz linii nie ulega przełamaniu przy obrocie soczewki - kierunek, w którym linia pozostaje ciągła i nieprzesunięta, wyznacza oś cylindra. Pomocniczo stosuje się dwa skrzyżowane polaryzatory lub obserwację odbicia."
+   "answer": "Metodą ruchu pozornego: patrząc przez soczewkę na prostą linię (np. krawędź stołu lub krzyż) i przesuwając soczewkę, obserwuje się przełamanie i obrót obrazu linii. W przekrojach głównych obraz linii nie ulega przełamaniu przy obrocie soczewki - kierunek, w którym linia pozostaje ciągła i nieprzesunięta, wyznacza oś cylindra. Pomocniczo stosuje się dwa skrzyżowane polaryzatory lub obserwację odbicia.",
+   "difficulty": "latwe",
+   "officialNr": 249088
   },
   {
    "id": "ustny-technologia-4",
@@ -6729,7 +6868,9 @@
    "kind": "open",
    "nr": 4,
    "prompt": "Opisz budowę narządu ruchowego oka, uwzględniając jego rolę w procesie widzenia.",
-   "answer": "Narząd ruchowy tworzy sześć mięśni zewnątrzgałkowych: cztery proste (górny, dolny, przyśrodkowy, boczny) i dwa skośne (górny i dolny). Mięśnie proste przyśrodkowy i boczny odpowiadają za ruchy poziome, proste górny i dolny za pionowe, skośne za ruchy skrętne i wspomagające. Zapewniają ustawienie osi widzenia obu oczu na tym samym punkcie, co warunkuje widzenie obuoczne i stereoskopowe oraz umożliwia konwergencję przy patrzeniu do bliży."
+   "answer": "Narząd ruchowy tworzy sześć mięśni zewnątrzgałkowych: cztery proste (górny, dolny, przyśrodkowy, boczny) i dwa skośne (górny i dolny). Mięśnie proste przyśrodkowy i boczny odpowiadają za ruchy poziome, proste górny i dolny za pionowe, skośne za ruchy skrętne i wspomagające. Zapewniają ustawienie osi widzenia obu oczu na tym samym punkcie, co warunkuje widzenie obuoczne i stereoskopowe oraz umożliwia konwergencję przy patrzeniu do bliży.",
+   "difficulty": "latwe",
+   "officialNr": 249089
   },
   {
    "id": "ustny-technologia-5",
@@ -6737,7 +6878,9 @@
    "kind": "open",
    "nr": 5,
    "prompt": "Wymień rodzaje komórek siatkówki, które są odpowiedzialne za widzenie poszczególnych barw podstawowych.",
-   "answer": "Za widzenie barwne odpowiadają czopki, występujące w trzech typach ze względu na barwnik wzrokowy: czopki S (krótkofalowe, wrażliwe na barwę niebieską, maks. ok. 420 nm), czopki M (średniofalowe, zielone, ok. 534 nm) i czopki L (długofalowe, czerwone, ok. 564 nm). Pręciki nie rozróżniają barw i odpowiadają za widzenie zmierzchowe (skotopowe)."
+   "answer": "Za widzenie barwne odpowiadają czopki, występujące w trzech typach ze względu na barwnik wzrokowy: czopki S (krótkofalowe, wrażliwe na barwę niebieską, maks. ok. 420 nm), czopki M (średniofalowe, zielone, ok. 534 nm) i czopki L (długofalowe, czerwone, ok. 564 nm). Pręciki nie rozróżniają barw i odpowiadają za widzenie zmierzchowe (skotopowe).",
+   "difficulty": "latwe",
+   "officialNr": 249090
   },
   {
    "id": "ustny-technologia-6",
@@ -6745,7 +6888,9 @@
    "kind": "open",
    "nr": 6,
    "prompt": "Określ, jaką rolę pełni rogówka gałki ocznej.",
-   "answer": "Rogówka jest przezroczystą, bezaczyniową przednią częścią zewnętrznej osłony oka. Stanowi najsilniejszy element łamiący układu optycznego oka (ok. +40 do +43 dpt, tj. ok. 2/3 całkowitej mocy). Pełni ponadto funkcję ochronną i mechaniczną oraz przepuszcza światło do wnętrza gałki. Jej nieregularność jest źródłem astygmatyzmu rogówkowego."
+   "answer": "Rogówka jest przezroczystą, bezaczyniową przednią częścią zewnętrznej osłony oka. Stanowi najsilniejszy element łamiący układu optycznego oka (ok. +40 do +43 dpt, tj. ok. 2/3 całkowitej mocy). Pełni ponadto funkcję ochronną i mechaniczną oraz przepuszcza światło do wnętrza gałki. Jej nieregularność jest źródłem astygmatyzmu rogówkowego.",
+   "difficulty": "latwe",
+   "officialNr": 249091
   },
   {
    "id": "ustny-technologia-7",
@@ -6753,7 +6898,9 @@
    "kind": "open",
    "nr": 7,
    "prompt": "Wskaż stosunek długości gałki ocznej do mocy łamiącej w oku niemiarowym.",
-   "answer": "W oku niemiarowym długość gałki nie odpowiada mocy łamiącej układu optycznego. W krótkowzroczności gałka jest zbyt długa w stosunku do mocy łamiącej (lub moc jest zbyt duża) - ognisko powstaje przed siatkówką. W nadwzroczności gałka jest zbyt krótka w stosunku do mocy łamiącej (lub moc zbyt mała) - ognisko powstaje za siatkówką. Zmiana długości gałki o 1 mm odpowiada w przybliżeniu 3 dpt refrakcji."
+   "answer": "W oku niemiarowym długość gałki nie odpowiada mocy łamiącej układu optycznego. W krótkowzroczności gałka jest zbyt długa w stosunku do mocy łamiącej (lub moc jest zbyt duża) - ognisko powstaje przed siatkówką. W nadwzroczności gałka jest zbyt krótka w stosunku do mocy łamiącej (lub moc zbyt mała) - ognisko powstaje za siatkówką. Zmiana długości gałki o 1 mm odpowiada w przybliżeniu 3 dpt refrakcji.",
+   "difficulty": "latwe",
+   "officialNr": 249092
   },
   {
    "id": "ustny-technologia-8",
@@ -6761,7 +6908,9 @@
    "kind": "open",
    "nr": 8,
    "prompt": "Wyjaśnij, jak bez pomocy dioptriomierza określić moc i ustalić położenie środka optycznego soczewki okularowej.",
-   "answer": "Moc określa się metodą neutralizacji: przykładając do badanej soczewki soczewki próbne o znanej mocy i obserwując ruch obrazu przy przesuwaniu; przy pełnej neutralizacji obraz przestaje się poruszać, a moc badanej soczewki jest równa co do wartości i przeciwna co do znaku mocy soczewki neutralizującej. Soczewka dodatnia daje ruch przeciwny, ujemna zgodny z ruchem soczewki. Środek optyczny to punkt, przy patrzeniu przez który obraz nie ulega przesunięciu (brak działania pryzmatycznego) - znajduje się go przesuwając soczewkę nad prostą linią aż do zniesienia jej przełamania."
+   "answer": "Moc określa się metodą neutralizacji: przykładając do badanej soczewki soczewki próbne o znanej mocy i obserwując ruch obrazu przy przesuwaniu; przy pełnej neutralizacji obraz przestaje się poruszać, a moc badanej soczewki jest równa co do wartości i przeciwna co do znaku mocy soczewki neutralizującej. Soczewka dodatnia daje ruch przeciwny, ujemna zgodny z ruchem soczewki. Środek optyczny to punkt, przy patrzeniu przez który obraz nie ulega przesunięciu (brak działania pryzmatycznego) - znajduje się go przesuwając soczewkę nad prostą linią aż do zniesienia jej przełamania.",
+   "difficulty": "latwe",
+   "officialNr": 249093
   },
   {
    "id": "ustny-technologia-9",
@@ -6769,7 +6918,9 @@
    "kind": "open",
    "nr": 9,
    "prompt": "Scharakteryzuj elementy wchodzące w skład narządu ochronnego oka.",
-   "answer": "Do narządu ochronnego należą: oczodół (kostna osłona), powieki z rzęsami i brwiami (ochrona mechaniczna, rozprowadzanie filmu łzowego), spojówka (wyściela powieki i przednią część gałki), aparat łzowy - gruczoł łzowy, punkty i kanaliki łzowe, woreczek i przewód nosowo-łzowy (nawilżanie, oczyszczanie, działanie bakteriobójcze) oraz tkanka tłuszczowa oczodołu amortyzująca gałkę."
+   "answer": "Do narządu ochronnego należą: oczodół (kostna osłona), powieki z rzęsami i brwiami (ochrona mechaniczna, rozprowadzanie filmu łzowego), spojówka (wyściela powieki i przednią część gałki), aparat łzowy - gruczoł łzowy, punkty i kanaliki łzowe, woreczek i przewód nosowo-łzowy (nawilżanie, oczyszczanie, działanie bakteriobójcze) oraz tkanka tłuszczowa oczodołu amortyzująca gałkę.",
+   "difficulty": "latwe",
+   "officialNr": 249094
   },
   {
    "id": "ustny-technologia-10",
@@ -6777,7 +6928,9 @@
    "kind": "open",
    "nr": 10,
    "prompt": "Wymień 3 dowolne metody korekcji wad refrakcji.",
-   "answer": "1) Korekcja okularowa - soczewki sferyczne, sferocylindryczne, dwuogniskowe lub progresywne w oprawie. 2) Korekcja soczewkami kontaktowymi - miękkimi, twardymi gazoprzepuszczalnymi, torycznymi, multifokalnymi lub ortokorekcyjnymi. 3) Korekcja chirurgiczna - zabiegi refrakcyjne rogówki (LASIK, PRK, SMILE) oraz wszczepienie soczewek fakijnych lub wewnątrzgałkowych."
+   "answer": "1) Korekcja okularowa - soczewki sferyczne, sferocylindryczne, dwuogniskowe lub progresywne w oprawie. 2) Korekcja soczewkami kontaktowymi - miękkimi, twardymi gazoprzepuszczalnymi, torycznymi, multifokalnymi lub ortokorekcyjnymi. 3) Korekcja chirurgiczna - zabiegi refrakcyjne rogówki (LASIK, PRK, SMILE) oraz wszczepienie soczewek fakijnych lub wewnątrzgałkowych.",
+   "difficulty": "latwe",
+   "officialNr": 249095
   },
   {
    "id": "ustny-technologia-11",
@@ -6785,7 +6938,9 @@
    "kind": "open",
    "nr": 11,
    "prompt": "Wymień elementy budowy oka odpowiedzialne za proces akomodacji.",
-   "answer": "Mięsień rzęskowy (część ciała rzęskowego), obwódka rzęskowa Zinna (więzadełka podtrzymujące) oraz elastyczna soczewka oczna wraz z jej torebką. Skurcz mięśnia rzęskowego rozluźnia więzadełka, soczewka dzięki sprężystości uwypukla się i zwiększa swoją moc, co pozwala widzieć ostro z bliska."
+   "answer": "Mięsień rzęskowy (część ciała rzęskowego), obwódka rzęskowa Zinna (więzadełka podtrzymujące) oraz elastyczna soczewka oczna wraz z jej torebką. Skurcz mięśnia rzęskowego rozluźnia więzadełka, soczewka dzięki sprężystości uwypukla się i zwiększa swoją moc, co pozwala widzieć ostro z bliska.",
+   "difficulty": "latwe",
+   "officialNr": 249096
   },
   {
    "id": "ustny-technologia-12",
@@ -6793,7 +6948,9 @@
    "kind": "open",
    "nr": 12,
    "prompt": "Podaj, jaki obraz tworzy układ optyczny oka na siatkówce.",
-   "answer": "Obraz rzeczywisty, odwrócony i pomniejszony. Odwrócenie obrazu jest korygowane na poziomie kory wzrokowej mózgu, dzięki czemu postrzegamy otoczenie w prawidłowej orientacji."
+   "answer": "Obraz rzeczywisty, odwrócony i pomniejszony. Odwrócenie obrazu jest korygowane na poziomie kory wzrokowej mózgu, dzięki czemu postrzegamy otoczenie w prawidłowej orientacji.",
+   "difficulty": "latwe",
+   "officialNr": 249097
   },
   {
    "id": "ustny-technologia-13",
@@ -6801,7 +6958,9 @@
    "kind": "open",
    "nr": 13,
    "prompt": "Wyjaśnij różnicę pomiędzy plamką żółtą a plamką ślepą.",
-   "answer": "Plamka żółta (macula lutea) leży w osi widzenia, w jej centrum znajduje się dołek środkowy z największym zagęszczeniem czopków - to miejsce najostrzejszego widzenia i widzenia barwnego. Plamka ślepa (tarcza nerwu wzrokowego) to miejsce wyjścia włókien nerwowych i wejścia naczyń, pozbawione fotoreceptorów, dlatego nie odbiera bodźców świetlnych. Leży ok. 15° nosowo od plamki żółtej; jej obecności nie zauważamy dzięki widzeniu obuocznemu i uzupełnianiu obrazu przez mózg."
+   "answer": "Plamka żółta (macula lutea) leży w osi widzenia, w jej centrum znajduje się dołek środkowy z największym zagęszczeniem czopków - to miejsce najostrzejszego widzenia i widzenia barwnego. Plamka ślepa (tarcza nerwu wzrokowego) to miejsce wyjścia włókien nerwowych i wejścia naczyń, pozbawione fotoreceptorów, dlatego nie odbiera bodźców świetlnych. Leży ok. 15° nosowo od plamki żółtej; jej obecności nie zauważamy dzięki widzeniu obuocznemu i uzupełnianiu obrazu przez mózg.",
+   "difficulty": "latwe",
+   "officialNr": 249098
   },
   {
    "id": "ustny-technologia-14",
@@ -6809,7 +6968,9 @@
    "kind": "open",
    "nr": 14,
    "prompt": "Podaj parametry określające astygmatyzm oka.",
-   "answer": "Astygmatyzm opisują: wielkość (moc cylindra w dioptriach, czyli różnica mocy między przekrojami głównymi), oś cylindra (położenie przekroju głównego w skali TABO, 0-180°) oraz rodzaj i znak cylindra. Dodatkowo określa się typ astygmatyzmu: zgodny z regułą, przeciwny regule lub skośny, a także prosty, złożony albo mieszany - w zależności od położenia obu ognisk względem siatkówki."
+   "answer": "Astygmatyzm opisują: wielkość (moc cylindra w dioptriach, czyli różnica mocy między przekrojami głównymi), oś cylindra (położenie przekroju głównego w skali TABO, 0-180°) oraz rodzaj i znak cylindra. Dodatkowo określa się typ astygmatyzmu: zgodny z regułą, przeciwny regule lub skośny, a także prosty, złożony albo mieszany - w zależności od położenia obu ognisk względem siatkówki.",
+   "difficulty": "latwe",
+   "officialNr": 249099
   },
   {
    "id": "ustny-technologia-15",
@@ -6817,7 +6978,9 @@
    "kind": "open",
    "nr": 15,
    "prompt": "Określ, którego z elementów budowy oka dotyczy zaćma.",
-   "answer": "Zaćma (katarakta) to zmętnienie soczewki ocznej lub jej torebki. Powoduje rozpraszanie światła, spadek ostrości i kontrastu widzenia, olśnienia oraz często krótkowzroczność soczewkową. Leczona jest wyłącznie operacyjnie przez usunięcie zmętniałej soczewki i wszczepienie sztucznej soczewki wewnątrzgałkowej."
+   "answer": "Zaćma (katarakta) to zmętnienie soczewki ocznej lub jej torebki. Powoduje rozpraszanie światła, spadek ostrości i kontrastu widzenia, olśnienia oraz często krótkowzroczność soczewkową. Leczona jest wyłącznie operacyjnie przez usunięcie zmętniałej soczewki i wszczepienie sztucznej soczewki wewnątrzgałkowej.",
+   "difficulty": "latwe",
+   "officialNr": 249100
   },
   {
    "id": "ustny-technologia-16",
@@ -6825,7 +6988,9 @@
    "kind": "open",
    "nr": 16,
    "prompt": "Wyjaśnij, co oznacza, że soczewka posiada zabarwienie 40%.",
-   "answer": "Oznacza to, że soczewka pochłania 40% padającego na nią światła widzialnego, a przepuszcza pozostałe 60%. Transmitancja wynosi zatem 60%. Zabarwienie 40% odpowiada zabarwieniu średniemu - stosowanemu w okularach przeciwsłonecznych lekkich lub w soczewkach modowych."
+   "answer": "Oznacza to, że soczewka pochłania 40% padającego na nią światła widzialnego, a przepuszcza pozostałe 60%. Transmitancja wynosi zatem 60%. Zabarwienie 40% odpowiada zabarwieniu średniemu - stosowanemu w okularach przeciwsłonecznych lekkich lub w soczewkach modowych.",
+   "difficulty": "latwe",
+   "officialNr": 249101
   },
   {
    "id": "ustny-technologia-17",
@@ -6833,7 +6998,9 @@
    "kind": "open",
    "nr": 17,
    "prompt": "Omów sposób pomiaru rozstawu źrenic do dali i bliży.",
-   "answer": "Pomiar do dali wykonuje się pupilometrem lub linijką optyczną (PD-metrem) przy wzroku klienta skierowanym na przedmiot odległy (co najmniej 5 m) - mierzy się odległość między środkami źrenic, najlepiej monokularnie względem linii środkowej nosa. Pomiar do bliży wykonuje się przy fiksacji na odległość roboczą (zwykle 33-40 cm); wskutek konwergencji rozstaw jest mniejszy o ok. 3-5 mm. Wartość do bliży można też wyliczyć: PD_bliż = PD_dal x d/(d + 27 mm), gdzie d to odległość robocza."
+   "answer": "Pomiar do dali wykonuje się pupilometrem lub linijką optyczną (PD-metrem) przy wzroku klienta skierowanym na przedmiot odległy (co najmniej 5 m) - mierzy się odległość między środkami źrenic, najlepiej monokularnie względem linii środkowej nosa. Pomiar do bliży wykonuje się przy fiksacji na odległość roboczą (zwykle 33-40 cm); wskutek konwergencji rozstaw jest mniejszy o ok. 3-5 mm. Wartość do bliży można też wyliczyć: PD_bliż = PD_dal x d/(d + 27 mm), gdzie d to odległość robocza.",
+   "difficulty": "latwe",
+   "officialNr": 249102
   },
   {
    "id": "ustny-technologia-18",
@@ -6841,7 +7008,9 @@
    "kind": "open",
    "nr": 18,
    "prompt": "Podaj zakres długości fali światła widzialnego.",
-   "answer": "Od około 380-400 nm (fiolet) do około 760-780 nm (czerwień). Poniżej tego zakresu leży promieniowanie nadfioletowe (UV), powyżej - podczerwone (IR)."
+   "answer": "Od około 380-400 nm (fiolet) do około 760-780 nm (czerwień). Poniżej tego zakresu leży promieniowanie nadfioletowe (UV), powyżej - podczerwone (IR).",
+   "difficulty": "latwe",
+   "officialNr": 249103
   },
   {
    "id": "ustny-technologia-19",
@@ -6849,7 +7018,9 @@
    "kind": "open",
    "nr": 19,
    "prompt": "Przedstaw kryteria doboru oprawy okularowej.",
-   "answer": "Kryteria optyczne: rozstaw źrenic i możliwość prawidłowej centracji, wielkość kalibru i mostka względem wymaganej średnicy soczewek, wysokość montażowa (istotna zwłaszcza dla soczewek progresywnych i dwuogniskowych), krzywizna i kąt pochylenia oprawy, odległość wierzchołkowa. Kryteria konstrukcyjne: moc i rodzaj soczewek (przy wysokich mocach oprawa mniejsza i pełnoobwodowa), materiał soczewek przy oprawach bezobwódkowych. Kryteria anatomiczne: kształt i wielkość twarzy, ukształtowanie nosa i uszu. Kryteria dodatkowe: wiek, tryb życia i rodzaj wykonywanej pracy, estetyka i preferencje klienta, alergie na materiały."
+   "answer": "Kryteria optyczne: rozstaw źrenic i możliwość prawidłowej centracji, wielkość kalibru i mostka względem wymaganej średnicy soczewek, wysokość montażowa (istotna zwłaszcza dla soczewek progresywnych i dwuogniskowych), krzywizna i kąt pochylenia oprawy, odległość wierzchołkowa. Kryteria konstrukcyjne: moc i rodzaj soczewek (przy wysokich mocach oprawa mniejsza i pełnoobwodowa), materiał soczewek przy oprawach bezobwódkowych. Kryteria anatomiczne: kształt i wielkość twarzy, ukształtowanie nosa i uszu. Kryteria dodatkowe: wiek, tryb życia i rodzaj wykonywanej pracy, estetyka i preferencje klienta, alergie na materiały.",
+   "difficulty": "latwe",
+   "officialNr": 249104
   },
   {
    "id": "ustny-technologia-20",
@@ -6857,7 +7028,9 @@
    "kind": "open",
    "nr": 20,
    "prompt": "Przedstaw w skrócie proces technologiczny produkcji soczewek okularowych mineralnych.",
-   "answer": "Przygotowanie i wytop masy szklanej z surowców mineralnych w wysokiej temperaturze, klarowanie i homogenizacja, formowanie półfabrykatów (prasowanie lub odlewanie), powolne odprężanie (studzenie) w celu usunięcia naprężeń wewnętrznych, następnie obróbka mechaniczna: szlifowanie zgrubne (frezowanie) powierzchni do zadanych promieni krzywizny, szlifowanie dokładne, polerowanie, kontrola parametrów optycznych, ewentualne hartowanie termiczne lub chemiczne, barwienie i nakładanie powłok (utwardzających, antyrefleksyjnych, hydrofobowych)."
+   "answer": "Przygotowanie i wytop masy szklanej z surowców mineralnych w wysokiej temperaturze, klarowanie i homogenizacja, formowanie półfabrykatów (prasowanie lub odlewanie), powolne odprężanie (studzenie) w celu usunięcia naprężeń wewnętrznych, następnie obróbka mechaniczna: szlifowanie zgrubne (frezowanie) powierzchni do zadanych promieni krzywizny, szlifowanie dokładne, polerowanie, kontrola parametrów optycznych, ewentualne hartowanie termiczne lub chemiczne, barwienie i nakładanie powłok (utwardzających, antyrefleksyjnych, hydrofobowych).",
+   "difficulty": "latwe",
+   "officialNr": 249105
   },
   {
    "id": "ustny-technologia-21",
@@ -6865,7 +7038,9 @@
    "kind": "open",
    "nr": 21,
    "prompt": "Wymień metody barwienia soczewek okularowych.",
-   "answer": "1) Barwienie powierzchniowe (kąpielowe) soczewek organicznych w gorącym roztworze barwnika - barwnik wnika w warstwę przypowierzchniową. 2) Barwienie w masie - dodanie barwnika do monomeru przed polimeryzacją (soczewki organiczne) lub do masy szklanej (soczewki mineralne). 3) Napylanie próżniowe warstwy barwiącej (metalizacja, powłoki lustrzane). 4) Barwienie metodą transferu (sublimacja z folii). Dla soczewek mineralnych stosuje się głównie barwienie w masie i napylanie."
+   "answer": "1) Barwienie powierzchniowe (kąpielowe) soczewek organicznych w gorącym roztworze barwnika - barwnik wnika w warstwę przypowierzchniową. 2) Barwienie w masie - dodanie barwnika do monomeru przed polimeryzacją (soczewki organiczne) lub do masy szklanej (soczewki mineralne). 3) Napylanie próżniowe warstwy barwiącej (metalizacja, powłoki lustrzane). 4) Barwienie metodą transferu (sublimacja z folii). Dla soczewek mineralnych stosuje się głównie barwienie w masie i napylanie.",
+   "difficulty": "latwe",
+   "officialNr": 249383
   },
   {
    "id": "ustny-technologia-22",
@@ -6873,7 +7048,9 @@
    "kind": "open",
    "nr": 22,
    "prompt": "Przedstaw proces technologiczny prowadzący do wykonania okularów.",
-   "answer": "1) Przyjęcie i analiza zlecenia (recepta, dobór soczewek i oprawy). 2) Pomiary centracyjne: rozstaw źrenic, wysokość montażowa, dopasowanie oprawy. 3) Weryfikacja soczewek na dioptriomierzu i oznaczenie środków optycznych. 4) Wyznaczenie decentracji i naniesienie punktów centracyjnych. 5) Skanowanie kształtu oprawy lub wykonanie szablonu. 6) Blokowanie soczewki (naklejenie przyssawki w punkcie centracyjnym). 7) Szlifowanie krawędzi na automacie - obróbka zgrubna i wykończeniowa, wykonanie fazy, rowka na żyłkę lub otworów. 8) Montaż soczewek w oprawie. 9) Kontrola końcowa: moc, centracja, oś cylindra, naprężenia, jakość krawędzi. 10) Dopasowanie okularów na twarzy klienta i wydanie z instrukcją użytkowania."
+   "answer": "1) Przyjęcie i analiza zlecenia (recepta, dobór soczewek i oprawy). 2) Pomiary centracyjne: rozstaw źrenic, wysokość montażowa, dopasowanie oprawy. 3) Weryfikacja soczewek na dioptriomierzu i oznaczenie środków optycznych. 4) Wyznaczenie decentracji i naniesienie punktów centracyjnych. 5) Skanowanie kształtu oprawy lub wykonanie szablonu. 6) Blokowanie soczewki (naklejenie przyssawki w punkcie centracyjnym). 7) Szlifowanie krawędzi na automacie - obróbka zgrubna i wykończeniowa, wykonanie fazy, rowka na żyłkę lub otworów. 8) Montaż soczewek w oprawie. 9) Kontrola końcowa: moc, centracja, oś cylindra, naprężenia, jakość krawędzi. 10) Dopasowanie okularów na twarzy klienta i wydanie z instrukcją użytkowania.",
+   "difficulty": "latwe",
+   "officialNr": 249386
   },
   {
    "id": "ustny-technologia-23",
@@ -6881,7 +7058,9 @@
    "kind": "open",
    "nr": 23,
    "prompt": "Opisz procedurę kontroli gotowych okularów.",
-   "answer": "Sprawdza się: moc sferyczną, cylindryczną i oś cylindra każdej soczewki na dioptriomierzu (zgodność z receptą i tolerancje wg PN-EN ISO 21987); moc pryzmatyczną i ewentualną decentrację; rozstaw środków optycznych oraz ich wysokość względem oprawy; dodatek do bliży przy soczewkach wieloogniskowych; położenie punktów kontrolnych i znaków soczewek progresywnych; jakość wykonania krawędzi, fazy i montażu; brak naprężeń w soczewkach (polaryskop); symetrię i geometrię oprawy (rozwarcie zauszników, kąt pantoskopowy, płaskość); czystość soczewek i brak rys. Wynik dokumentuje się, a okulary dopasowuje na twarzy klienta."
+   "answer": "Sprawdza się: moc sferyczną, cylindryczną i oś cylindra każdej soczewki na dioptriomierzu (zgodność z receptą i tolerancje wg PN-EN ISO 21987); moc pryzmatyczną i ewentualną decentrację; rozstaw środków optycznych oraz ich wysokość względem oprawy; dodatek do bliży przy soczewkach wieloogniskowych; położenie punktów kontrolnych i znaków soczewek progresywnych; jakość wykonania krawędzi, fazy i montażu; brak naprężeń w soczewkach (polaryskop); symetrię i geometrię oprawy (rozwarcie zauszników, kąt pantoskopowy, płaskość); czystość soczewek i brak rys. Wynik dokumentuje się, a okulary dopasowuje na twarzy klienta.",
+   "difficulty": "latwe",
+   "officialNr": 249388
   },
   {
    "id": "ustny-technologia-24",
@@ -6889,7 +7068,9 @@
    "kind": "open",
    "nr": 24,
    "prompt": "Wymień metody klejenia opraw z tworzywa.",
-   "answer": "Klejenie klejami rozpuszczalnikowymi (rozpuszczającymi powierzchnie łączone, np. dla acetatu celulozy), klejami cyjanoakrylowymi (szybkowiążącymi), klejami epoksydowymi dwuskładnikowymi oraz zgrzewanie termiczne. Dodatkowo stosuje się wzmocnienie połączenia wkładką metalową lub kołkiem oraz przygotowanie powierzchni przez zmatowienie i odtłuszczenie. Poliamidy i optyl są trudno klejalne - w ich przypadku zwykle zaleca się wymianę elementu."
+   "answer": "Klejenie klejami rozpuszczalnikowymi (rozpuszczającymi powierzchnie łączone, np. dla acetatu celulozy), klejami cyjanoakrylowymi (szybkowiążącymi), klejami epoksydowymi dwuskładnikowymi oraz zgrzewanie termiczne. Dodatkowo stosuje się wzmocnienie połączenia wkładką metalową lub kołkiem oraz przygotowanie powierzchni przez zmatowienie i odtłuszczenie. Poliamidy i optyl są trudno klejalne - w ich przypadku zwykle zaleca się wymianę elementu.",
+   "difficulty": "latwe",
+   "officialNr": 249391
   },
   {
    "id": "ustny-technologia-25",
@@ -6897,7 +7078,9 @@
    "kind": "open",
    "nr": 25,
    "prompt": "Przedstaw czynności składające się na kontrolę soczewek okularowych.",
-   "answer": "Pomiar mocy sferycznej i cylindrycznej oraz osi cylindra na dioptriomierzu; wyznaczenie i oznaczenie środka optycznego; sprawdzenie mocy pryzmatycznej; przy soczewkach wieloogniskowych i progresywnych - kontrola dodatku do bliży i położenia znaków fabrycznych; pomiar średnicy i grubości; ocena wizualna: brak rys, pęcherzy, wtrąceń, smug i wad powłok; sprawdzenie jednorodności zabarwienia; kontrola naprężeń wewnętrznych na polaryskopie; weryfikacja zgodności materiału i parametrów z zamówieniem."
+   "answer": "Pomiar mocy sferycznej i cylindrycznej oraz osi cylindra na dioptriomierzu; wyznaczenie i oznaczenie środka optycznego; sprawdzenie mocy pryzmatycznej; przy soczewkach wieloogniskowych i progresywnych - kontrola dodatku do bliży i położenia znaków fabrycznych; pomiar średnicy i grubości; ocena wizualna: brak rys, pęcherzy, wtrąceń, smug i wad powłok; sprawdzenie jednorodności zabarwienia; kontrola naprężeń wewnętrznych na polaryskopie; weryfikacja zgodności materiału i parametrów z zamówieniem.",
+   "difficulty": "latwe",
+   "officialNr": 249392
   },
   {
    "id": "ustny-technologia-26",
@@ -6905,7 +7088,9 @@
    "kind": "open",
    "nr": 26,
    "prompt": "Wymień różnice pomiędzy korekcją okularową a korekcją soczewkami kontaktowymi.",
-   "answer": "Soczewka kontaktowa leży bezpośrednio na rogówce, więc odległość wierzchołkowa wynosi zero - przy mocach powyżej ok. ±4 dpt wymaga to przeliczenia mocy. Soczewka kontaktowa daje mniejszą zmianę wielkości obrazu siatkówkowego (istotne przy anizometropii i po operacji zaćmy), szersze pole widzenia bez ograniczenia oprawą, brak aberracji obwodowych i efektu pryzmatycznego przy patrzeniu na boki, brak zaparowania i odblasków. Okulary są łatwiejsze w użyciu i higienie, nie obciążają rogówki, pozwalają na korekcję pryzmatyczną i progresywną w prostszy sposób. Soczewki kontaktowe wymagają natomiast reżimu higienicznego i kontroli specjalisty, mogą powodować niedotlenienie rogówki i zespół suchego oka."
+   "answer": "Soczewka kontaktowa leży bezpośrednio na rogówce, więc odległość wierzchołkowa wynosi zero - przy mocach powyżej ok. ±4 dpt wymaga to przeliczenia mocy. Soczewka kontaktowa daje mniejszą zmianę wielkości obrazu siatkówkowego (istotne przy anizometropii i po operacji zaćmy), szersze pole widzenia bez ograniczenia oprawą, brak aberracji obwodowych i efektu pryzmatycznego przy patrzeniu na boki, brak zaparowania i odblasków. Okulary są łatwiejsze w użyciu i higienie, nie obciążają rogówki, pozwalają na korekcję pryzmatyczną i progresywną w prostszy sposób. Soczewki kontaktowe wymagają natomiast reżimu higienicznego i kontroli specjalisty, mogą powodować niedotlenienie rogówki i zespół suchego oka.",
+   "difficulty": "latwe",
+   "officialNr": 249396
   },
   {
    "id": "ustny-technologia-27",
@@ -6913,7 +7098,9 @@
    "kind": "open",
    "nr": 27,
    "prompt": "Jakie parametry, oprócz rozstawu źrenic i wysokości montażowych, mają wpływ na jakość widzenia w soczewkach progresywnych?",
-   "answer": "Odległość wierzchołkowa, kąt pantoskopowy (pochylenia oprawy), kąt krzywizny oprawy (wrap), odległość obrotu oka, długość kanału progresji dobrana do wielkości kalibru, wartość dodatku do bliży, konstrukcja i design soczewki (twarda lub miękka, indywidualizowana), a przy soczewkach zindywidualizowanych także odległość robocza klienta i dominujące oko. Istotne są również stabilność i prawidłowe dopasowanie oprawy - jej przesunięcie zmienia geometrię widzenia."
+   "answer": "Odległość wierzchołkowa, kąt pantoskopowy (pochylenia oprawy), kąt krzywizny oprawy (wrap), odległość obrotu oka, długość kanału progresji dobrana do wielkości kalibru, wartość dodatku do bliży, konstrukcja i design soczewki (twarda lub miękka, indywidualizowana), a przy soczewkach zindywidualizowanych także odległość robocza klienta i dominujące oko. Istotne są również stabilność i prawidłowe dopasowanie oprawy - jej przesunięcie zmienia geometrię widzenia.",
+   "difficulty": "latwe",
+   "officialNr": 249400
   },
   {
    "id": "ustny-technologia-28",
@@ -6921,7 +7108,9 @@
    "kind": "open",
    "nr": 28,
    "prompt": "Wymień cechy charakterystyczne oka krótkowzrocznego.",
-   "answer": "Gałka oczna zbyt długa w stosunku do mocy łamiącej (lub moc zbyt duża). Ognisko obrazowe powstaje przed siatkówką przy patrzeniu w dal. Punkt daleki leży w skończonej odległości przed okiem, punkt bliski jest przesunięty bliżej oka. Refrakcja przyjmuje wartość dodatnią w zapisie refrakcyjnym (wada korygowana soczewkami ujemnymi). Widzenie do dali nieostre, do bliży zwykle dobre bez korekcji. Często obserwuje się szerszą źrenicę i skłonność do zmian degeneracyjnych siatkówki przy wysokiej krótkowzroczności."
+   "answer": "Gałka oczna zbyt długa w stosunku do mocy łamiącej (lub moc zbyt duża). Ognisko obrazowe powstaje przed siatkówką przy patrzeniu w dal. Punkt daleki leży w skończonej odległości przed okiem, punkt bliski jest przesunięty bliżej oka. Refrakcja przyjmuje wartość dodatnią w zapisie refrakcyjnym (wada korygowana soczewkami ujemnymi). Widzenie do dali nieostre, do bliży zwykle dobre bez korekcji. Często obserwuje się szerszą źrenicę i skłonność do zmian degeneracyjnych siatkówki przy wysokiej krótkowzroczności.",
+   "difficulty": "srednie",
+   "officialNr": 249413
   },
   {
    "id": "ustny-technologia-29",
@@ -6929,7 +7118,9 @@
    "kind": "open",
    "nr": 29,
    "prompt": "Podaj dopuszczalne błędy w rozstawieniu środków optycznych soczewek korekcyjnych w okularach w stosunku do odległości źrenic w kierunku horyzontalnym i wertykalnym.",
-   "answer": "Tolerancje określa norma PN-EN ISO 21987. Wyraża się je jako dopuszczalny błąd pryzmatyczny, zależny od mocy soczewki. Dla kierunku poziomego tolerancja jest wyraźnie większa (rzędu 0,67-1,00 prdpt przy niskich mocach, ok. 0,50 prdpt przy mocach średnich), dla kierunku pionowego znacznie ostrzejsza (rzędu 0,25-0,50 prdpt), ponieważ oko trudniej kompensuje pryzmat pionowy. W praktyce warsztatowej przyjmuje się dopuszczalne odchylenie poziome do ok. 1 mm na soczewkę i pionowe do ok. 0,5-1 mm. Dokładne wartości należy odczytać z tablic normy dla danej mocy."
+   "answer": "Tolerancje określa norma PN-EN ISO 21987. Wyraża się je jako dopuszczalny błąd pryzmatyczny, zależny od mocy soczewki. Dla kierunku poziomego tolerancja jest wyraźnie większa (rzędu 0,67-1,00 prdpt przy niskich mocach, ok. 0,50 prdpt przy mocach średnich), dla kierunku pionowego znacznie ostrzejsza (rzędu 0,25-0,50 prdpt), ponieważ oko trudniej kompensuje pryzmat pionowy. W praktyce warsztatowej przyjmuje się dopuszczalne odchylenie poziome do ok. 1 mm na soczewkę i pionowe do ok. 0,5-1 mm. Dokładne wartości należy odczytać z tablic normy dla danej mocy.",
+   "difficulty": "srednie",
+   "officialNr": 249414
   },
   {
    "id": "ustny-technologia-30",
@@ -6937,7 +7128,9 @@
    "kind": "open",
    "nr": 30,
    "prompt": "Zdefiniuj pojęcie ogniska przedmiotowego i obrazowego w przypadku soczewki skupiającej i rozpraszającej.",
-   "answer": "Ognisko przedmiotowe F to punkt na osi optycznej, z którego wychodzące promienie po przejściu przez soczewkę biegną równolegle do osi. Ognisko obrazowe F' to punkt, w którym przecinają się promienie padające na soczewkę równolegle do osi. W soczewce skupiającej ognisko obrazowe leży za soczewką (f' > 0), a przedmiotowe przed nią - oba są rzeczywiste. W soczewce rozpraszającej ognisko obrazowe leży przed soczewką (f' < 0), a przedmiotowe za nią - oba są pozorne, wyznaczone przez przedłużenia promieni."
+   "answer": "Ognisko przedmiotowe F to punkt na osi optycznej, z którego wychodzące promienie po przejściu przez soczewkę biegną równolegle do osi. Ognisko obrazowe F' to punkt, w którym przecinają się promienie padające na soczewkę równolegle do osi. W soczewce skupiającej ognisko obrazowe leży za soczewką (f' > 0), a przedmiotowe przed nią - oba są rzeczywiste. W soczewce rozpraszającej ognisko obrazowe leży przed soczewką (f' < 0), a przedmiotowe za nią - oba są pozorne, wyznaczone przez przedłużenia promieni.",
+   "difficulty": "srednie",
+   "officialNr": 249415
   },
   {
    "id": "ustny-technologia-31",
@@ -6945,7 +7138,9 @@
    "kind": "open",
    "nr": 31,
    "prompt": "Wskaż zakres wartości, jakie może przyjmować dodatek do bliży, uwzględniając czynniki, od których on zależy.",
-   "answer": "Dodatek do bliży przyjmuje wartości od ok. +0,75 dpt do ok. +3,50 dpt (wyjątkowo +4,00 dpt). Zależy przede wszystkim od wieku pacjenta (ubytek amplitudy akomodacji), od odległości roboczej (im bliżej, tym większy dodatek), od rodzaju wykonywanej pracy wzrokowej i wielkości detali, od refrakcji do dali oraz od rezerwy akomodacji, którą należy zachować (zwykle wykorzystuje się nie więcej niż połowę dostępnej amplitudy). Orientacyjnie: 45 lat ok. +1,00, 50 lat ok. +1,50-1,75, 55 lat ok. +2,00-2,25, 60 lat i więcej ok. +2,50-3,00 dpt."
+   "answer": "Dodatek do bliży przyjmuje wartości od ok. +0,75 dpt do ok. +3,50 dpt (wyjątkowo +4,00 dpt). Zależy przede wszystkim od wieku pacjenta (ubytek amplitudy akomodacji), od odległości roboczej (im bliżej, tym większy dodatek), od rodzaju wykonywanej pracy wzrokowej i wielkości detali, od refrakcji do dali oraz od rezerwy akomodacji, którą należy zachować (zwykle wykorzystuje się nie więcej niż połowę dostępnej amplitudy). Orientacyjnie: 45 lat ok. +1,00, 50 lat ok. +1,50-1,75, 55 lat ok. +2,00-2,25, 60 lat i więcej ok. +2,50-3,00 dpt.",
+   "difficulty": "srednie",
+   "officialNr": 249416
   },
   {
    "id": "ustny-technologia-32",
@@ -6953,7 +7148,9 @@
    "kind": "open",
    "nr": 32,
    "prompt": "Wskaż, ile w przybliżeniu wynosi całkowita moc oka miarowego nieakomodującego i akomodującego.",
-   "answer": "Oko miarowe nieakomodujące ma moc około +60 dpt (ok. +58 do +60 dpt). Przy pełnej akomodacji u osoby młodej moc wzrasta o wartość amplitudy akomodacji (do ok. 10-14 dpt), osiągając około +70 do +74 dpt. Wzrost mocy wynika ze zwiększenia krzywizn soczewki ocznej."
+   "answer": "Oko miarowe nieakomodujące ma moc około +60 dpt (ok. +58 do +60 dpt). Przy pełnej akomodacji u osoby młodej moc wzrasta o wartość amplitudy akomodacji (do ok. 10-14 dpt), osiągając około +70 do +74 dpt. Wzrost mocy wynika ze zwiększenia krzywizn soczewki ocznej.",
+   "difficulty": "srednie",
+   "officialNr": 249417
   },
   {
    "id": "ustny-technologia-33",
@@ -6961,7 +7158,9 @@
    "kind": "open",
    "nr": 33,
    "prompt": "Wyjaśnij istotę zjawiska zwanego potocznie kurzą ślepotą.",
-   "answer": "Kurza ślepota (nyktalopia, ślepota zmierzchowa) to upośledzenie widzenia w warunkach słabego oświetlenia. Wynika z zaburzenia funkcji pręcików - komórek odpowiedzialnych za widzenie skotopowe - najczęściej wskutek niedoboru witaminy A, niezbędnej do syntezy rodopsyny (czerwieni wzrokowej). Bez wystarczającej ilości rodopsyny pręciki nie regenerują barwnika i nie reagują na słabe bodźce świetlne. Przyczyną mogą być także choroby siatkówki, np. zwyrodnienie barwnikowe."
+   "answer": "Kurza ślepota (nyktalopia, ślepota zmierzchowa) to upośledzenie widzenia w warunkach słabego oświetlenia. Wynika z zaburzenia funkcji pręcików - komórek odpowiedzialnych za widzenie skotopowe - najczęściej wskutek niedoboru witaminy A, niezbędnej do syntezy rodopsyny (czerwieni wzrokowej). Bez wystarczającej ilości rodopsyny pręciki nie regenerują barwnika i nie reagują na słabe bodźce świetlne. Przyczyną mogą być także choroby siatkówki, np. zwyrodnienie barwnikowe.",
+   "difficulty": "srednie",
+   "officialNr": 249418
   },
   {
    "id": "ustny-technologia-34",
@@ -6969,7 +7168,9 @@
    "kind": "open",
    "nr": 34,
    "prompt": "Omów budowę ciała rzęskowego wraz z tęczówką, uwzględniając ich rolę w procesie widzenia.",
-   "answer": "Ciało rzęskowe i tęczówka wchodzą w skład błony naczyniowej. Ciało rzęskowe zawiera mięsień rzęskowy (włókna okrężne i południkowe) oraz wyrostki rzęskowe; do wyrostków przyczepia się obwódka rzęskowa Zinna utrzymująca soczewkę. Skurcz mięśnia rzęskowego rozluźnia więzadełka i pozwala soczewce uwypuklić się - to mechanizm akomodacji. Wyrostki rzęskowe wytwarzają ciecz wodnistą odżywiającą rogówkę i soczewkę oraz utrzymującą ciśnienie wewnątrzgałkowe. Tęczówka to barwna przesłona z otworem - źrenicą; mięsień zwieracz źrenicy (przywspółczulny) zwęża ją, a rozwieracz (współczulny) rozszerza. Reguluje to ilość światła wpadającego do oka i wpływa na głębię ostrości oraz ograniczenie aberracji."
+   "answer": "Ciało rzęskowe i tęczówka wchodzą w skład błony naczyniowej. Ciało rzęskowe zawiera mięsień rzęskowy (włókna okrężne i południkowe) oraz wyrostki rzęskowe; do wyrostków przyczepia się obwódka rzęskowa Zinna utrzymująca soczewkę. Skurcz mięśnia rzęskowego rozluźnia więzadełka i pozwala soczewce uwypuklić się - to mechanizm akomodacji. Wyrostki rzęskowe wytwarzają ciecz wodnistą odżywiającą rogówkę i soczewkę oraz utrzymującą ciśnienie wewnątrzgałkowe. Tęczówka to barwna przesłona z otworem - źrenicą; mięsień zwieracz źrenicy (przywspółczulny) zwęża ją, a rozwieracz (współczulny) rozszerza. Reguluje to ilość światła wpadającego do oka i wpływa na głębię ostrości oraz ograniczenie aberracji.",
+   "difficulty": "srednie",
+   "officialNr": 249419
   },
   {
    "id": "ustny-technologia-35",
@@ -6977,7 +7178,9 @@
    "kind": "open",
    "nr": 35,
    "prompt": "Scharakteryzuj oko z astygmatyzmem.",
-   "answer": "W oku astygmatycznym powierzchnie łamiące (najczęściej rogówka, rzadziej soczewka) mają różne promienie krzywizny w różnych przekrojach, przez co moc łamiąca zmienia się wraz z kierunkiem przekroju. Wiązka nie skupia się w jednym punkcie, lecz tworzy dwie ogniskowe (odcinki Sturma) wzajemnie prostopadłe, między którymi znajduje się krążek najmniejszego rozproszenia. Obraz punktu jest rozciągnięty liniowo, a widzenie zniekształcone zarówno do dali, jak i do bliży - niezależnie od odległości. Korekcja wymaga soczewki cylindrycznej lub sferocylindrycznej o odpowiedniej mocy i osi."
+   "answer": "W oku astygmatycznym powierzchnie łamiące (najczęściej rogówka, rzadziej soczewka) mają różne promienie krzywizny w różnych przekrojach, przez co moc łamiąca zmienia się wraz z kierunkiem przekroju. Wiązka nie skupia się w jednym punkcie, lecz tworzy dwie ogniskowe (odcinki Sturma) wzajemnie prostopadłe, między którymi znajduje się krążek najmniejszego rozproszenia. Obraz punktu jest rozciągnięty liniowo, a widzenie zniekształcone zarówno do dali, jak i do bliży - niezależnie od odległości. Korekcja wymaga soczewki cylindrycznej lub sferocylindrycznej o odpowiedniej mocy i osi.",
+   "difficulty": "srednie",
+   "officialNr": 249428
   },
   {
    "id": "ustny-technologia-36",
@@ -6985,7 +7188,9 @@
    "kind": "open",
    "nr": 36,
    "prompt": "Wymień rodzaje astygmatyzmu oka, ze względu na kierunek przekrojów głównych.",
-   "answer": "Astygmatyzm zgodny z regułą (prosty, wg reguły) - przekrój o większej mocy leży pionowo, oś cylindra ujemnego w pobliżu 180° (0-30° i 150-180°). Astygmatyzm przeciwny regule - przekrój o większej mocy leży poziomo, oś cylindra ujemnego w pobliżu 90° (60-120°). Astygmatyzm skośny - przekroje główne leżą w kierunkach ukośnych, oś w przedziałach 30-60° i 120-150°. Osobno wyróżnia się astygmatyzm nieregularny, w którym przekroje główne nie są wzajemnie prostopadłe i którego nie da się skorygować soczewką cylindryczną."
+   "answer": "Astygmatyzm zgodny z regułą (prosty, wg reguły) - przekrój o większej mocy leży pionowo, oś cylindra ujemnego w pobliżu 180° (0-30° i 150-180°). Astygmatyzm przeciwny regule - przekrój o większej mocy leży poziomo, oś cylindra ujemnego w pobliżu 90° (60-120°). Astygmatyzm skośny - przekroje główne leżą w kierunkach ukośnych, oś w przedziałach 30-60° i 120-150°. Osobno wyróżnia się astygmatyzm nieregularny, w którym przekroje główne nie są wzajemnie prostopadłe i którego nie da się skorygować soczewką cylindryczną.",
+   "difficulty": "srednie",
+   "officialNr": 249429
   },
   {
    "id": "ustny-technologia-37",
@@ -6993,7 +7198,9 @@
    "kind": "open",
    "nr": 37,
    "prompt": "Omów budowę siatkówki oka, uwzględniając jej rolę w procesie widzenia.",
-   "answer": "Siatkówka to wewnętrzna, światłoczuła błona oka złożona z kilku warstw. Od zewnątrz przylega nabłonek barwnikowy pochłaniający nadmiar światła i uczestniczący w regeneracji barwników wzrokowych. Głębiej leży warstwa fotoreceptorów: pręciki (ok. 120 mln, widzenie zmierzchowe, wysoka czułość, brak rozróżniania barw) i czopki (ok. 6-7 mln, widzenie dzienne, barwne, wysoka rozdzielczość, skupione w plamce żółtej). Sygnał przekazywany jest przez komórki dwubiegunowe do komórek zwojowych, których aksony tworzą nerw wzrokowy; komórki poziome i amakrynowe modulują sygnał. Siatkówka przetwarza bodziec świetlny na impuls nerwowy - to początek procesu widzenia."
+   "answer": "Siatkówka to wewnętrzna, światłoczuła błona oka złożona z kilku warstw. Od zewnątrz przylega nabłonek barwnikowy pochłaniający nadmiar światła i uczestniczący w regeneracji barwników wzrokowych. Głębiej leży warstwa fotoreceptorów: pręciki (ok. 120 mln, widzenie zmierzchowe, wysoka czułość, brak rozróżniania barw) i czopki (ok. 6-7 mln, widzenie dzienne, barwne, wysoka rozdzielczość, skupione w plamce żółtej). Sygnał przekazywany jest przez komórki dwubiegunowe do komórek zwojowych, których aksony tworzą nerw wzrokowy; komórki poziome i amakrynowe modulują sygnał. Siatkówka przetwarza bodziec świetlny na impuls nerwowy - to początek procesu widzenia.",
+   "difficulty": "srednie",
+   "officialNr": 249431
   },
   {
    "id": "ustny-technologia-38",
@@ -7001,7 +7208,9 @@
    "kind": "open",
    "nr": 38,
    "prompt": "Omów działanie elementów anatomicznych oka, które są odpowiedzialne za proces adaptacji do światła.",
-   "answer": "Adaptacja przebiega dwutorowo. Szybko działa tęczówka: przy wzroście oświetlenia zwieracz źrenicy zwęża ją (do ok. 2 mm), ograniczając strumień światła nawet kilkunastokrotnie; w ciemności rozwieracz rozszerza źrenicę do ok. 8 mm. Wolniej działają fotoreceptory: przy jasnym świetle rodopsyna w pręcikach ulega rozłożeniu i widzenie przejmują czopki (adaptacja do jasności, kilka minut); w ciemności rodopsyna się odbudowuje i pręciki stopniowo odzyskują czułość (adaptacja do ciemności, do 30-40 minut). Uczestniczy w tym także nabłonek barwnikowy dostarczający witaminy A do regeneracji barwników."
+   "answer": "Adaptacja przebiega dwutorowo. Szybko działa tęczówka: przy wzroście oświetlenia zwieracz źrenicy zwęża ją (do ok. 2 mm), ograniczając strumień światła nawet kilkunastokrotnie; w ciemności rozwieracz rozszerza źrenicę do ok. 8 mm. Wolniej działają fotoreceptory: przy jasnym świetle rodopsyna w pręcikach ulega rozłożeniu i widzenie przejmują czopki (adaptacja do jasności, kilka minut); w ciemności rodopsyna się odbudowuje i pręciki stopniowo odzyskują czułość (adaptacja do ciemności, do 30-40 minut). Uczestniczy w tym także nabłonek barwnikowy dostarczający witaminy A do regeneracji barwników.",
+   "difficulty": "srednie",
+   "officialNr": 249432
   },
   {
    "id": "ustny-technologia-39",
@@ -7009,7 +7218,9 @@
    "kind": "open",
    "nr": 39,
    "prompt": "Określ położenie bazy pryzmatu dla rozbieżnie zdecentrowanych soczewek dodatnich.",
-   "answer": "Decentracja rozbieżna oznacza, że środki optyczne soczewek są rozsunięte szerzej niż rozstaw źrenic. W soczewce dodatniej baza pryzmatu jest zawsze skierowana w stronę środka optycznego, licząc od punktu, przez który patrzy oko. Ponieważ środek optyczny leży skroniowo względem źrenicy, uzyskuje się działanie pryzmatyczne z bazą skroniową (bazą na zewnątrz, BO). Taka decentracja wspomaga zatem korekcję zeza zbieżnego."
+   "answer": "Decentracja rozbieżna oznacza, że środki optyczne soczewek są rozsunięte szerzej niż rozstaw źrenic. W soczewce dodatniej baza pryzmatu jest zawsze skierowana w stronę środka optycznego, licząc od punktu, przez który patrzy oko. Ponieważ środek optyczny leży skroniowo względem źrenicy, uzyskuje się działanie pryzmatyczne z bazą skroniową (bazą na zewnątrz, BO). Taka decentracja wspomaga zatem korekcję zeza zbieżnego.",
+   "difficulty": "srednie",
+   "officialNr": 249433
   },
   {
    "id": "ustny-technologia-40",
@@ -7017,7 +7228,9 @@
    "kind": "open",
    "nr": 40,
    "prompt": "Określ położenie bazy pryzmatu dla rozbieżnie zdecentrowanych soczewek ujemnych.",
-   "answer": "W soczewce ujemnej baza pryzmatu skierowana jest od środka optycznego na zewnątrz (ku grubszej, brzegowej części soczewki). Przy decentracji rozbieżnej środek optyczny leży skroniowo względem źrenicy, więc uzyskuje się działanie pryzmatyczne z bazą nosową (bazą do wewnątrz, BI). Efekt jest zatem przeciwny niż przy soczewkach dodatnich zdecentrowanych w ten sam sposób."
+   "answer": "W soczewce ujemnej baza pryzmatu skierowana jest od środka optycznego na zewnątrz (ku grubszej, brzegowej części soczewki). Przy decentracji rozbieżnej środek optyczny leży skroniowo względem źrenicy, więc uzyskuje się działanie pryzmatyczne z bazą nosową (bazą do wewnątrz, BI). Efekt jest zatem przeciwny niż przy soczewkach dodatnich zdecentrowanych w ten sam sposób.",
+   "difficulty": "srednie",
+   "officialNr": 249434
   },
   {
    "id": "ustny-technologia-41",
@@ -7025,7 +7238,9 @@
    "kind": "open",
    "nr": 41,
    "prompt": "Omów zasady centrowania soczewek dwuogniskowych.",
-   "answer": "Część do dali centruje się tak, aby jej środek optyczny pokrywał się z linią patrzenia do dali - rozstaw środków ustawia się według PD do dali. Segment do bliży ustawia się z uwzględnieniem konwergencji: jego środek przesuwa się donosowo o ok. 2-2,5 mm na oko względem centracji do dali. Wysokość górnej krawędzi segmentu ustala się zwykle na poziomie dolnej krawędzi tęczówki lub 1-2 mm poniżej, w zależności od przyzwyczajeń i rodzaju pracy klienta. Górna krawędź segmentów obu oczu musi leżeć na tej samej wysokości, a segmenty muszą być ustawione symetrycznie i poziomo. Należy też uwzględnić skok obrazu na granicy segmentu."
+   "answer": "Część do dali centruje się tak, aby jej środek optyczny pokrywał się z linią patrzenia do dali - rozstaw środków ustawia się według PD do dali. Segment do bliży ustawia się z uwzględnieniem konwergencji: jego środek przesuwa się donosowo o ok. 2-2,5 mm na oko względem centracji do dali. Wysokość górnej krawędzi segmentu ustala się zwykle na poziomie dolnej krawędzi tęczówki lub 1-2 mm poniżej, w zależności od przyzwyczajeń i rodzaju pracy klienta. Górna krawędź segmentów obu oczu musi leżeć na tej samej wysokości, a segmenty muszą być ustawione symetrycznie i poziomo. Należy też uwzględnić skok obrazu na granicy segmentu.",
+   "difficulty": "srednie",
+   "officialNr": 249435
   },
   {
    "id": "ustny-technologia-42",
@@ -7033,7 +7248,9 @@
    "kind": "open",
    "nr": 42,
    "prompt": "Omów zasady centrowania soczewek progresywnych.",
-   "answer": "Punkt centracyjny (krzyż centracyjny) soczewki ustawia się dokładnie naprzeciw środka źrenicy przy naturalnej, wyprostowanej postawie klienta i wzroku skierowanym w dal. Pomiar rozstawu wykonuje się monokularnie dla każdego oka osobno. Wysokość montażową mierzy się od krzyża centracyjnego do najniższego punktu wewnętrznej krawędzi oprawy. Przed pomiarem oprawę należy dopasować na twarzy klienta i ustalić odległość wierzchołkową, kąt pantoskopowy oraz kąt krzywizny oprawy - te parametry wpływają na położenie kanału progresji. Kaliber oprawy musi zapewnić wystarczającą wysokość dla długości kanału progresji danej konstrukcji. Po zamontowaniu sprawdza się położenie znaków fabrycznych i punktów kontrolnych do dali i bliży."
+   "answer": "Punkt centracyjny (krzyż centracyjny) soczewki ustawia się dokładnie naprzeciw środka źrenicy przy naturalnej, wyprostowanej postawie klienta i wzroku skierowanym w dal. Pomiar rozstawu wykonuje się monokularnie dla każdego oka osobno. Wysokość montażową mierzy się od krzyża centracyjnego do najniższego punktu wewnętrznej krawędzi oprawy. Przed pomiarem oprawę należy dopasować na twarzy klienta i ustalić odległość wierzchołkową, kąt pantoskopowy oraz kąt krzywizny oprawy - te parametry wpływają na położenie kanału progresji. Kaliber oprawy musi zapewnić wystarczającą wysokość dla długości kanału progresji danej konstrukcji. Po zamontowaniu sprawdza się położenie znaków fabrycznych i punktów kontrolnych do dali i bliży.",
+   "difficulty": "srednie",
+   "officialNr": 249436
   },
   {
    "id": "ustny-technologia-43",
@@ -7041,7 +7258,9 @@
    "kind": "open",
    "nr": 43,
    "prompt": "Zdefiniuj przekroje główne oka, uwzględniając ich parametry.",
-   "answer": "Przekroje główne to dwa wzajemnie prostopadłe przekroje układu optycznego oka astygmatycznego, w których moc łamiąca osiąga wartość największą i najmniejszą. Każdy przekrój charakteryzują: jego kierunek (położenie osi w skali TABO, 0-180°) oraz moc łamiąca wyrażona w dioptriach, a co za tym idzie położenie odpowiadającego mu ogniska liniowego względem siatkówki. Różnica mocy między przekrojami głównymi jest równa mocy cylindra wymaganego do korekcji astygmatyzmu, a średnia z nich odpowiada ekwiwalentowi sferycznemu."
+   "answer": "Przekroje główne to dwa wzajemnie prostopadłe przekroje układu optycznego oka astygmatycznego, w których moc łamiąca osiąga wartość największą i najmniejszą. Każdy przekrój charakteryzują: jego kierunek (położenie osi w skali TABO, 0-180°) oraz moc łamiąca wyrażona w dioptriach, a co za tym idzie położenie odpowiadającego mu ogniska liniowego względem siatkówki. Różnica mocy między przekrojami głównymi jest równa mocy cylindra wymaganego do korekcji astygmatyzmu, a średnia z nich odpowiada ekwiwalentowi sferycznemu.",
+   "difficulty": "srednie",
+   "officialNr": 249437
   },
   {
    "id": "ustny-technologia-44",
@@ -7049,7 +7268,9 @@
    "kind": "open",
    "nr": 44,
    "prompt": "Określ położenie bazy pryzmatu dla zbieżnie zdecentrowanych soczewek ujemnych.",
-   "answer": "Decentracja zbieżna oznacza, że środki optyczne soczewek są zsunięte bliżej siebie niż rozstaw źrenic - środek optyczny leży nosowo względem źrenicy. W soczewce ujemnej baza jest skierowana od środka optycznego ku brzegowi, a więc w stronę skroniową. Uzyskuje się zatem działanie pryzmatyczne z bazą skroniową (BO)."
+   "answer": "Decentracja zbieżna oznacza, że środki optyczne soczewek są zsunięte bliżej siebie niż rozstaw źrenic - środek optyczny leży nosowo względem źrenicy. W soczewce ujemnej baza jest skierowana od środka optycznego ku brzegowi, a więc w stronę skroniową. Uzyskuje się zatem działanie pryzmatyczne z bazą skroniową (BO).",
+   "difficulty": "srednie",
+   "officialNr": 249438
   },
   {
    "id": "ustny-technologia-45",
@@ -7057,7 +7278,9 @@
    "kind": "open",
    "nr": 45,
    "prompt": "Określ położenie bazy pryzmatu dla zbieżnie zdecentrowanych soczewek dodatnich.",
-   "answer": "Przy decentracji zbieżnej środek optyczny leży nosowo względem źrenicy. W soczewce dodatniej baza pryzmatu skierowana jest w stronę środka optycznego, czyli donosowo. Uzyskuje się zatem działanie pryzmatyczne z bazą nosową (BI), wykorzystywane przy korekcji zeza rozbieżnego."
+   "answer": "Przy decentracji zbieżnej środek optyczny leży nosowo względem źrenicy. W soczewce dodatniej baza pryzmatu skierowana jest w stronę środka optycznego, czyli donosowo. Uzyskuje się zatem działanie pryzmatyczne z bazą nosową (BI), wykorzystywane przy korekcji zeza rozbieżnego.",
+   "difficulty": "srednie",
+   "officialNr": 249439
   },
   {
    "id": "ustny-technologia-46",
@@ -7065,7 +7288,9 @@
    "kind": "open",
    "nr": 46,
    "prompt": "Wyjaśnij, dlaczego soczewki wysokoindeksowe mają mniejszą transmitancję (są mniej przejrzyste) niż soczewki standard.",
-   "answer": "Im wyższy współczynnik załamania materiału, tym większa różnica współczynników na granicy powietrze-soczewka, a więc tym większy współczynnik odbicia Fresnela. Dla n = 1,5 od każdej powierzchni odbija się ok. 4% światła (łącznie ok. 8%), natomiast dla n = 1,74 już ok. 7% od powierzchni (łącznie ok. 14%). Straty na odbicie zmniejszają transmitancję i powodują odblaski oraz spadek kontrastu. Dodatkowo materiały wysokoindeksowe mają zwykle niższą liczbę Abbego, co zwiększa aberrację chromatyczną. Z tego powodu w soczewkach wysokoindeksowych stosowanie powłok antyrefleksyjnych jest praktycznie obowiązkowe."
+   "answer": "Im wyższy współczynnik załamania materiału, tym większa różnica współczynników na granicy powietrze-soczewka, a więc tym większy współczynnik odbicia Fresnela. Dla n = 1,5 od każdej powierzchni odbija się ok. 4% światła (łącznie ok. 8%), natomiast dla n = 1,74 już ok. 7% od powierzchni (łącznie ok. 14%). Straty na odbicie zmniejszają transmitancję i powodują odblaski oraz spadek kontrastu. Dodatkowo materiały wysokoindeksowe mają zwykle niższą liczbę Abbego, co zwiększa aberrację chromatyczną. Z tego powodu w soczewkach wysokoindeksowych stosowanie powłok antyrefleksyjnych jest praktycznie obowiązkowe.",
+   "difficulty": "srednie",
+   "officialNr": 249440
   },
   {
    "id": "ustny-technologia-47",
@@ -7073,7 +7298,9 @@
    "kind": "open",
    "nr": 47,
    "prompt": "Scharakteryzuj rodzaje pryzmatów używanych w optyce okularowej.",
-   "answer": "Pryzmat pełny (klin optyczny) - element o dwóch płaszczyznach nachylonych pod kątem łamiącym, odchylający promień ku bazie, a obraz ku wierzchołkowi. Pryzmat uzyskiwany przez decentrację soczewki - najczęściej stosowany, wykorzystuje regułę Prentice'a. Pryzmat wtopiony (wpracowany w soczewkę na etapie produkcji). Pryzmat ścieniający w soczewkach progresywnych - stosowany symetrycznie w obu soczewkach dla zmniejszenia grubości. Pryzmat Fresnela - cienka folia z układem koncentrycznych mikropryzmatów, naklejana na soczewkę, pozwalająca uzyskać duże wartości pryzmatyczne bez wzrostu grubości i ciężaru; kosztem pogorszenia jakości obrazu. Pryzmaty stosuje się w korekcji heteroforii, zeza i podwójnego widzenia."
+   "answer": "Pryzmat pełny (klin optyczny) - element o dwóch płaszczyznach nachylonych pod kątem łamiącym, odchylający promień ku bazie, a obraz ku wierzchołkowi. Pryzmat uzyskiwany przez decentrację soczewki - najczęściej stosowany, wykorzystuje regułę Prentice'a. Pryzmat wtopiony (wpracowany w soczewkę na etapie produkcji). Pryzmat ścieniający w soczewkach progresywnych - stosowany symetrycznie w obu soczewkach dla zmniejszenia grubości. Pryzmat Fresnela - cienka folia z układem koncentrycznych mikropryzmatów, naklejana na soczewkę, pozwalająca uzyskać duże wartości pryzmatyczne bez wzrostu grubości i ciężaru; kosztem pogorszenia jakości obrazu. Pryzmaty stosuje się w korekcji heteroforii, zeza i podwójnego widzenia.",
+   "difficulty": "srednie",
+   "officialNr": 249441
   },
   {
    "id": "ustny-technologia-48",
@@ -7081,7 +7308,9 @@
    "kind": "open",
    "nr": 48,
    "prompt": "Podając prędkość rozchodzenia się światła, sprecyzuj od czego ta prędkość zależy.",
-   "answer": "W próżni prędkość światła wynosi c = 299 792 458 m/s, w przybliżeniu 300 000 km/s, i jest stała. W ośrodku materialnym prędkość jest mniejsza i wynosi v = c/n, gdzie n to współczynnik załamania ośrodka. Zależy więc od rodzaju ośrodka (jego gęstości optycznej), a także od długości fali - w zjawisku dyspersji krótsze fale (fiolet) rozchodzą się w ośrodku wolniej niż dłuższe (czerwień), ponieważ mają większy współczynnik załamania."
+   "answer": "W próżni prędkość światła wynosi c = 299 792 458 m/s, w przybliżeniu 300 000 km/s, i jest stała. W ośrodku materialnym prędkość jest mniejsza i wynosi v = c/n, gdzie n to współczynnik załamania ośrodka. Zależy więc od rodzaju ośrodka (jego gęstości optycznej), a także od długości fali - w zjawisku dyspersji krótsze fale (fiolet) rozchodzą się w ośrodku wolniej niż dłuższe (czerwień), ponieważ mają większy współczynnik załamania.",
+   "difficulty": "srednie",
+   "officialNr": 249443
   },
   {
    "id": "ustny-technologia-49",
@@ -7089,7 +7318,8 @@
    "kind": "open",
    "nr": 49,
    "prompt": "Podaj prawidłową kolejność występowania barw w widmie światła białego, zaczynając od barwy czerwonej.",
-   "answer": "Czerwona, pomarańczowa, żółta, zielona, niebieska, indygo (granatowa), fioletowa. Odpowiada to malejącej długości fali - od ok. 760 nm dla czerwieni do ok. 380 nm dla fioletu - i rosnącemu kątowi odchylenia w pryzmacie."
+   "answer": "Czerwona, pomarańczowa, żółta, zielona, niebieska, indygo (granatowa), fioletowa. Odpowiada to malejącej długości fali - od ok. 760 nm dla czerwieni do ok. 380 nm dla fioletu - i rosnącemu kątowi odchylenia w pryzmacie.",
+   "difficulty": "srednie"
   },
   {
    "id": "ustny-technologia-50",
@@ -7097,7 +7327,9 @@
    "kind": "open",
    "nr": 50,
    "prompt": "Podaj, w jakim przyrządzie optycznym znajduje zastosowanie układ bezogniskowy.",
-   "answer": "Układ bezogniskowy (afokalny, teleskopowy) stosowany jest w lunetach - lunecie Keplera i lunecie Galileusza - oraz w lornetkach, celownikach optycznych i teleskopach obserwacyjnych. W optyce okularowej wykorzystuje się go w pomocach dla słabowidzących (lupy teleskopowe, systemy Galileusza w oprawach okularowych) oraz w okularach lupowych. Cechą układu jest to, że wiązka równoległa na wejściu pozostaje równoległa na wyjściu - układ nie ma mocy optycznej, lecz daje powiększenie kątowe."
+   "answer": "Układ bezogniskowy (afokalny, teleskopowy) stosowany jest w lunetach - lunecie Keplera i lunecie Galileusza - oraz w lornetkach, celownikach optycznych i teleskopach obserwacyjnych. W optyce okularowej wykorzystuje się go w pomocach dla słabowidzących (lupy teleskopowe, systemy Galileusza w oprawach okularowych) oraz w okularach lupowych. Cechą układu jest to, że wiązka równoległa na wejściu pozostaje równoległa na wyjściu - układ nie ma mocy optycznej, lecz daje powiększenie kątowe.",
+   "difficulty": "srednie",
+   "officialNr": 24945
   },
   {
    "id": "ustny-technologia-51",
@@ -7105,7 +7337,9 @@
    "kind": "open",
    "nr": 51,
    "prompt": "Zdefiniuj pojęcie ekwiwalentu sferycznego mocy soczewki sferocylindrycznej.",
-   "answer": "Ekwiwalent sferyczny to średnia arytmetyczna mocy obu przekrojów głównych soczewki, wyrażona wzorem E = sf + cyl/2. Odpowiada mocy soczewki sferycznej, której ognisko pokrywa się z krążkiem najmniejszego rozproszenia soczewki sferocylindrycznej. Stosowany jest przy uproszczonym doborze korekcji, przeliczaniu mocy przy zmianie odległości wierzchołkowej, doborze soczewek kontaktowych oraz w statystyce refrakcji."
+   "answer": "Ekwiwalent sferyczny to średnia arytmetyczna mocy obu przekrojów głównych soczewki, wyrażona wzorem E = sf + cyl/2. Odpowiada mocy soczewki sferycznej, której ognisko pokrywa się z krążkiem najmniejszego rozproszenia soczewki sferocylindrycznej. Stosowany jest przy uproszczonym doborze korekcji, przeliczaniu mocy przy zmianie odległości wierzchołkowej, doborze soczewek kontaktowych oraz w statystyce refrakcji.",
+   "difficulty": "srednie",
+   "officialNr": 249447
   },
   {
    "id": "ustny-technologia-52",
@@ -7113,7 +7347,9 @@
    "kind": "open",
    "nr": 52,
    "prompt": "Omów zastosowanie technologii free-form w optyce okularowej.",
-   "answer": "Free-form to technologia obróbki soczewek na sterowanych numerycznie generatorach z narzędziem diamentowym, umożliwiająca wykonanie dowolnej, niesymetrycznej powierzchni punkt po punkcie, a następnie jej polerowanie. Pozwala na indywidualizację soczewek: uwzględnienie rzeczywistych parametrów oprawy (odległość wierzchołkowa, kąt pantoskopowy, kąt krzywizny), odległości roboczej, dominującego oka i sposobu patrzenia klienta. Umożliwia przeniesienie progresji na wewnętrzną powierzchnię soczewki lub podział na obie powierzchnie, co poszerza pola widzenia i redukuje aberracje obwodowe oraz zniekształcenia. Stosowana jest w soczewkach progresywnych, biurowych, jednoogniskowych zoptymalizowanych i soczewkach o dużych mocach."
+   "answer": "Free-form to technologia obróbki soczewek na sterowanych numerycznie generatorach z narzędziem diamentowym, umożliwiająca wykonanie dowolnej, niesymetrycznej powierzchni punkt po punkcie, a następnie jej polerowanie. Pozwala na indywidualizację soczewek: uwzględnienie rzeczywistych parametrów oprawy (odległość wierzchołkowa, kąt pantoskopowy, kąt krzywizny), odległości roboczej, dominującego oka i sposobu patrzenia klienta. Umożliwia przeniesienie progresji na wewnętrzną powierzchnię soczewki lub podział na obie powierzchnie, co poszerza pola widzenia i redukuje aberracje obwodowe oraz zniekształcenia. Stosowana jest w soczewkach progresywnych, biurowych, jednoogniskowych zoptymalizowanych i soczewkach o dużych mocach.",
+   "difficulty": "srednie",
+   "officialNr": 249448
   },
   {
    "id": "ustny-technologia-53",
@@ -7121,7 +7357,9 @@
    "kind": "open",
    "nr": 53,
    "prompt": "Opisz budowę soczewki progresywnej, uwzględniając działanie jej poszczególnych obszarów.",
-   "answer": "Soczewka progresywna ma trzy strefy użytkowe. Strefa dali w górnej części zawiera moc do widzenia na odległość i punkt kontrolny dali. Kanał progresji to pionowy pas o stopniowo narastającej mocy, łączący dal z bliżą; służy do widzenia na odległości pośrednie, jego długość wynosi zwykle 11-18 mm. Strefa bliży w dolnej, donosowo przesuniętej części zawiera pełną moc dali powiększoną o dodatek. Po obu stronach kanału znajdują się strefy aberracji obwodowych (astygmatyzmu powierzchniowego) o obniżonej jakości obrazu - im krótszy kanał i większy dodatek, tym silniejsze. Na soczewce naniesione są znaki: dwa znaki trwałe (mikrograwerunki) w odległości 34 mm, a między nimi krzyż centracyjny, oznaczenia punktów kontrolnych, wartości dodatku i indeksu."
+   "answer": "Soczewka progresywna ma trzy strefy użytkowe. Strefa dali w górnej części zawiera moc do widzenia na odległość i punkt kontrolny dali. Kanał progresji to pionowy pas o stopniowo narastającej mocy, łączący dal z bliżą; służy do widzenia na odległości pośrednie, jego długość wynosi zwykle 11-18 mm. Strefa bliży w dolnej, donosowo przesuniętej części zawiera pełną moc dali powiększoną o dodatek. Po obu stronach kanału znajdują się strefy aberracji obwodowych (astygmatyzmu powierzchniowego) o obniżonej jakości obrazu - im krótszy kanał i większy dodatek, tym silniejsze. Na soczewce naniesione są znaki: dwa znaki trwałe (mikrograwerunki) w odległości 34 mm, a między nimi krzyż centracyjny, oznaczenia punktów kontrolnych, wartości dodatku i indeksu.",
+   "difficulty": "srednie",
+   "officialNr": 249450
   },
   {
    "id": "ustny-technologia-54",
@@ -7129,7 +7367,9 @@
    "kind": "open",
    "nr": 54,
    "prompt": "Opisz budowę soczewki biurowej, uwzględniając działanie jej poszczególnych obszarów.",
-   "answer": "Soczewka biurowa (degresywna, do pracy w pomieszczeniu) to odmiana soczewki progresywnej zoptymalizowana dla odległości bliskich i pośrednich, zwykle od ok. 40 cm do 2-4 m. W dolnej części znajduje się strefa bliży z pełną mocą do czytania, ku górze moc stopniowo maleje (degresja) do wartości odpowiadającej odległości pośredniej - np. monitora. Nie zawiera pełnej korekcji do dali, dlatego nie nadaje się do prowadzenia pojazdów. Zaletą są bardzo szerokie i komfortowe pola widzenia do bliży i odległości pośrednich oraz minimalne strefy aberracji, co wynika z mniejszego zakresu zmiany mocy niż w klasycznej progresji. Dostępna w wariantach o różnym zasięgu, dobieranych do stanowiska pracy."
+   "answer": "Soczewka biurowa (degresywna, do pracy w pomieszczeniu) to odmiana soczewki progresywnej zoptymalizowana dla odległości bliskich i pośrednich, zwykle od ok. 40 cm do 2-4 m. W dolnej części znajduje się strefa bliży z pełną mocą do czytania, ku górze moc stopniowo maleje (degresja) do wartości odpowiadającej odległości pośredniej - np. monitora. Nie zawiera pełnej korekcji do dali, dlatego nie nadaje się do prowadzenia pojazdów. Zaletą są bardzo szerokie i komfortowe pola widzenia do bliży i odległości pośrednich oraz minimalne strefy aberracji, co wynika z mniejszego zakresu zmiany mocy niż w klasycznej progresji. Dostępna w wariantach o różnym zasięgu, dobieranych do stanowiska pracy.",
+   "difficulty": "srednie",
+   "officialNr": 249451
   },
   {
    "id": "ustny-technologia-55",
@@ -7137,7 +7377,9 @@
    "kind": "open",
    "nr": 55,
    "prompt": "Wyjaśnij różnice między emetropią a ametropią.",
-   "answer": "Emetropia (miarowość) to stan, w którym oko nieakomodujące ogniskuje równoległą wiązkę światła dokładnie na siatkówce - punkt daleki leży w nieskończoności, widzenie do dali jest ostre bez korekcji. Ametropia (niemiarowość) to stan, w którym ognisko nie pokrywa się z siatkówką: w krótkowzroczności powstaje przed nią, w nadwzroczności za nią, a w astygmatyzmie zamiast ogniska punktowego powstają dwa ogniska liniowe. Ametropia wymaga korekcji optycznej przesuwającej ognisko na siatkówkę."
+   "answer": "Emetropia (miarowość) to stan, w którym oko nieakomodujące ogniskuje równoległą wiązkę światła dokładnie na siatkówce - punkt daleki leży w nieskończoności, widzenie do dali jest ostre bez korekcji. Ametropia (niemiarowość) to stan, w którym ognisko nie pokrywa się z siatkówką: w krótkowzroczności powstaje przed nią, w nadwzroczności za nią, a w astygmatyzmie zamiast ogniska punktowego powstają dwa ogniska liniowe. Ametropia wymaga korekcji optycznej przesuwającej ognisko na siatkówkę.",
+   "difficulty": "trudne",
+   "officialNr": 249583
   },
   {
    "id": "ustny-technologia-56",
@@ -7145,7 +7387,9 @@
    "kind": "open",
    "nr": 56,
    "prompt": "Wyjaśnij zasadę optycznej korekcji wad wzroku.",
-   "answer": "Korekcja polega na dodaniu przed okiem soczewki o takiej mocy, aby układ soczewka-oko ogniskował równoległą wiązkę dokładnie na siatkówce. Inaczej mówiąc, ognisko obrazowe soczewki korekcyjnej musi pokrywać się z punktem dalekim oka. W krótkowzroczności stosuje się soczewkę rozpraszającą (ujemną), która przesuwa ognisko do tyłu, na siatkówkę. W nadwzroczności - soczewkę skupiającą (dodatnią), przesuwającą ognisko do przodu. W astygmatyzmie - soczewkę cylindryczną lub sferocylindryczną, która wyrównuje moc w obu przekrojach głównych. W prezbiopii dodaje się moc dodatnią do bliży, zastępując utraconą akomodację. Przy mocach powyżej ok. ±4 dpt należy uwzględnić odległość wierzchołkową."
+   "answer": "Korekcja polega na dodaniu przed okiem soczewki o takiej mocy, aby układ soczewka-oko ogniskował równoległą wiązkę dokładnie na siatkówce. Inaczej mówiąc, ognisko obrazowe soczewki korekcyjnej musi pokrywać się z punktem dalekim oka. W krótkowzroczności stosuje się soczewkę rozpraszającą (ujemną), która przesuwa ognisko do tyłu, na siatkówkę. W nadwzroczności - soczewkę skupiającą (dodatnią), przesuwającą ognisko do przodu. W astygmatyzmie - soczewkę cylindryczną lub sferocylindryczną, która wyrównuje moc w obu przekrojach głównych. W prezbiopii dodaje się moc dodatnią do bliży, zastępując utraconą akomodację. Przy mocach powyżej ok. ±4 dpt należy uwzględnić odległość wierzchołkową.",
+   "difficulty": "trudne",
+   "officialNr": 249584
   },
   {
    "id": "ustny-technologia-57",
@@ -7153,7 +7397,9 @@
    "kind": "open",
    "nr": 57,
    "prompt": "Zdefiniuj pojęcie konwergencji.",
-   "answer": "Konwergencja to zbieżny ruch obu gałek ocznych, polegający na skierowaniu osi widzenia do wewnątrz (donosowo) przy obserwacji przedmiotu bliskiego, tak aby jego obraz padał na dołki środkowe obu siatkówek. Realizowana jest głównie przez mięśnie proste przyśrodkowe. Wielkość konwergencji wyraża się w pryzmatodioptriach lub w kątach metrowych (MA = 1/odległość w metrach). Konwergencja jest ściśle sprzężona z akomodacją i zwężeniem źrenicy - razem tworzą triadę bliży. Jej praktycznym skutkiem w optyce okularowej jest mniejszy rozstaw źrenic do bliży niż do dali."
+   "answer": "Konwergencja to zbieżny ruch obu gałek ocznych, polegający na skierowaniu osi widzenia do wewnątrz (donosowo) przy obserwacji przedmiotu bliskiego, tak aby jego obraz padał na dołki środkowe obu siatkówek. Realizowana jest głównie przez mięśnie proste przyśrodkowe. Wielkość konwergencji wyraża się w pryzmatodioptriach lub w kątach metrowych (MA = 1/odległość w metrach). Konwergencja jest ściśle sprzężona z akomodacją i zwężeniem źrenicy - razem tworzą triadę bliży. Jej praktycznym skutkiem w optyce okularowej jest mniejszy rozstaw źrenic do bliży niż do dali.",
+   "difficulty": "trudne",
+   "officialNr": 249585
   },
   {
    "id": "ustny-technologia-58",
@@ -7161,7 +7407,9 @@
    "kind": "open",
    "nr": 58,
    "prompt": "Przeanalizuj, jak powinno być korygowane na dal i bliż oko bezsoczewkowe.",
-   "answer": "Oko bezsoczewkowe (afakijne), pozbawione soczewki ocznej o mocy ok. +20 dpt, jest silnie nadwzroczne - wymaga korekcji dodatniej rzędu +10 do +12 dpt w płaszczyźnie okularowej (moc niższa niż +20 dpt ze względu na odległość wierzchołkową). Oko takie całkowicie utraciło zdolność akomodacji, dlatego do bliży konieczny jest pełny dodatek rzędu +3,00 dpt, czyli łącznie ok. +13 do +15 dpt. Korekcja okularowa daje jednak znaczne powiększenie obrazu (ok. 25-30%), zwężenie pola widzenia, aberracje obwodowe i mroczek pierścieniowy, a przy jednostronnej afakii - nieznośną anizeikonię. Dlatego rozwiązaniem z wyboru jest wszczepienie soczewki wewnątrzgałkowej, a przy jej braku - korekcja soczewką kontaktową; okulary stosuje się jako uzupełnienie lub gdy inne metody są niemożliwe."
+   "answer": "Oko bezsoczewkowe (afakijne), pozbawione soczewki ocznej o mocy ok. +20 dpt, jest silnie nadwzroczne - wymaga korekcji dodatniej rzędu +10 do +12 dpt w płaszczyźnie okularowej (moc niższa niż +20 dpt ze względu na odległość wierzchołkową). Oko takie całkowicie utraciło zdolność akomodacji, dlatego do bliży konieczny jest pełny dodatek rzędu +3,00 dpt, czyli łącznie ok. +13 do +15 dpt. Korekcja okularowa daje jednak znaczne powiększenie obrazu (ok. 25-30%), zwężenie pola widzenia, aberracje obwodowe i mroczek pierścieniowy, a przy jednostronnej afakii - nieznośną anizeikonię. Dlatego rozwiązaniem z wyboru jest wszczepienie soczewki wewnątrzgałkowej, a przy jej braku - korekcja soczewką kontaktową; okulary stosuje się jako uzupełnienie lub gdy inne metody są niemożliwe.",
+   "difficulty": "trudne",
+   "officialNr": 249586
   },
   {
    "id": "ustny-technologia-59",
@@ -7169,7 +7417,9 @@
    "kind": "open",
    "nr": 59,
    "prompt": "Wyjaśnij ogólną zasadę korygowania prezbiopii (starczowzroczności).",
-   "answer": "Prezbiopia wynika ze stopniowej utraty elastyczności soczewki i spadku amplitudy akomodacji z wiekiem, przez co punkt bliski oddala się poza wygodną odległość roboczą. Korekcja polega na dodaniu do korekcji dali soczewki dodatniej (dodatku), która zastępuje brakującą akomodację. Dodatek dobiera się tak, aby wykorzystywał nie więcej niż połowę zachowanej amplitudy akomodacji, z uwzględnieniem wieku i odległości roboczej. Realizuje się go w postaci okularów do bliży, soczewek dwuogniskowych, biurowych lub progresywnych. Dodatek jest jednakowy dla obu oczu i wzrasta z wiekiem, dlatego wymaga okresowej weryfikacji."
+   "answer": "Prezbiopia wynika ze stopniowej utraty elastyczności soczewki i spadku amplitudy akomodacji z wiekiem, przez co punkt bliski oddala się poza wygodną odległość roboczą. Korekcja polega na dodaniu do korekcji dali soczewki dodatniej (dodatku), która zastępuje brakującą akomodację. Dodatek dobiera się tak, aby wykorzystywał nie więcej niż połowę zachowanej amplitudy akomodacji, z uwzględnieniem wieku i odległości roboczej. Realizuje się go w postaci okularów do bliży, soczewek dwuogniskowych, biurowych lub progresywnych. Dodatek jest jednakowy dla obu oczu i wzrasta z wiekiem, dlatego wymaga okresowej weryfikacji.",
+   "difficulty": "trudne",
+   "officialNr": 249587
   },
   {
    "id": "ustny-technologia-60",
@@ -7177,7 +7427,9 @@
    "kind": "open",
    "nr": 60,
    "prompt": "Zdefiniuj pojęcie czerwieni wzrokowej, uwzględniając jej rolę w procesie widzenia.",
-   "answer": "Czerwień wzrokowa (rodopsyna) to światłoczuły barwnik zawarty w pręcikach siatkówki, zbudowany z białka opsyny i pochodnej witaminy A (11-cis-retinalu). Pod wpływem światła ulega rozpadowi (izomeryzacji retinalu), co wyzwala kaskadę reakcji prowadzącą do powstania impulsu nerwowego - jest to początek procesu widzenia. W ciemności rodopsyna odbudowuje się z udziałem witaminy A dostarczanej przez nabłonek barwnikowy, co odpowiada za adaptację do ciemności. Niedobór witaminy A upośledza jej syntezę i prowadzi do ślepoty zmierzchowej."
+   "answer": "Czerwień wzrokowa (rodopsyna) to światłoczuły barwnik zawarty w pręcikach siatkówki, zbudowany z białka opsyny i pochodnej witaminy A (11-cis-retinalu). Pod wpływem światła ulega rozpadowi (izomeryzacji retinalu), co wyzwala kaskadę reakcji prowadzącą do powstania impulsu nerwowego - jest to początek procesu widzenia. W ciemności rodopsyna odbudowuje się z udziałem witaminy A dostarczanej przez nabłonek barwnikowy, co odpowiada za adaptację do ciemności. Niedobór witaminy A upośledza jej syntezę i prowadzi do ślepoty zmierzchowej.",
+   "difficulty": "trudne",
+   "officialNr": 249588
   },
   {
    "id": "ustny-technologia-61",
@@ -7185,7 +7437,9 @@
    "kind": "open",
    "nr": 61,
    "prompt": "Określ położenie punktów dalekiego i bliskiego w oku nadwzrocznym.",
-   "answer": "W oku nadwzrocznym punkt daleki jest pozorny i leży za okiem (ujemna odległość) - aby obraz padł na siatkówkę, do oka musiałaby wpadać wiązka zbieżna. Punkt bliski również jest przesunięty dalej od oka niż w oku miarowym, a przy wysokiej nadwzroczności może także stać się pozorny i leżeć za okiem. Oznacza to, że oko nadwzroczne musi akomodować już przy patrzeniu w dal, a przy patrzeniu do bliży wykorzystuje akomodację w jeszcze większym stopniu."
+   "answer": "W oku nadwzrocznym punkt daleki jest pozorny i leży za okiem (ujemna odległość) - aby obraz padł na siatkówkę, do oka musiałaby wpadać wiązka zbieżna. Punkt bliski również jest przesunięty dalej od oka niż w oku miarowym, a przy wysokiej nadwzroczności może także stać się pozorny i leżeć za okiem. Oznacza to, że oko nadwzroczne musi akomodować już przy patrzeniu w dal, a przy patrzeniu do bliży wykorzystuje akomodację w jeszcze większym stopniu.",
+   "difficulty": "trudne",
+   "officialNr": 249589
   },
   {
    "id": "ustny-technologia-62",
@@ -7193,7 +7447,9 @@
    "kind": "open",
    "nr": 62,
    "prompt": "Przeanalizuj różnice między prezbiopią a nadwzrocznością.",
-   "answer": "Nadwzroczność to wada refrakcji o podłożu anatomicznym: gałka jest zbyt krótka lub moc łamiąca zbyt mała, ognisko powstaje za siatkówką. Występuje w każdym wieku, dotyczy widzenia zarówno do dali, jak i do bliży, a korekcja soczewką dodatnią jest potrzebna na wszystkie odległości (choć młode oko może ją częściowo kompensować akomodacją). Prezbiopia nie jest wadą refrakcji, lecz fizjologicznym procesem starzenia soczewki: spadkiem amplitudy akomodacji, pojawiającym się zwykle po 40-45 roku życia u wszystkich osób, niezależnie od refrakcji do dali. Dotyczy wyłącznie widzenia z bliska, a korekcja ma postać dodatku do bliży, rosnącego z wiekiem. Nadwzroczność i prezbiopia mogą współistnieć, a nadwzroczność sprawia, że objawy prezbiopii ujawniają się wcześniej."
+   "answer": "Nadwzroczność to wada refrakcji o podłożu anatomicznym: gałka jest zbyt krótka lub moc łamiąca zbyt mała, ognisko powstaje za siatkówką. Występuje w każdym wieku, dotyczy widzenia zarówno do dali, jak i do bliży, a korekcja soczewką dodatnią jest potrzebna na wszystkie odległości (choć młode oko może ją częściowo kompensować akomodacją). Prezbiopia nie jest wadą refrakcji, lecz fizjologicznym procesem starzenia soczewki: spadkiem amplitudy akomodacji, pojawiającym się zwykle po 40-45 roku życia u wszystkich osób, niezależnie od refrakcji do dali. Dotyczy wyłącznie widzenia z bliska, a korekcja ma postać dodatku do bliży, rosnącego z wiekiem. Nadwzroczność i prezbiopia mogą współistnieć, a nadwzroczność sprawia, że objawy prezbiopii ujawniają się wcześniej.",
+   "difficulty": "trudne",
+   "officialNr": 249590
   },
   {
    "id": "ustny-technologia-63",
@@ -7201,7 +7457,9 @@
    "kind": "open",
    "nr": 63,
    "prompt": "Wyjaśnij, dlaczego refrakcja oka nadwzrocznego przyjmuje wartość mniejszą od zera, a refrakcja oka krótkowzrocznego przyjmuje wartość większą od zera.",
-   "answer": "Refrakcję oka definiuje się jako odwrotność odległości punktu dalekiego od oka: R = 1/r, przy zachowaniu konwencji znaków, w której odległości mierzone przeciwnie do kierunku biegu światła (przed okiem) są ujemne, a za okiem dodatnie. W oku krótkowzrocznym punkt daleki jest rzeczywisty i leży przed okiem, więc r jest ujemne - stąd wartość R wychodzi dodatnia w tej konwencji. W oku nadwzrocznym punkt daleki jest pozorny i leży za okiem, więc r jest dodatnie, a refrakcja przyjmuje wartość ujemną. Uwaga: znak refrakcji jest przeciwny do znaku mocy soczewki korygującej - krótkowzroczność koryguje się soczewką ujemną, nadwzroczność dodatnią."
+   "answer": "Refrakcję oka definiuje się jako odwrotność odległości punktu dalekiego od oka: R = 1/r, przy zachowaniu konwencji znaków, w której odległości mierzone przeciwnie do kierunku biegu światła (przed okiem) są ujemne, a za okiem dodatnie. W oku krótkowzrocznym punkt daleki jest rzeczywisty i leży przed okiem, więc r jest ujemne - stąd wartość R wychodzi dodatnia w tej konwencji. W oku nadwzrocznym punkt daleki jest pozorny i leży za okiem, więc r jest dodatnie, a refrakcja przyjmuje wartość ujemną. Uwaga: znak refrakcji jest przeciwny do znaku mocy soczewki korygującej - krótkowzroczność koryguje się soczewką ujemną, nadwzroczność dodatnią.",
+   "difficulty": "trudne",
+   "officialNr": 249591
   },
   {
    "id": "ustny-technologia-64",
@@ -7209,7 +7467,9 @@
    "kind": "open",
    "nr": 64,
    "prompt": "Wyjaśnij, dlaczego podczas badania refrakcji tablica z optotypami jest umieszczona w odległości 5-6 m od badanego.",
-   "answer": "Odległość ta jest praktycznym przybliżeniem nieskończoności optycznej. Wiązka biegnąca z odległości 5 m wymaga akomodacji zaledwie 0,20 dpt, a z 6 m około 0,17 dpt - są to wartości mieszczące się w granicach błędu pomiaru refrakcji (0,25 dpt) i praktycznie pomijalne. Dzięki temu oko badanego pozostaje w stanie zbliżonym do nieakomodującego, co pozwala zmierzyć rzeczywistą refrakcję do dali. Jednocześnie jest to odległość możliwa do uzyskania w typowym gabinecie; przy mniejszych pomieszczeniach stosuje się układ lustrzany podwajający drogę optyczną."
+   "answer": "Odległość ta jest praktycznym przybliżeniem nieskończoności optycznej. Wiązka biegnąca z odległości 5 m wymaga akomodacji zaledwie 0,20 dpt, a z 6 m około 0,17 dpt - są to wartości mieszczące się w granicach błędu pomiaru refrakcji (0,25 dpt) i praktycznie pomijalne. Dzięki temu oko badanego pozostaje w stanie zbliżonym do nieakomodującego, co pozwala zmierzyć rzeczywistą refrakcję do dali. Jednocześnie jest to odległość możliwa do uzyskania w typowym gabinecie; przy mniejszych pomieszczeniach stosuje się układ lustrzany podwajający drogę optyczną.",
+   "difficulty": "trudne",
+   "officialNr": 249592
   },
   {
    "id": "ustny-technologia-65",
@@ -7217,7 +7477,9 @@
    "kind": "open",
    "nr": 65,
    "prompt": "Porównaj oko miarowe akomodujące z okiem miarowym nieakomodującym.",
-   "answer": "Oko miarowe nieakomodujące ma moc ok. +60 dpt, mięsień rzęskowy jest rozluźniony, więzadełka Zinna napięte, soczewka spłaszczona; ognisko równoległej wiązki pada dokładnie na siatkówkę, ostro widziany jest punkt daleki leżący w nieskończoności. Oko akomodujące ma skurczony mięsień rzęskowy, rozluźnione więzadełka i uwypukloną soczewkę o zwiększonej krzywiźnie (zwłaszcza przedniej), przez co moc rośnie o wartość akomodacji, sięgając nawet +70 do +74 dpt u osoby młodej. Ostro widziane są wówczas przedmioty bliskie, aż do punktu bliskiego. Akomodacji towarzyszy konwergencja i zwężenie źrenicy (triada bliży), a jej wielkość maleje z wiekiem."
+   "answer": "Oko miarowe nieakomodujące ma moc ok. +60 dpt, mięsień rzęskowy jest rozluźniony, więzadełka Zinna napięte, soczewka spłaszczona; ognisko równoległej wiązki pada dokładnie na siatkówkę, ostro widziany jest punkt daleki leżący w nieskończoności. Oko akomodujące ma skurczony mięsień rzęskowy, rozluźnione więzadełka i uwypukloną soczewkę o zwiększonej krzywiźnie (zwłaszcza przedniej), przez co moc rośnie o wartość akomodacji, sięgając nawet +70 do +74 dpt u osoby młodej. Ostro widziane są wówczas przedmioty bliskie, aż do punktu bliskiego. Akomodacji towarzyszy konwergencja i zwężenie źrenicy (triada bliży), a jej wielkość maleje z wiekiem.",
+   "difficulty": "trudne",
+   "officialNr": 249593
   },
   {
    "id": "ustny-technologia-66",
@@ -7225,7 +7487,9 @@
    "kind": "open",
    "nr": 66,
    "prompt": "Omów rolę jaką pełni w oku źrenica, uwzględniając jej odruch na światło i bliżność.",
-   "answer": "Źrenica to otwór w tęczówce, regulujący ilość światła docierającego do siatkówki. Zwężenie realizuje mięsień zwieracz (unerwienie przywspółczulne), rozszerzenie - mięsień rozwieracz (unerwienie współczulne). Odruch źreniczny na światło polega na zwężeniu źrenicy przy wzroście oświetlenia; występuje odruch bezpośredni (w oku oświetlonym) i konsensualny (w oku drugim), co ma znaczenie diagnostyczne. Odruch na bliżość (nastawczy) to zwężenie źrenicy przy patrzeniu na przedmiot bliski, wchodzące w skład triady bliży wraz z akomodacją i konwergencją. Poza regulacją strumienia świetlnego zwężenie źrenicy zwiększa głębię ostrości i ogranicza aberracje sferyczną i chromatyczną, poprawiając jakość obrazu."
+   "answer": "Źrenica to otwór w tęczówce, regulujący ilość światła docierającego do siatkówki. Zwężenie realizuje mięsień zwieracz (unerwienie przywspółczulne), rozszerzenie - mięsień rozwieracz (unerwienie współczulne). Odruch źreniczny na światło polega na zwężeniu źrenicy przy wzroście oświetlenia; występuje odruch bezpośredni (w oku oświetlonym) i konsensualny (w oku drugim), co ma znaczenie diagnostyczne. Odruch na bliżość (nastawczy) to zwężenie źrenicy przy patrzeniu na przedmiot bliski, wchodzące w skład triady bliży wraz z akomodacją i konwergencją. Poza regulacją strumienia świetlnego zwężenie źrenicy zwiększa głębię ostrości i ogranicza aberracje sferyczną i chromatyczną, poprawiając jakość obrazu.",
+   "difficulty": "trudne",
+   "officialNr": 249594
   },
   {
    "id": "ustny-technologia-67",
@@ -7233,7 +7497,9 @@
    "kind": "open",
    "nr": 67,
    "prompt": "Wskaż położenie punktów dalekiego i bliskiego w oku nadwzrocznym.",
-   "answer": "Punkt daleki oka nadwzrocznego jest pozorny i leży za okiem - ostre widzenie w dal wymaga wiązki zbieżnej lub użycia akomodacji. Punkt bliski leży dalej od oka niż w oku miarowym, a przy wyższych wartościach nadwzroczności lub po wystąpieniu prezbiopii może również stać się pozorny i przesunąć za oko. Zakres akomodacji (odległość między punktem dalekim a bliskim) jest wykorzystywany częściowo już do widzenia w dal, co ogranicza rezerwę dostępną do pracy z bliska."
+   "answer": "Punkt daleki oka nadwzrocznego jest pozorny i leży za okiem - ostre widzenie w dal wymaga wiązki zbieżnej lub użycia akomodacji. Punkt bliski leży dalej od oka niż w oku miarowym, a przy wyższych wartościach nadwzroczności lub po wystąpieniu prezbiopii może również stać się pozorny i przesunąć za oko. Zakres akomodacji (odległość między punktem dalekim a bliskim) jest wykorzystywany częściowo już do widzenia w dal, co ogranicza rezerwę dostępną do pracy z bliska.",
+   "difficulty": "trudne",
+   "officialNr": 249595
   },
   {
    "id": "ustny-technologia-68",
@@ -7241,7 +7507,9 @@
    "kind": "open",
    "nr": 68,
    "prompt": "Wymień sposoby zredukowania grubości soczewki okularowej.",
-   "answer": "Zastosowanie materiału o wyższym współczynniku załamania. Zastosowanie konstrukcji asferycznej lub atorycznej, pozwalającej na spłaszczenie bazy. Dobór mniejszej i bardziej okrągłej oprawy o kalibrze zbliżonym do rozstawu źrenic, co ogranicza decentrację. Ograniczenie średnicy zamawianej soczewki do niezbędnego minimum (soczewka na wymiar, precyzyjne skanowanie kształtu). Zmniejszenie grubości środkowej przy soczewkach dodatnich (w granicach dopuszczalnych) i grubości brzegowej przy ujemnych. Zastosowanie pryzmatu ścieniającego. Dodatkowo, przy soczewkach dodatnich, stosuje się pocienianie brzegu przez lentikularyzację, a przy ujemnych - fazowanie i frezowanie brzegu oraz optyczne maskowanie grubości fazą lustrzaną."
+   "answer": "Zastosowanie materiału o wyższym współczynniku załamania. Zastosowanie konstrukcji asferycznej lub atorycznej, pozwalającej na spłaszczenie bazy. Dobór mniejszej i bardziej okrągłej oprawy o kalibrze zbliżonym do rozstawu źrenic, co ogranicza decentrację. Ograniczenie średnicy zamawianej soczewki do niezbędnego minimum (soczewka na wymiar, precyzyjne skanowanie kształtu). Zmniejszenie grubości środkowej przy soczewkach dodatnich (w granicach dopuszczalnych) i grubości brzegowej przy ujemnych. Zastosowanie pryzmatu ścieniającego. Dodatkowo, przy soczewkach dodatnich, stosuje się pocienianie brzegu przez lentikularyzację, a przy ujemnych - fazowanie i frezowanie brzegu oraz optyczne maskowanie grubości fazą lustrzaną.",
+   "difficulty": "trudne",
+   "officialNr": 249596
   },
   {
    "id": "ustny-technologia-69",
@@ -7249,7 +7517,9 @@
    "kind": "open",
    "nr": 69,
    "prompt": "Wyjaśnij, jak wykorzystujemy zjawisko interferencji do badania dokładności kształtu soczewek.",
-   "answer": "Na badaną powierzchnię nakłada się wzorzec (płytkę próbną, tzw. próbnik) o znanym, dokładnym promieniu krzywizny. Między powierzchniami powstaje cienka klinowa warstwa powietrza, w której światło odbite od obu powierzchni interferuje, dając widoczny układ prążków (pierścieni Newtona). Jeśli badana powierzchnia jest idealnie zgodna z wzorcem, pole jest jednolite lub prążki są koncentryczne i regularne. Każdy prążek odpowiada różnicy grubości warstwy o połowę długości fali (ok. 0,3 µm dla światła zielonego), więc licząc prążki określa się odchyłkę promienia krzywizny, a z ich zniekształcenia - lokalne błędy kształtu i nieregularności. Metoda ta stosowana jest w kontroli powierzchni optycznych o wysokiej dokładności."
+   "answer": "Na badaną powierzchnię nakłada się wzorzec (płytkę próbną, tzw. próbnik) o znanym, dokładnym promieniu krzywizny. Między powierzchniami powstaje cienka klinowa warstwa powietrza, w której światło odbite od obu powierzchni interferuje, dając widoczny układ prążków (pierścieni Newtona). Jeśli badana powierzchnia jest idealnie zgodna z wzorcem, pole jest jednolite lub prążki są koncentryczne i regularne. Każdy prążek odpowiada różnicy grubości warstwy o połowę długości fali (ok. 0,3 µm dla światła zielonego), więc licząc prążki określa się odchyłkę promienia krzywizny, a z ich zniekształcenia - lokalne błędy kształtu i nieregularności. Metoda ta stosowana jest w kontroli powierzchni optycznych o wysokiej dokładności.",
+   "difficulty": "trudne",
+   "officialNr": 249597
   },
   {
    "id": "ustny-technologia-70",
@@ -7257,7 +7527,9 @@
    "kind": "open",
    "nr": 70,
    "prompt": "Wyjaśnij zjawisko interferencji światła.",
-   "answer": "Interferencja to nakładanie się dwóch lub więcej spójnych fal świetlnych, w wyniku czego w niektórych miejscach następuje wzmocnienie natężenia (interferencja konstruktywna), a w innych osłabienie lub wygaszenie (interferencja destruktywna). Warunkiem obserwacji jest spójność fal - stała różnica faz i ta sama częstotliwość. Wzmocnienie zachodzi, gdy różnica dróg optycznych jest równa całkowitej wielokrotności długości fali, wygaszenie - gdy jest równa nieparzystej wielokrotności połowy długości fali. Zjawisko to potwierdza falową naturę światła i jest wykorzystywane m.in. w powłokach antyrefleksyjnych, kontroli kształtu powierzchni optycznych i interferometrii."
+   "answer": "Interferencja to nakładanie się dwóch lub więcej spójnych fal świetlnych, w wyniku czego w niektórych miejscach następuje wzmocnienie natężenia (interferencja konstruktywna), a w innych osłabienie lub wygaszenie (interferencja destruktywna). Warunkiem obserwacji jest spójność fal - stała różnica faz i ta sama częstotliwość. Wzmocnienie zachodzi, gdy różnica dróg optycznych jest równa całkowitej wielokrotności długości fali, wygaszenie - gdy jest równa nieparzystej wielokrotności połowy długości fali. Zjawisko to potwierdza falową naturę światła i jest wykorzystywane m.in. w powłokach antyrefleksyjnych, kontroli kształtu powierzchni optycznych i interferometrii.",
+   "difficulty": "trudne",
+   "officialNr": 249599
   },
   {
    "id": "ustny-technologia-71",
@@ -7265,7 +7537,9 @@
    "kind": "open",
    "nr": 71,
    "prompt": "Wyjaśnij, na czym polega polaryzacja światła przez odbicie.",
-   "answer": "Światło naturalne jest niespolaryzowane - drgania wektora elektrycznego zachodzą we wszystkich kierunkach prostopadłych do kierunku rozchodzenia się fali. Przy odbiciu od powierzchni dielektryka (szkła, wody, lakieru, jezdni) promień odbity zostaje częściowo spolaryzowany, przy czym przeważają drgania równoległe do powierzchni odbijającej. Gdy kąt padania jest równy kątowi Brewstera, spełniającemu warunek tg αB = n, promień odbity jest spolaryzowany całkowicie liniowo, a promień odbity i załamany tworzą kąt prosty. Dla szkła o n = 1,5 kąt Brewstera wynosi ok. 56°. Zjawisko to wykorzystują soczewki polaryzacyjne: filtr o osi pionowej eliminuje poziomo spolaryzowane odblaski od poziomych powierzchni."
+   "answer": "Światło naturalne jest niespolaryzowane - drgania wektora elektrycznego zachodzą we wszystkich kierunkach prostopadłych do kierunku rozchodzenia się fali. Przy odbiciu od powierzchni dielektryka (szkła, wody, lakieru, jezdni) promień odbity zostaje częściowo spolaryzowany, przy czym przeważają drgania równoległe do powierzchni odbijającej. Gdy kąt padania jest równy kątowi Brewstera, spełniającemu warunek tg αB = n, promień odbity jest spolaryzowany całkowicie liniowo, a promień odbity i załamany tworzą kąt prosty. Dla szkła o n = 1,5 kąt Brewstera wynosi ok. 56°. Zjawisko to wykorzystują soczewki polaryzacyjne: filtr o osi pionowej eliminuje poziomo spolaryzowane odblaski od poziomych powierzchni.",
+   "difficulty": "trudne",
+   "officialNr": 249602
   },
   {
    "id": "ustny-technologia-72",
@@ -7273,7 +7547,9 @@
    "kind": "open",
    "nr": 72,
    "prompt": "Wyjaśnij, w jaki sposób można stwierdzić istnienie światła nadfioletowego i podczerwonego, niewidzialnego dla oka ludzkiego.",
-   "answer": "Promieniowanie nadfioletowe wykrywa się dzięki zjawisku luminescencji (fluorescencji) - substancje takie jak fluoresceina, wybielacze optyczne czy niektóre minerały pod wpływem UV emitują światło widzialne. Wykorzystuje się to w lampie UV w warsztacie optycznym oraz w testerach UV. Stosuje się także materiały fotochromowe zmieniające zabarwienie, klisze fotograficzne oraz detektory fotoelektryczne. Promieniowanie podczerwone wykrywa się przez jego działanie cieplne - za pomocą czułego termometru umieszczonego w widmie za obszarem czerwieni (doświadczenie Herschela), termopar i bolometrów - a także detektorami półprzewodnikowymi, kamerami termowizyjnymi i kliszami czułymi na IR. Oba rodzaje promieniowania można też zmierzyć bezpośrednio spektrofotometrem lub testerem transmitancji soczewek."
+   "answer": "Promieniowanie nadfioletowe wykrywa się dzięki zjawisku luminescencji (fluorescencji) - substancje takie jak fluoresceina, wybielacze optyczne czy niektóre minerały pod wpływem UV emitują światło widzialne. Wykorzystuje się to w lampie UV w warsztacie optycznym oraz w testerach UV. Stosuje się także materiały fotochromowe zmieniające zabarwienie, klisze fotograficzne oraz detektory fotoelektryczne. Promieniowanie podczerwone wykrywa się przez jego działanie cieplne - za pomocą czułego termometru umieszczonego w widmie za obszarem czerwieni (doświadczenie Herschela), termopar i bolometrów - a także detektorami półprzewodnikowymi, kamerami termowizyjnymi i kliszami czułymi na IR. Oba rodzaje promieniowania można też zmierzyć bezpośrednio spektrofotometrem lub testerem transmitancji soczewek.",
+   "difficulty": "trudne",
+   "officialNr": 249604
   },
   {
    "id": "ustny-technologia-73",
@@ -7281,7 +7557,9 @@
    "kind": "open",
    "nr": 73,
    "prompt": "Wskaż, gdzie jest położona baza pryzmatu soczewek korygujących w przypadku korekcji zeza zbieżnego.",
-   "answer": "W zezie zbieżnym (ezotropii) oś widzenia oka zezującego skierowana jest do wewnątrz (donosowo). Aby przesunąć obraz w kierunku odchylenia oka, pryzmat musi odchylać promienie ku bazie, a obraz ku wierzchołkowi - dlatego bazę ustawia się skroniowo, czyli na zewnątrz (baza out, BO). Całkowitą wartość pryzmatu można rozdzielić na oba oczy po połowie. Przy soczewkach dodatnich efekt ten uzyskuje się także przez decentrację rozbieżną, a przy ujemnych przez decentrację zbieżną."
+   "answer": "W zezie zbieżnym (ezotropii) oś widzenia oka zezującego skierowana jest do wewnątrz (donosowo). Aby przesunąć obraz w kierunku odchylenia oka, pryzmat musi odchylać promienie ku bazie, a obraz ku wierzchołkowi - dlatego bazę ustawia się skroniowo, czyli na zewnątrz (baza out, BO). Całkowitą wartość pryzmatu można rozdzielić na oba oczy po połowie. Przy soczewkach dodatnich efekt ten uzyskuje się także przez decentrację rozbieżną, a przy ujemnych przez decentrację zbieżną.",
+   "difficulty": "trudne",
+   "officialNr": 249605
   },
   {
    "id": "ustny-technologia-74",
@@ -7289,7 +7567,9 @@
    "kind": "open",
    "nr": 74,
    "prompt": "Wyjaśnij, na czym polega zjawisko rozszczepienia światła.",
-   "answer": "Rozszczepienie (dyspersja) to rozdzielenie światła białego na barwy składowe przy przejściu przez ośrodek o innym współczynniku załamania, na przykład przez pryzmat. Przyczyną jest zależność współczynnika załamania od długości fali: dla fal krótszych (fiolet) współczynnik jest większy, więc ulegają one silniejszemu odchyleniu, a dla fal dłuższych (czerwień) mniejszy - odchylenie jest słabsze. W efekcie powstaje widmo ciągłe w kolejności: czerwony, pomarańczowy, żółty, zielony, niebieski, indygo, fioletowy. Miarą dyspersji materiału jest liczba Abbego - im niższa, tym silniejsza dyspersja. W optyce okularowej zjawisko to objawia się aberracją chromatyczną, dostrzegalną zwłaszcza w soczewkach wysokoindeksowych o niskiej liczbie Abbego, przy patrzeniu przez obwodowe partie soczewki."
+   "answer": "Rozszczepienie (dyspersja) to rozdzielenie światła białego na barwy składowe przy przejściu przez ośrodek o innym współczynniku załamania, na przykład przez pryzmat. Przyczyną jest zależność współczynnika załamania od długości fali: dla fal krótszych (fiolet) współczynnik jest większy, więc ulegają one silniejszemu odchyleniu, a dla fal dłuższych (czerwień) mniejszy - odchylenie jest słabsze. W efekcie powstaje widmo ciągłe w kolejności: czerwony, pomarańczowy, żółty, zielony, niebieski, indygo, fioletowy. Miarą dyspersji materiału jest liczba Abbego - im niższa, tym silniejsza dyspersja. W optyce okularowej zjawisko to objawia się aberracją chromatyczną, dostrzegalną zwłaszcza w soczewkach wysokoindeksowych o niskiej liczbie Abbego, przy patrzeniu przez obwodowe partie soczewki.",
+   "difficulty": "trudne",
+   "officialNr": 249600
   },
   {
    "id": "ustny-technologia-75",
@@ -7297,7 +7577,9 @@
    "kind": "open",
    "nr": 75,
    "prompt": "Wyjaśnij, na czym polega technologia umożliwiająca powstanie mocy optycznej w folii dyfrakcyjnej Fresnela.",
-   "answer": "Folia Fresnela powstaje przez podzielenie ciągłej powierzchni soczewki (lub pryzmatu) na szereg wąskich, koncentrycznych stref i zredukowanie ich grubości o wielokrotność stałej wartości, przy zachowaniu lokalnych nachyleń powierzchni. Powstaje w ten sposób cienka folia z układem mikropierścieni (dla soczewki) lub mikropryzmatów (dla pryzmatu), która odchyla światło tak samo jak element pełny, mając ułamek jego grubości i ciężaru. Folię wykonuje się z elastycznego tworzywa i przykleja do soczewki nośnej za pomocą sił adhezji z warstwą wody. Zaletą jest możliwość uzyskania bardzo dużych mocy pryzmatycznych (nawet 40 prdpt) bez wzrostu grubości oraz łatwość zmiany wartości; wadą - pogorszenie ostrości i kontrastu obrazu oraz widoczność struktury pierścieni."
+   "answer": "Folia Fresnela powstaje przez podzielenie ciągłej powierzchni soczewki (lub pryzmatu) na szereg wąskich, koncentrycznych stref i zredukowanie ich grubości o wielokrotność stałej wartości, przy zachowaniu lokalnych nachyleń powierzchni. Powstaje w ten sposób cienka folia z układem mikropierścieni (dla soczewki) lub mikropryzmatów (dla pryzmatu), która odchyla światło tak samo jak element pełny, mając ułamek jego grubości i ciężaru. Folię wykonuje się z elastycznego tworzywa i przykleja do soczewki nośnej za pomocą sił adhezji z warstwą wody. Zaletą jest możliwość uzyskania bardzo dużych mocy pryzmatycznych (nawet 40 prdpt) bez wzrostu grubości oraz łatwość zmiany wartości; wadą - pogorszenie ostrości i kontrastu obrazu oraz widoczność struktury pierścieni.",
+   "difficulty": "trudne",
+   "officialNr": 249608
   },
   {
    "id": "ustny-technologia-76",
@@ -7305,7 +7587,9 @@
    "kind": "open",
    "nr": 76,
    "prompt": "Omów procedurę ustawienia soczewek dwuogniskowych w oprawie okularowej.",
-   "answer": "Po zweryfikowaniu mocy dali i dodatku na dioptriomierzu wyznacza się i zaznacza środek optyczny części do dali oraz położenie segmentu. Rozstaw środków optycznych ustawia się według PD do dali, a segment przesuwa donosowo o ok. 2-2,5 mm na oko z uwagi na konwergencję. Wysokość górnej krawędzi segmentu ustala się zwykle na poziomie dolnej krawędzi tęczówki lub 1-2 mm poniżej, mierząc na dopasowanej już oprawie przy naturalnej postawie klienta. Po wyznaczeniu decentracji pionowej i poziomej blokuje się soczewkę i szlifuje na automacie. Po montażu sprawdza się: równą wysokość górnych krawędzi obu segmentów, ich poziome i symetryczne ustawienie, zgodność mocy dali i bliży z receptą oraz brak niepożądanego działania pryzmatycznego w punktach kontrolnych."
+   "answer": "Po zweryfikowaniu mocy dali i dodatku na dioptriomierzu wyznacza się i zaznacza środek optyczny części do dali oraz położenie segmentu. Rozstaw środków optycznych ustawia się według PD do dali, a segment przesuwa donosowo o ok. 2-2,5 mm na oko z uwagi na konwergencję. Wysokość górnej krawędzi segmentu ustala się zwykle na poziomie dolnej krawędzi tęczówki lub 1-2 mm poniżej, mierząc na dopasowanej już oprawie przy naturalnej postawie klienta. Po wyznaczeniu decentracji pionowej i poziomej blokuje się soczewkę i szlifuje na automacie. Po montażu sprawdza się: równą wysokość górnych krawędzi obu segmentów, ich poziome i symetryczne ustawienie, zgodność mocy dali i bliży z receptą oraz brak niepożądanego działania pryzmatycznego w punktach kontrolnych.",
+   "difficulty": "trudne",
+   "officialNr": 249610
   },
   {
    "id": "ustny-technologia-77",
@@ -7313,7 +7597,9 @@
    "kind": "open",
    "nr": 77,
    "prompt": "Zdefiniuj pojęcie dywergencji.",
-   "answer": "Dywergencja to rozbieżny ruch obu gałek ocznych, polegający na odchyleniu osi widzenia na zewnątrz (skroniowo) przy przenoszeniu wzroku z przedmiotu bliskiego na dalszy. Jest procesem przeciwnym do konwergencji i realizowana jest głównie przez mięśnie proste boczne. Wraz z konwergencją stanowi element wergencji - ruchów nieskojarzonych oczu, zapewniających jednoczesne odwzorowanie obrazu na dołkach środkowych obu siatkówek. Rezerwy dywergencji bada się przy diagnostyce widzenia obuocznego, a ich niewydolność może wymagać korekcji pryzmatycznej lub ćwiczeń ortoptycznych."
+   "answer": "Dywergencja to rozbieżny ruch obu gałek ocznych, polegający na odchyleniu osi widzenia na zewnątrz (skroniowo) przy przenoszeniu wzroku z przedmiotu bliskiego na dalszy. Jest procesem przeciwnym do konwergencji i realizowana jest głównie przez mięśnie proste boczne. Wraz z konwergencją stanowi element wergencji - ruchów nieskojarzonych oczu, zapewniających jednoczesne odwzorowanie obrazu na dołkach środkowych obu siatkówek. Rezerwy dywergencji bada się przy diagnostyce widzenia obuocznego, a ich niewydolność może wymagać korekcji pryzmatycznej lub ćwiczeń ortoptycznych.",
+   "difficulty": "trudne",
+   "officialNr": 249611
   },
   {
    "id": "ustny-technologia-78",
@@ -7321,7 +7607,9 @@
    "kind": "open",
    "nr": 78,
    "prompt": "Omów zasadę działania myjki ultradźwiękowej, z uwzględnieniem jej zastosowania w optyce okularowej.",
-   "answer": "Przetwornik piezoelektryczny umieszczony w dnie zbiornika zamienia drgania elektryczne o częstotliwości ok. 25-45 kHz na drgania mechaniczne przenoszone do cieczy. W cieczy powstają naprzemienne obszary podciśnienia i nadciśnienia, w których tworzą się i gwałtownie zapadają mikropęcherzyki - to zjawisko kawitacji. Implozje pęcherzyków wyzwalają lokalnie silne impulsy mechaniczne, odrywające zanieczyszczenia także z zagłębień, szczelin i miejsc niedostępnych mechanicznie. W optyce okularowej myjkę stosuje się do czyszczenia opraw i okularów przed montażem, przed regulacją i przy wydaniu klientowi, do usuwania pozostałości past polerskich, potu i kosmetyków, a także do mycia drobnych elementów i narzędzi. Ograniczenia: nie należy myć opraw z elementami klejonymi, z kamieniami, z powłokami galwanicznymi w złym stanie, ani soczewek z uszkodzonymi powłokami; stosuje się letnią wodę z dedykowanym środkiem i krótki czas cyklu."
+   "answer": "Przetwornik piezoelektryczny umieszczony w dnie zbiornika zamienia drgania elektryczne o częstotliwości ok. 25-45 kHz na drgania mechaniczne przenoszone do cieczy. W cieczy powstają naprzemienne obszary podciśnienia i nadciśnienia, w których tworzą się i gwałtownie zapadają mikropęcherzyki - to zjawisko kawitacji. Implozje pęcherzyków wyzwalają lokalnie silne impulsy mechaniczne, odrywające zanieczyszczenia także z zagłębień, szczelin i miejsc niedostępnych mechanicznie. W optyce okularowej myjkę stosuje się do czyszczenia opraw i okularów przed montażem, przed regulacją i przy wydaniu klientowi, do usuwania pozostałości past polerskich, potu i kosmetyków, a także do mycia drobnych elementów i narzędzi. Ograniczenia: nie należy myć opraw z elementami klejonymi, z kamieniami, z powłokami galwanicznymi w złym stanie, ani soczewek z uszkodzonymi powłokami; stosuje się letnią wodę z dedykowanym środkiem i krótki czas cyklu.",
+   "difficulty": "trudne",
+   "officialNr": 249614
   },
   {
    "id": "ustny-materialy-1",

@@ -12,6 +12,7 @@ import {
 import { sample } from "@/lib/rng";
 import { recordAnswer, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
+import { QuestionMeta } from "@/components/QuestionMeta";
 
 type Stage = "setup" | "running" | "done";
 
@@ -214,7 +215,10 @@ export default function FiszkiClient() {
         </div>
 
         <article key={card.id} className="resolve flex flex-1 flex-col justify-center py-10">
-          <Eyebrow>{categoryById.get(card.category)?.label}</Eyebrow>
+          <QuestionMeta
+            category={categoryById.get(card.category)?.label}
+            difficulty={card.difficulty}
+          />
           <h1 className="mt-4 font-body text-[1.5rem] leading-snug font-medium sm:text-[1.9rem]">
             {card.prompt}
           </h1>
