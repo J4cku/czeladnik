@@ -2,7 +2,7 @@
 
 import { useSyncExternalStore } from "react";
 
-const KEY = "ostrosc.progress.v1";
+export const PROGRESS_STORAGE_KEY = "ostrosc.progress.v2";
 
 export type QuestionStat = {
   seen: number;
@@ -29,7 +29,7 @@ const EMPTY: Store = { stats: {}, history: [] };
 function read(): Store {
   if (typeof window === "undefined") return EMPTY;
   try {
-    const parsed = JSON.parse(window.localStorage.getItem(KEY) ?? "");
+    const parsed = JSON.parse(window.localStorage.getItem(PROGRESS_STORAGE_KEY) ?? "");
     if (!parsed || typeof parsed !== "object") return EMPTY;
     return {
       stats: parsed.stats ?? {},
@@ -42,7 +42,7 @@ function read(): Store {
 
 function write(store: Store) {
   try {
-    window.localStorage.setItem(KEY, JSON.stringify(store));
+    window.localStorage.setItem(PROGRESS_STORAGE_KEY, JSON.stringify(store));
   } catch {
     /* prywatne okno albo brak miejsca — nauka działa dalej, bez zapisu */
   }

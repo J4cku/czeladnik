@@ -4,9 +4,9 @@ import { SiteHeader } from "@/components/ui";
 import TestClient from "./TestClient";
 
 export const metadata: Metadata = {
-  title: "Test ABC — Ostrość",
+  title: "Test i arkusz egzaminacyjny — Ostrość",
   description:
-    "Losowany test jednokrotnego wyboru z pytań na egzamin czeladniczy dla optyka okularowego.",
+    "Arkusz czeladniczy dla optyka okularowego: 49 pytań z 7 działów, po 3 łatwe, 2 średnie i 2 trudne w każdym dziale.",
 };
 
 export default function TestPage() {

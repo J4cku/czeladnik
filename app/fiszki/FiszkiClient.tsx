@@ -10,6 +10,7 @@ import {
   type OpenQuestion,
 } from "@/lib/data";
 import { sample } from "@/lib/rng";
+import { buildOralExam, oralExamPlan, ORAL_EXAM_LENGTH } from "@/lib/oral-exam";
 import { recordAnswer, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
 import { QuestionMeta } from "@/components/QuestionMeta";
@@ -21,6 +22,11 @@ const SIZES = [10, 20, 0] as const;
 export default function FiszkiClient() {
   const params = useSearchParams();
   const { store, ready } = useProgress();
+  const [oralExam, setOralExam] = useState(() => params.get("egzamin") === "1");
+  const oralPlan = useMemo(() => oralExamPlan(), []);
+  const oralAvailable = oralPlan.every(({ available }) =>
+    Object.values(available).every((count) => count >= 1),
+  );
 
   // Deep link: /fiszki?dzialy=ustny-technologia
   const [selected, setSelected] = useState<string[]>(() => {
@@ -55,6 +61,10 @@ export default function FiszkiClient() {
   );
 
   const build = useCallback(() => {
+    if (oralExam) {
+      start(buildOralExam());
+      return;
+    }
     // "Najpierw nieopanowane" pulls unseen and previously-missed cards to the front.
     const ranked = freshFirst
       ? [...pool].sort((a, b) => rank(a) - rank(b))
@@ -68,7 +78,7 @@ export default function FiszkiClient() {
       if (!stat) return 0;
       return stat.lastOk ? 2 : 1;
     }
-  }, [pool, size, freshFirst, store, start]);
+  }, [oralExam, pool, size, freshFirst, store, start]);
 
   const grade = useCallback(
     (ok: boolean) => {
@@ -107,88 +117,139 @@ export default function FiszkiClient() {
     return (
       <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
         <Eyebrow>Część ustna</Eyebrow>
-        <h1 className="optotype mt-3 text-4xl sm:text-5xl">Złóż talię</h1>
+        <h1 className="optotype mt-3 text-4xl sm:text-5xl">
+          {oralExam ? "Egzamin ustny" : "Złóż talię"}
+        </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
           Przeczytaj pytanie, odpowiedz na głos, dopiero potem odsłoń wzorcową
           odpowiedź i oceń się sam.
         </p>
 
-        <div className="border-b rule py-6">
-          <Eyebrow className="mb-3">Działy</Eyebrow>
-          <div className="flex flex-wrap gap-2">
-            {openCategories.map((cat) => {
-              const active = selected.includes(cat.id);
-              return (
-                <button
-                  key={cat.id}
-                  aria-pressed={active}
-                  onClick={() =>
-                    setSelected(
-                      active
-                        ? selected.filter((id) => id !== cat.id)
-                        : [...selected, cat.id],
-                    )
-                  }
-                  className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
-                    active
-                      ? "border-ink bg-ink text-paper"
-                      : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
-                  }`}
-                >
-                  {cat.label}
-                  <span className="ml-2 font-mono text-[11px] opacity-60">{cat.count}</span>
-                </button>
-              );
-            })}
-          </div>
-        </div>
-
-        <div className="border-b rule py-6">
-          <Eyebrow className="mb-3">Ile fiszek</Eyebrow>
-          <div className="flex flex-wrap gap-2">
-            {SIZES.map((n) => (
-              <button
-                key={n}
-                aria-pressed={size === n}
-                onClick={() => setSize(n)}
-                className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
-                  size === n
-                    ? "border-ink bg-ink text-paper"
-                    : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
-                }`}
-              >
-                {n === 0 ? "wszystkie" : n}
-              </button>
-            ))}
+        <div className="flex flex-wrap gap-2 border-b rule py-6" aria-label="Tryb ćwiczenia">
+          {[
+            { exam: false, label: "Własna talia" },
+            { exam: true, label: "Egzamin ustny" },
+          ].map(({ exam, label }) => (
             <button
-              aria-pressed={freshFirst}
-              onClick={() => setFreshFirst(!freshFirst)}
+              key={label}
+              aria-pressed={oralExam === exam}
+              onClick={() => setOralExam(exam)}
               className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
-                freshFirst
-                  ? "border-flash bg-flash text-white"
+                oralExam === exam
+                  ? "border-ink bg-ink text-paper"
                   : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
               }`}
             >
-              Najpierw nieopanowane
+              {label}
             </button>
-          </div>
+          ))}
         </div>
 
+        {oralExam ? (
+          <div className="border-b rule py-6">
+            <Eyebrow className="mb-3">Skład zestawu · {ORAL_EXAM_LENGTH} pytań</Eyebrow>
+            <p className="text-sm leading-relaxed text-ink-soft">
+              Z każdego działu po 1 pytaniu łatwym, średnim i trudnym.
+              Taki sam skład obowiązuje czeladnika i mistrza.
+            </p>
+            <ul className="mt-4 space-y-2 text-sm">
+              {oralPlan.map(({ category }) => (
+                <li key={category.id} className="flex justify-between gap-4">
+                  <span>{category.label}</span>
+                  <span className="font-mono text-ink-faint">1 Ł / 1 Ś / 1 T</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : (
+          <>
+            <div className="border-b rule py-6">
+              <Eyebrow className="mb-3">Działy</Eyebrow>
+              <div className="flex flex-wrap gap-2">
+                {openCategories.map((cat) => {
+                  const active = selected.includes(cat.id);
+                  return (
+                    <button
+                      key={cat.id}
+                      aria-pressed={active}
+                      onClick={() =>
+                        setSelected(
+                          active
+                            ? selected.filter((id) => id !== cat.id)
+                            : [...selected, cat.id],
+                        )
+                      }
+                      className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
+                        active
+                          ? "border-ink bg-ink text-paper"
+                          : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
+                      }`}
+                    >
+                      {cat.label}
+                      <span className="ml-2 font-mono text-[11px] opacity-60">{cat.count}</span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
+            <div className="border-b rule py-6">
+              <Eyebrow className="mb-3">Ile fiszek</Eyebrow>
+              <div className="flex flex-wrap gap-2">
+                {SIZES.map((n) => (
+                  <button
+                    key={n}
+                    aria-pressed={size === n}
+                    onClick={() => setSize(n)}
+                    className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
+                      size === n
+                        ? "border-ink bg-ink text-paper"
+                        : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
+                    }`}
+                  >
+                    {n === 0 ? "wszystkie" : n}
+                  </button>
+                ))}
+                <button
+                  aria-pressed={freshFirst}
+                  onClick={() => setFreshFirst(!freshFirst)}
+                  className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
+                    freshFirst
+                      ? "border-flash bg-flash text-white"
+                      : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
+                  }`}
+                >
+                  Najpierw nieopanowane
+                </button>
+              </div>
+            </div>
+          </>
+        )}
+
         <div className="mt-8 flex flex-wrap items-center gap-4">
-          <Btn variant="accent" className="px-7 py-3 text-base" disabled={!pool.length} onClick={build}>
-            Losuj fiszki
+          <Btn
+            variant="accent"
+            className="px-7 py-3 text-base"
+            disabled={oralExam ? !oralAvailable : !pool.length}
+            onClick={build}
+          >
+            {oralExam ? "Losuj egzamin ustny" : "Losuj fiszki"}
           </Btn>
           <p className="text-sm text-ink-soft">
-            {pool.length
-              ? `${pool.length} ${questionsWord(pool.length)} w wybranych działach.`
-              : "Wybierz przynajmniej jeden dział."}
+            {oralExam
+              ? oralAvailable
+                ? `${ORAL_EXAM_LENGTH} pytań · samoocena odpowiedzi.`
+                : "Brakuje pytań do pełnego zestawu ustnego."
+              : pool.length
+                ? `${pool.length} ${questionsWord(pool.length)} w wybranych działach.`
+                : "Wybierz przynajmniej jeden dział."}
           </p>
         </div>
 
-        {ready && selected.includes("rysunek") && (
+        {!oralExam && ready && selected.includes("rysunek") && (
           <p className="mt-8 border-l-2 border-amber pl-4 text-sm leading-relaxed text-ink-soft">
             Dział „Rysunek zawodowy” odsyła do rysunków z arkusza egzaminacyjnego.
-            Zamiast obrazka znajdziesz tu opis prawidłowej odpowiedzi.
+            Rysunków nie ma jeszcze w bazie. Znajdziesz tu opis prawidłowej odpowiedzi.
           </p>
         )}
       </main>
@@ -263,7 +324,7 @@ export default function FiszkiClient() {
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
-      <Eyebrow>Talia przerobiona</Eyebrow>
+      <Eyebrow>{oralExam ? "Zestaw ustny przerobiony" : "Talia przerobiona"}</Eyebrow>
       <div className="resolve mt-4 flex flex-wrap items-baseline gap-x-6 border-b rule pb-6">
         <p className="optotype text-[clamp(3.5rem,16vw,7rem)]">
           {okCount}
@@ -279,7 +340,7 @@ export default function FiszkiClient() {
           </Btn>
         )}
         <Btn variant="ghost" onClick={() => setStage("setup")}>
-          Nowa talia
+          {oralExam ? "Nowy zestaw ustny" : "Nowa talia"}
         </Btn>
         <LinkBtn href="/" variant="quiet" className="px-3">
           Strona główna

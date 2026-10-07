@@ -1,5 +1,5 @@
 """Reads data/Czeladnik_optyk_pytania_odpowiedzi.xlsx -> lib/questions.json"""
-import json, re, unicodedata
+import hashlib, json, re, unicodedata
 from pathlib import Path
 import openpyxl
 
@@ -22,7 +22,17 @@ SHEETS = {
     "Zadania praktyczne":   ("praktyka", "task", "Zadania praktyczne", "Zadania na część praktyczną egzaminu wraz z czasem wykonania."),
 }
 
-DIFFICULTY = {"Ł": "latwe", "Ś": "srednie", "S": "srednie", "T": "trudne"}
+DIFFICULTY = {
+    "Ł": "latwe",
+    "ŁATWY": "latwe",
+    "LATWY": "latwe",
+    "Ś": "srednie",
+    "S": "srednie",
+    "ŚREDNI": "srednie",
+    "SREDNI": "srednie",
+    "T": "trudne",
+    "TRUDNY": "trudne",
+}
 
 
 def clean(v):
@@ -57,18 +67,15 @@ def main():
         header = [clean(c.value) for c in ws[1]]
         count = 0
 
-        for row in ws.iter_rows(min_row=2, values_only=True):
+        for row_number, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
             cells = dict(zip(header, row))
             prompt = clean(cells.get("Pytanie") or cells.get("Zadanie"))
             if not prompt:
                 continue
-            nr = as_index(cells.get("Nr")) or count + 1
-            qid = f"{cat_id}-{nr}"
-            if qid in seen_ids:
-                raise SystemExit(f"Duplikat id: {qid}")
-            seen_ids.add(qid)
-
-            q = {"id": qid, "category": cat_id, "kind": kind, "nr": nr, "prompt": prompt}
+            source_nr = as_index(cells.get("Nr"))
+            official = as_index(cells.get("Nr pytania") or cells.get("ID"))
+            nr = source_nr or count + 1
+            q = {"category": cat_id, "kind": kind, "nr": nr, "prompt": prompt}
 
             if kind == "abc":
                 options = [clean(cells.get(k)) for k in ("A", "B", "C")]
@@ -80,14 +87,35 @@ def main():
                 q["options"] = options
                 q["answer"] = "ABC".index(letter)
             elif kind == "open":
-                q["answer"] = clean(cells.get("Odpowiedź")) or "Brak opisu odpowiedzi."
+                q["answer"] = (
+                    clean(cells.get("Odpowiedź z klucza"))
+                    or clean(cells.get("Odpowiedz z klucza"))
+                    or clean(cells.get("Odpowiedź"))
+                    or "Brak opisu odpowiedzi."
+                )
             else:
                 q["time"] = clean(cells.get("Czas"))
 
-            diff = DIFFICULTY.get(clean(cells.get("Trudność")) or "")
+            if official:
+                qid = f"{cat_id}-{official}"
+            else:
+                identity = json.dumps(
+                    {key: value for key, value in q.items() if key != "nr"},
+                    ensure_ascii=False,
+                    sort_keys=True,
+                    separators=(",", ":"),
+                )
+                digest = hashlib.sha256(identity.encode()).hexdigest()[:16]
+                qid = f"{cat_id}-h-{digest}"
+            if qid in seen_ids:
+                raise SystemExit(f"Duplikat id: {qid} (wiersz {row_number})")
+            seen_ids.add(qid)
+            q = {"id": qid, **q}
+
+            difficulty = clean(cells.get("Trudność") or cells.get("Poziom")) or ""
+            diff = DIFFICULTY.get(difficulty.upper())
             if diff:
                 q["difficulty"] = diff
-            official = as_index(cells.get("Nr pytania"))
             if official:
                 q["officialNr"] = official
 

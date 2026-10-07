@@ -4,16 +4,19 @@ Nauka do egzaminu czeladniczego z optyki okularowej. Losowane testy ABC, fiszki
 do części ustnej i lista zadań praktycznych. Wszystko działa po stronie
 przeglądarki — bez logowania i bez backendu.
 
-- **Test ABC** — 431 pytań zamkniętych z 6 działów pisemnych. Losowana kolejność
+- **Test ABC** — 461 pytań zamkniętych z 6 działów pisemnych. Losowana kolejność
   pytań i odpowiedzi, tryb nauki (odpowiedź od razu) albo egzaminu (wynik na
   końcu), powtórka samych błędów.
-- **Arkusz egzaminacyjny** — 48 pytań, 8 z każdego tematu pisemnego, temat po
-  temacie, z wynikiem w rozbiciu na tematy. Zobacz „Ograniczenia danych” niżej.
-- **Fiszki** — 240 pytań opisowych z części ustnej i rysunku zawodowego.
+- **Arkusz egzaminacyjny** — 49 pytań z 7 działów, po 3 łatwe, 2 średnie
+  i 2 trudne z każdego. Pytania z rysunku zawodowego mają odpowiedzi opisowe
+  oceniane samodzielnie; pytania ABC są sprawdzane automatycznie.
+- **Egzamin ustny** — 9 pytań: po 1 łatwym, średnim i trudnym z technologii,
+  materiałoznawstwa i maszynoznawstwa. Ta sama zasada dla czeladnika i mistrza.
+- **Fiszki** — 241 pytań opisowych z części ustnej i rysunku zawodowego.
   Samoocena „umiem / do powtórki”.
 - **Zadania praktyczne** — 30 zadań wraz z czasem wykonania, z losowaniem.
 
-Postępy zapisują się w `localStorage` pod kluczem `ostrosc.progress.v1`.
+Postępy zapisują się w `localStorage` pod kluczem `ostrosc.progress.v2`.
 
 ## Uruchomienie
 
@@ -37,21 +40,16 @@ powtórzy się identyfikator pytania.
 
 ## Ograniczenia danych
 
-Dwie rzeczy, których nie da się odtworzyć z arkusza źródłowego:
+Arkusz zawiera poziomy trudności potrzebne do podziału 3/2/2 we wszystkich
+7 działach pisemnych oraz do zestawu ustnego.
 
-1. **Trudność pytań** jest oznaczona (Ł/Ś/T) w Rachunkowości, Dokumentacji,
-   BHP i ppoż., Ochronie środowiska oraz Działalności gospodarczej. Tam arkusz
-   egzaminacyjny trzyma podział 3 łatwe / 3 średnie / 2 trudne — w Prawie pracy
-   losuje 8 pytań z całego działu. Aplikacja pokazuje aktualny podział na ekranie
-   składu arkusza. Poziomy trudności z Technologii są widoczne na fiszkach.
-2. **Rysunek zawodowy** (oficjalnie temat 3) nie ma w arkuszu wariantów
-   A/B/C — same treści pytań i opis prawidłowej odpowiedzi. Nie da się go
-   punktować w teście zamkniętym, więc arkusz ma 48 pytań z 6 tematów, a rysunek
-   przerabia się na fiszkach.
+**Rysunek zawodowy** (dział 3) zawiera treści pytań i opisy odpowiedzi, ale
+rysunki nie zostały jeszcze dodane. Pytania pozostają dostępne w arkuszu
+49 pytań i na fiszkach; odpowiedzi są oceniane samodzielnie.
 
-Jeśli dojdą oznaczenia trudności dla Prawa pracy albo warianty odpowiedzi dla
-rysunku, wystarczy uzupełnić kolumny w xlsx i przeliczyć dane — `lib/exam.ts`
-sam zacznie trzymać podział 3/3/2 wszędzie.
+**Egzamin mistrzowski** powinien obejmować 9 działów po 7 pytań (63 pytania,
+podział 3/2/2). Ten skoroszyt zawiera bazę dla czeladnika, bez danych dla
+pełnego 9-działowego arkusza mistrzowskiego. Wspólny zestaw ustny jest dostępny.
 
 ## Deploy
 

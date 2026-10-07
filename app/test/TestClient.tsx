@@ -8,7 +8,7 @@ import {
   categoryById,
   LETTERS,
   questionsWord,
-  type AbcQuestion,
+  type OpenQuestion,
 } from "@/lib/data";
 import {
   buildExam,
@@ -17,14 +17,21 @@ import {
   EXAM_SPLIT,
   examPlan,
   PASS_THRESHOLD,
+  writtenCategories,
+  type WrittenExamQuestion,
 } from "@/lib/exam";
 import { sample, shuffle } from "@/lib/rng";
 import { isWeak, recordAnswer, recordSession, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
 import { QuestionMeta } from "@/components/QuestionMeta";
 
-type Item = { q: AbcQuestion; order: number[] };
+type Item = { q: WrittenExamQuestion; order: number[] };
+type Pick = number | boolean | null;
 type Stage = "setup" | "running" | "done";
+
+function isCorrect(question: WrittenExamQuestion, pick: Pick) {
+  return question.kind === "abc" ? pick === question.answer : pick === true;
+}
 
 const LENGTHS = [10, 20, 40, 0] as const;
 const lengthLabel = (n: number) => (n === 0 ? "wszystkie" : String(n));
@@ -47,9 +54,10 @@ export default function TestClient() {
   const [onlyWeak, setOnlyWeak] = useState(() => params.get("tryb") === "bledne");
 
   const [stage, setStage] = useState<Stage>("setup");
+  const [activeSheet, setActiveSheet] = useState(false);
   const [items, setItems] = useState<Item[]>([]);
   const [index, setIndex] = useState(0);
-  const [picks, setPicks] = useState<(number | null)[]>([]);
+  const [picks, setPicks] = useState<Pick[]>([]);
 
   const weakIds = useMemo(() => {
     const set = new Set<string>();
@@ -66,29 +74,30 @@ export default function TestClient() {
   );
 
   const start = useCallback(
-    (questions: AbcQuestion[], count: number, keepOrder = false) => {
+    (questions: WrittenExamQuestion[], count: number, keepOrder = false, fullSheet = false) => {
       const picked = keepOrder
         ? questions
         : sample(questions, count > 0 ? count : questions.length);
-      setItems(picked.map((q) => ({ q, order: shuffle([0, 1, 2]) })));
+      setItems(picked.map((q) => ({ q, order: q.kind === "abc" ? shuffle([0, 1, 2]) : [] })));
       setPicks(new Array(picked.length).fill(null));
       setIndex(0);
+      setActiveSheet(fullSheet);
       setStage("running");
     },
     [],
   );
 
   const finish = useCallback(
-    (finalPicks: (number | null)[], list: Item[]) => {
+    (finalPicks: Pick[], list: Item[]) => {
       const score = list.reduce(
-        (sum, item, i) => sum + (finalPicks[i] === item.q.answer ? 1 : 0),
+        (sum, item, i) => sum + (isCorrect(item.q, finalPicks[i]) ? 1 : 0),
         0,
       );
-      const covered = sheet ? abcCategories.map((c) => c.id) : selected;
+      const covered = [...new Set(list.map((item) => item.q.category))];
       recordSession({ score, total: list.length, categories: covered });
       setStage("done");
     },
-    [selected, sheet],
+    [],
   );
 
   if (stage === "setup") {
@@ -112,7 +121,7 @@ export default function TestClient() {
         setOnlyWeak={setOnlyWeak}
         poolSize={pool.length}
         weakSize={ready ? weakIds.size : 0}
-        onStart={() => (sheet ? start(buildExam(), 0, true) : start(pool, length))}
+        onStart={() => (sheet ? start(buildExam(), 0, true, true) : start(pool, length))}
       />
     );
   }
@@ -135,7 +144,7 @@ export default function TestClient() {
           const pick = picks[index];
           const item = items[index];
           if (pick === null) return;
-          recordAnswer(item.q.id, pick === item.q.answer);
+          recordAnswer(item.q.id, isCorrect(item.q, pick));
           if (index + 1 < items.length) setIndex(index + 1);
           else finish(picks, items);
         }}
@@ -146,12 +155,12 @@ export default function TestClient() {
 
   return (
     <Summary
-      sheet={sheet}
+      sheet={activeSheet}
       items={items}
       picks={picks}
       onRetryWrong={() => {
         const wrong = items
-          .filter((item, i) => picks[i] !== item.q.answer)
+          .filter((item, i) => !isCorrect(item.q, picks[i]))
           .map((item) => item.q);
         start(wrong, wrong.length);
       }}
@@ -194,10 +203,6 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
 function SheetPlan() {
   const plan = examPlan();
   const split = EXAM_SPLIT.map((s) => s.count).join(" / ");
-  const gradedCategories = plan
-    .filter(({ graded }) => graded)
-    .map(({ category }) => category.label)
-    .join(", ");
 
   return (
     <div className="mt-2">
@@ -211,15 +216,11 @@ function SheetPlan() {
           </tr>
         </thead>
         <tbody>
-          {plan.map(({ category, graded }) => (
+          {plan.map(({ category }) => (
             <tr key={category.id} className="border-b rule">
               <td className="py-2.5 text-[15px]">{category.label}</td>
               <td className="py-2.5 text-right font-mono text-[13px]">
-                {graded ? (
-                  split
-                ) : (
-                  <span className="text-amber">{EXAM_PER_CATEGORY} losowo</span>
-                )}
+                {split}
               </td>
             </tr>
           ))}
@@ -227,17 +228,12 @@ function SheetPlan() {
       </table>
 
       <p className="mt-5 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
-        Podział {split} jest zachowany w działach: {gradedCategories}. W pozostałych
-        tematach losuję{" "}
-        {EXAM_PER_CATEGORY} pytań z całego działu.
+        {writtenCategories.length} działów po {EXAM_PER_CATEGORY} pytań: 3 łatwe,
+        2 średnie i 2 trudne w każdym dziale. Razem {EXAM_LENGTH} pytań.
       </p>
       <p className="mt-3 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
-        Rysunku zawodowego tu nie ma: pytania z tego tematu odsyłają do rysunków
-        i nie mają wariantów A/B/C, więc nie da się ich punktować.{" "}
-        <a href="/fiszki?dzialy=rysunek" className="text-flash underline underline-offset-4">
-          Przerób go na fiszkach
-        </a>
-        .
+        Rysunki zawodowe czekają na uzupełnienie ilustracji. Odpowiedzi w tym
+        dziale sprawdzasz z odpowiedzią źródłową i oceniasz samodzielnie.
       </p>
     </div>
   );
@@ -315,6 +311,12 @@ function Setup({
             Egzamin — wynik na końcu
           </Toggle>
         </div>
+        {sheet && exam && (
+          <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+            Pytania A/B/C sprawdzisz na końcu. W rysunku zawodowym odpowiedź
+            odkrywasz przed samooceną.
+          </p>
+        )}
         {!sheet && weakSize > 0 && (
           <div className="mt-4">
             <Toggle active={onlyWeak} onClick={() => setOnlyWeak(!onlyWeak)}>
@@ -446,13 +448,14 @@ function Runner({
 }: {
   items: Item[];
   index: number;
-  picks: (number | null)[];
+  picks: Pick[];
   exam: boolean;
-  onPick: (optionIndex: number) => void;
+  onPick: (pick: Exclude<Pick, null>) => void;
   onNext: () => void;
   onAbort: () => void;
 }) {
   const item = items[index];
+  const question = item.q;
   const pick = picks[index];
   const answered = pick !== null;
   const reveal = answered && !exam;
@@ -467,7 +470,7 @@ function Runner({
       if (e.metaKey || e.ctrlKey || e.altKey) return;
       const key = e.key.toLowerCase();
       const slot = ["a", "1"].includes(key) ? 0 : ["b", "2"].includes(key) ? 1 : ["c", "3"].includes(key) ? 2 : -1;
-      if (slot >= 0 && !answered) {
+      if (slot >= 0 && !answered && item.q.kind === "abc") {
         e.preventDefault();
         onPick(item.order[slot]);
       } else if (key === "enter" && answered) {
@@ -502,46 +505,55 @@ function Runner({
           {item.q.prompt}
         </h1>
 
-        <ul className="mt-8 space-y-3">
-          {item.order.map((optionIndex, slot) => {
-            const correct = optionIndex === item.q.answer;
-            const chosen = pick === optionIndex;
+        {question.kind === "abc" ? (
+          <ul className="mt-8 space-y-3">
+            {item.order.map((optionIndex, slot) => {
+              const correct = optionIndex === question.answer;
+              const chosen = pick === optionIndex;
 
-            let tone = "border-ink/14 bg-card hover:border-ink/40";
-            let marker = "border-ink/25 text-ink-soft";
-            if (reveal && correct) {
-              tone = "border-duo-green bg-duo-green/[0.07]";
-              marker = "border-duo-green bg-duo-green text-white";
-            } else if (reveal && chosen) {
-              tone = "border-duo-red bg-duo-red/[0.07]";
-              marker = "border-duo-red bg-duo-red text-white";
-            } else if (chosen) {
-              tone = "border-flash bg-flash/[0.07]";
-              marker = "border-flash bg-flash text-white";
-            } else if (answered) {
-              tone = "border-ink/14 bg-card opacity-55";
-            }
+              let tone = "border-ink/14 bg-card hover:border-ink/40";
+              let marker = "border-ink/25 text-ink-soft";
+              if (reveal && correct) {
+                tone = "border-duo-green bg-duo-green/[0.07]";
+                marker = "border-duo-green bg-duo-green text-white";
+              } else if (reveal && chosen) {
+                tone = "border-duo-red bg-duo-red/[0.07]";
+                marker = "border-duo-red bg-duo-red text-white";
+              } else if (chosen) {
+                tone = "border-flash bg-flash/[0.07]";
+                marker = "border-flash bg-flash text-white";
+              } else if (answered) {
+                tone = "border-ink/14 bg-card opacity-55";
+              }
 
-            return (
-              <li key={optionIndex}>
-                <button
-                  disabled={answered}
-                  onClick={() => onPick(optionIndex)}
-                  className={`flex w-full items-start gap-4 rounded-md border p-4 text-left transition-colors disabled:cursor-default ${tone}`}
-                >
-                  <span
-                    className={`mt-px flex size-7 shrink-0 items-center justify-center rounded-full border font-mono text-[12px] font-semibold transition-colors ${marker}`}
+              return (
+                <li key={optionIndex}>
+                  <button
+                    disabled={answered}
+                    onClick={() => onPick(optionIndex)}
+                    className={`flex w-full items-start gap-4 rounded-md border p-4 text-left transition-colors disabled:cursor-default ${tone}`}
                   >
-                    {LETTERS[slot]}
-                  </span>
-                  <span className="text-[15px] leading-relaxed sm:text-base">
-                    {item.q.options[optionIndex]}
-                  </span>
-                </button>
-              </li>
-            );
-          })}
-        </ul>
+                    <span
+                      className={`mt-px flex size-7 shrink-0 items-center justify-center rounded-full border font-mono text-[12px] font-semibold transition-colors ${marker}`}
+                    >
+                      {LETTERS[slot]}
+                    </span>
+                    <span className="text-[15px] leading-relaxed sm:text-base">
+                      {question.options[optionIndex]}
+                    </span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        ) : (
+          <DrawingResponse
+            key={question.id}
+            question={question}
+            pick={typeof pick === "boolean" ? pick : null}
+            onPick={onPick}
+          />
+        )}
 
         <div className="mt-8 flex min-h-12 flex-wrap items-center gap-4">
           {answered && (
@@ -549,18 +561,18 @@ function Runner({
               <Btn ref={nextRef} variant="solid" onClick={onNext} className="px-6">
                 {index + 1 === items.length ? "Zakończ i pokaż wynik" : "Dalej"}
               </Btn>
-              {reveal && (
+              {reveal && question.kind === "abc" && (
                 <p
                   className={`ui text-sm font-semibold ${
-                    pick === item.q.answer ? "text-duo-green" : "text-duo-red"
+                    isCorrect(question, pick) ? "text-duo-green" : "text-duo-red"
                   }`}
                 >
-                  {pick === item.q.answer ? "Dobrze" : "Poprawna jest zaznaczona na zielono"}
+                  {isCorrect(question, pick) ? "Dobrze" : "Poprawna jest zaznaczona na zielono"}
                 </p>
               )}
             </>
           )}
-          {!answered && (
+          {!answered && question.kind === "abc" && (
             <p className="meta text-ink-faint">
               Wybierz odpowiedź — klawisze A, B, C lub 1, 2, 3
             </p>
@@ -568,6 +580,54 @@ function Runner({
         </div>
       </article>
     </main>
+  );
+}
+
+function DrawingResponse({
+  question,
+  pick,
+  onPick,
+}: {
+  question: OpenQuestion;
+  pick: boolean | null;
+  onPick: (pick: boolean) => void;
+}) {
+  const [revealed, setRevealed] = useState(false);
+
+  return (
+    <div className="mt-8">
+      <p className="border-l-2 border-amber pl-4 text-sm leading-relaxed text-ink-soft">
+        Ilustracja do tego pytania czeka na uzupełnienie. Odpowiedź z arkusza
+        możesz sprawdzić poniżej; wynik tego pytania opiera się na Twojej samoocenie.
+      </p>
+      {revealed ? (
+        <>
+          <div className="mt-6 rounded-md border rule bg-card p-5">
+            <Eyebrow>Odpowiedź źródłowa</Eyebrow>
+            <p className="mt-3 whitespace-pre-line text-[15.5px] leading-relaxed">
+              {question.answer}
+            </p>
+          </div>
+          <div className="mt-6 flex flex-wrap items-center gap-3">
+            <Btn variant="solid" disabled={pick !== null} onClick={() => onPick(true)}>
+              Umiem
+            </Btn>
+            <Btn variant="ghost" disabled={pick !== null} onClick={() => onPick(false)}>
+              Do powtórki
+            </Btn>
+            {pick !== null && (
+              <p className={`ui text-sm font-semibold ${pick ? "text-duo-green" : "text-duo-red"}`}>
+                {pick ? "Umiem" : "Do powtórki"}
+              </p>
+            )}
+          </div>
+        </>
+      ) : (
+        <Btn variant="solid" className="mt-6" onClick={() => setRevealed(true)}>
+          Pokaż odpowiedź
+        </Btn>
+      )}
+    </div>
   );
 }
 
@@ -589,22 +649,22 @@ function Summary({
 }: {
   sheet: boolean;
   items: Item[];
-  picks: (number | null)[];
+  picks: Pick[];
   onRetryWrong: () => void;
   onNewTest: () => void;
 }) {
-  const wrong = items.filter((item, i) => picks[i] !== item.q.answer);
+  const wrong = items.filter((item, i) => !isCorrect(item.q, picks[i]));
   const score = items.length - wrong.length;
   const pct = Math.round((score / items.length) * 100);
   const passed = score / items.length >= PASS_THRESHOLD;
 
-  const perCategory = abcCategories
+  const perCategory = writtenCategories
     .map((category) => {
       const own = items.filter((item) => item.q.category === category.id);
       return {
         category,
         total: own.length,
-        ok: own.filter((item) => picks[items.indexOf(item)] === item.q.answer).length,
+        ok: own.filter((item) => isCorrect(item.q, picks[items.indexOf(item)])).length,
       };
     })
     .filter((row) => row.total > 0);
@@ -634,6 +694,13 @@ function Summary({
         </p>
       ) : (
         <p className="resolve-1 resolve mt-5 text-lg text-ink-soft">{verdict(pct)}</p>
+      )}
+
+      {items.some((item) => item.q.kind === "open") && (
+        <p className="mt-4 text-sm leading-relaxed text-ink-soft">
+          Wynik obejmuje samoocenę pytań z rysunku zawodowego. Ilustracje do tych
+          pytań czekają na uzupełnienie.
+        </p>
       )}
 
       {perCategory.length > 1 && (
@@ -696,13 +763,16 @@ function Summary({
                   </p>
                   <p className="mt-4 border-l-2 border-duo-green pl-4 text-[15px] leading-relaxed">
                     <span className="meta mr-2 text-duo-green">poprawna</span>
-                    {item.q.options[item.q.answer]}
+                    {item.q.kind === "abc" ? item.q.options[item.q.answer] : item.q.answer}
                   </p>
-                  {pick !== null && (
+                  {item.q.kind === "abc" && typeof pick === "number" && (
                     <p className="mt-2 border-l-2 border-duo-red pl-4 text-[15px] leading-relaxed text-ink-soft">
                       <span className="meta mr-2 text-duo-red">twoja</span>
                       {item.q.options[pick]}
                     </p>
+                  )}
+                  {item.q.kind === "open" && (
+                    <p className="mt-2 text-sm text-ink-soft">Twoja samoocena: do powtórki</p>
                   )}
                 </li>
               );

@@ -22,7 +22,7 @@ const plex = IBM_Plex_Mono({
 export const metadata: Metadata = {
   title: "Ostrość — pytania na egzamin czeladniczy, optyk okularowy",
   description:
-    "701 pytań i zadań na egzamin czeladniczy z optyki okularowej. Losowane testy ABC, fiszki do części ustnej i lista zadań praktycznych.",
+    "732 pytania i zadania na egzamin czeladniczy z optyki okularowej. Losowane testy ABC, fiszki do części ustnej i lista zadań praktycznych.",
 };
 
 export const viewport: Viewport = {

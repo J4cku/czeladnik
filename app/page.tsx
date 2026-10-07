@@ -31,8 +31,8 @@ const chart = [
     acuity: "6/6",
     node: (
       <span className="block max-w-xl text-[15px] leading-relaxed text-ink-soft">
-        Złóż arkusz jak na egzaminie albo własny zestaw, ćwicz odpowiedzi ustne
-        na fiszkach, przeglądaj zadania praktyczne. Kolejność pytań i odpowiedzi
+        Złóż arkusz z 49 pytaniami albo własny zestaw, ćwicz egzamin ustny
+        z 9 pytaniami i odpowiedzi na fiszkach, przeglądaj zadania praktyczne. Kolejność pytań i odpowiedzi
         jest inna przy każdym podejściu.
       </span>
     ),
@@ -76,6 +76,9 @@ export default function Home() {
               </LinkBtn>
               <LinkBtn href="/fiszki" variant="ghost">
                 Fiszki ustne
+              </LinkBtn>
+              <LinkBtn href="/fiszki?egzamin=1" variant="ghost">
+                Egzamin ustny · 9 pytań
               </LinkBtn>
               <LinkBtn href="/zadania" variant="ghost">
                 Zadania praktyczne

@@ -4,9 +4,9 @@ import { SiteHeader } from "@/components/ui";
 import FiszkiClient from "./FiszkiClient";
 
 export const metadata: Metadata = {
-  title: "Fiszki ustne — Ostrość",
+  title: "Egzamin ustny i fiszki — Ostrość",
   description:
-    "Fiszki do części ustnej egzaminu czeladniczego: technologia, materiałoznawstwo, maszynoznawstwo i rysunek zawodowy.",
+    "Ćwicz egzamin ustny: 9 pytań, po jednym łatwym, średnim i trudnym z technologii, materiałoznawstwa i maszynoznawstwa. Dostępne także własne talie fiszek.",
 };
 
 export default function FiszkiPage() {
