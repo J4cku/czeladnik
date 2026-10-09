@@ -359,3 +359,30 @@ test("the repeat CTA labels ABC practice and routes to the selected qualificatio
     assert.equal(renderToStaticMarkup(React.createElement(ProgressRepeat, { level, count: 0 })), "");
   }
 });
+
+test("the reset control names both qualifications and requires confirmation of their global reset", (context) => {
+  const { ProgressReset } = load("../app/ProgressStrip.tsx");
+  assert.equal(typeof ProgressReset, "function", "the global reset control must render independently of browser progress hydration");
+  let resets = 0;
+  const control = ProgressReset({ onReset() { resets += 1; } });
+  const html = renderToStaticMarkup(control);
+  assert.match(html, /<button[^>]*>Wyczyść postępy[^<]*Czeladnik[^<]*Mistrz<\/button>/);
+
+  const previous = globalThis.confirm;
+  context.after(() => {
+    if (previous === undefined) delete globalThis.confirm;
+    else globalThis.confirm = previous;
+  });
+  let confirmation = "";
+  let approved = false;
+  globalThis.confirm = (message) => {
+    confirmation = message;
+    return approved;
+  };
+  control.props.onClick();
+  assert.match(confirmation, /Wyczyścić postępy.*Czeladnik.*Mistrz/);
+  assert.equal(resets, 0, "declining must preserve progress for both qualifications");
+  approved = true;
+  control.props.onClick();
+  assert.equal(resets, 1, "confirmation must invoke the existing global reset exactly once");
+});

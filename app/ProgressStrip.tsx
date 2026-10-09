@@ -30,6 +30,22 @@ export function ProgressRepeat({ level, count }: { level: ExamLevel; count: numb
   );
 }
 
+export function ProgressReset({ onReset }: { onReset: () => void }) {
+  return (
+    <Btn
+      variant="quiet"
+      className="px-3"
+      onClick={() => {
+        if (confirm("Wyczyścić postępy Czeladnika i Mistrza? Tej operacji nie da się cofnąć.")) {
+          onReset();
+        }
+      }}
+    >
+      Wyczyść postępy: Czeladnik i Mistrz
+    </Btn>
+  );
+}
+
 export function ProgressStrip({ level }: { level: ExamLevel }) {
   const { store, ready, reset } = useProgress();
 
@@ -48,17 +64,7 @@ export function ProgressStrip({ level }: { level: ExamLevel }) {
 
         <div className="flex flex-wrap items-center gap-3">
           <ProgressRepeat level={level} count={summary.weak} />
-          <Btn
-            variant="quiet"
-            className="px-3"
-            onClick={() => {
-              if (confirm("Wyczyścić zapisane postępy? Tej operacji nie da się cofnąć.")) {
-                reset();
-              }
-            }}
-          >
-            Wyczyść postępy
-          </Btn>
+          <ProgressReset onReset={reset} />
         </div>
       </div>
     </section>
