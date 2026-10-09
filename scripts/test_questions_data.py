@@ -12,6 +12,7 @@ from tempfile import TemporaryDirectory
 
 import openpyxl
 from PIL import Image
+from scripts.extract import LEVELS, display_option, extract_workbook
 
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -40,6 +41,93 @@ def clean(value):
 
 
 class QuestionsDataTest(unittest.TestCase):
+    def test_formatted_options_preserve_percentages_and_annual_dates(self):
+        expected = {
+            "srodowisko-81708": ["30%", "78%", "85%"],
+            "srodowisko-81710": ["3%", "14%", "16%"],
+            "srodowisko-81721": ["20 lutego", "5 czerwca", "14 października"],
+            "dzialalnosc-81996": ["18%", "19%", "23%"],
+            "dzialalnosc-82030": ["10%", "20%", "25%"],
+            "mistrz-rachunkowosc-257083": ["50%", "25%.", "12,5%."],
+            "mistrz-dzialalnosc-82094": ["19%", "15%", "9%"],
+            "mistrz-dzialalnosc-82105": ["5%", "7%", "23%"],
+        }
+        extracted = []
+        for level, source in SOURCES.items():
+            _, questions = extract_workbook(source, level, LEVELS[level][1], set(), {})
+            extracted.extend(questions)
+        for source_name, questions in (("extractor", extracted), ("catalog", catalog()["questions"])):
+            generated = {question["id"]: question for question in questions}
+            for question_id, options in expected.items():
+                with self.subTest(source=source_name, question=question_id):
+                    self.assertEqual(options, generated[question_id]["options"])
+
+    def test_expanded_oral_answers_preserve_source_paragraphs_and_answer_keys(self):
+        generated = {question["id"]: question for question in catalog()["questions"]}
+        counts = Counter()
+        for level, source in SOURCES.items():
+            _, questions = extract_workbook(source, level, LEVELS[level][1], set(), {})
+            extracted = {question["id"]: question for question in questions}
+            workbook = openpyxl.load_workbook(source, data_only=True, read_only=True)
+            for sheet in workbook.worksheets:
+                if not sheet.title.startswith("USTNY"):
+                    continue
+                headers = [clean(cell.value).strip().lower() for cell in sheet[1]]
+                for row in sheet.iter_rows(min_row=2, values_only=True):
+                    cells = dict(zip(headers, row))
+                    key = cells.get("odpowiedz z klucza") or cells.get("odpowiedź z klucza")
+                    expanded = cells.get("odpowiedź")
+                    if not key or not expanded or clean(key) == clean(expanded):
+                        continue
+                    category = LEVELS[level][1][sheet.title][0]
+                    if level == "mistrz":
+                        category = f"mistrz-{category}"
+                    question = next(
+                        q for q in questions
+                        if q["category"] == category and q["nr"] == int(cells["nr"])
+                    )
+                    explanation = "\n".join(
+                        re.sub(r"[^\S\n]+", " ", unicodedata.normalize("NFC", line)).strip()
+                        for line in str(expanded).replace("\r\n", "\n").replace("\r", "\n").split("\n")
+                    ).strip()
+                    counts[level] += 1
+                    for source_name, lookup in (("extractor", extracted), ("catalog", generated)):
+                        with self.subTest(source=source_name, question=question["id"]):
+                            actual = lookup[question["id"]]
+                            self.assertEqual(clean(key), actual["answer"])
+                            self.assertEqual(explanation, actual.get("explanation"))
+            workbook.close()
+        self.assertEqual(Counter(czeladnik=180, mistrz=176), counts)
+
+    def test_extraction_preserves_all_saved_progress_question_ids(self):
+        extracted_ids = []
+        for level, source in SOURCES.items():
+            _, extracted = extract_workbook(source, level, LEVELS[level][1], set(), {})
+            extracted_ids.extend(question["id"] for question in extracted)
+            self.assertEqual(
+                [question["id"] for question in catalog(level)["questions"]],
+                [question["id"] for question in extracted],
+            )
+        self.assertEqual(
+            "4fc0fe13153bf25077b7b55cc11c18ab7fc15de052610c0c2b430a02d2f3cee0",
+            hashlib.sha256("\n".join(sorted(extracted_ids)).encode()).hexdigest(),
+        )
+
+    def test_percent_float_artifacts_are_normalized_without_rounding_precise_text(self):
+        workbook = openpyxl.Workbook()
+        cell = workbook.active.cell(1, 1)
+        for source, expected in (
+            ("14.000000000000002%", "14%"),
+            ("13.999999999999998%", "14%"),
+            ("14.123456789012345%", "14.123456789012345%"),
+            ("14.0001%", "14.0001%"),
+            ("14.000000000000002", "14.000000000000002"),
+            ("14,000000000000002%", "14,000000000000002%"),
+        ):
+            with self.subTest(source=source):
+                cell.value = source
+                self.assertEqual(expected, display_option(cell))
+
     def test_extraction_preserves_outputs_when_image_support_is_unavailable(self):
         runner = textwrap.dedent("""
             import builtins
@@ -107,7 +195,7 @@ class QuestionsDataTest(unittest.TestCase):
         ).encode()
 
         self.assertEqual(
-            "b0db7f3b773f78c5f78b6076a5fc463becde127743f3a490b9a185b243a5618b",
+            "c10d80ba185de75dec17cb87da2e69cd607aafd9cf49d5aa9dda22715430ce66",
             hashlib.sha256(content).hexdigest(),
         )
 
@@ -348,7 +436,7 @@ class QuestionsDataTest(unittest.TestCase):
                     identity = {
                         key: value
                         for key, value in question.items()
-                        if key not in {"id", "nr", "difficulty", "officialNr", "level", "image"}
+                        if key not in {"id", "nr", "difficulty", "officialNr", "level", "image", "explanation"}
                     }
                     digest = hashlib.sha256(
                         json.dumps(

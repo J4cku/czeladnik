@@ -7,14 +7,15 @@ import {
   questionsWord,
   type OpenQuestion,
 } from "@/lib/data";
-import { sample } from "@/lib/rng";
 import { buildOralExam, oralExamPlan, ORAL_EXAM_LENGTH } from "@/lib/oral-exam";
-import { recordAnswer, useProgress } from "@/lib/progress";
+import { isWeak, recordAnswer, recordSession, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
 import { QuestionMeta } from "@/components/QuestionMeta";
 import { QuestionImage } from "@/components/QuestionImage";
+import { QuestionAnswer } from "@/components/QuestionAnswer";
 import { ExamLevelToggle } from "@/components/ExamLevelToggle";
 import { levelQuery, normalizeLevel, selectedCategories } from "@/lib/exam-level";
+import { acceptsStudyShortcut, selectStudyCards, summarizeStudyResults } from "@/lib/study";
 
 type Stage = "setup" | "running" | "done";
 
@@ -29,8 +30,9 @@ function LevelFiszki({ query }: { query: string }) {
   const params = new URLSearchParams(query);
   const level = normalizeLevel(params.get("poziom"));
   const { openCategories, openQuestions, categoryById } = getCatalog(level);
-  const { store } = useProgress();
+  const { store, ready } = useProgress();
   const [oralExam, setOralExam] = useState(() => params.get("egzamin") === "1");
+  const [onlyWeak, setOnlyWeak] = useState(() => params.get("tryb") === "bledne");
   const oralPlan = oralExamPlan(level);
   const oralAvailable = oralPlan.every(({ available }) =>
     Object.values(available).every((count) => count >= 1),
@@ -46,57 +48,52 @@ function LevelFiszki({ query }: { query: string }) {
   const [index, setIndex] = useState(0);
   const [shown, setShown] = useState(false);
   const [known, setKnown] = useState<boolean[]>([]);
+  const [sessionMode, setSessionMode] = useState<"oral" | "flashcards" | "retry">("flashcards");
 
-  const pool = openQuestions.filter((q) => selected.includes(q.category));
+  const pool = openQuestions.filter((q) => selected.includes(q.category) && (!onlyWeak || isWeak(store.stats[q.id])));
 
   const start = useCallback(
-    (cards: OpenQuestion[]) => {
+    (cards: OpenQuestion[], retry = false) => {
       setDeck(cards);
       setIndex(0);
       setShown(false);
       setKnown([]);
+      setSessionMode(retry ? "retry" : oralExam ? "oral" : "flashcards");
       setStage(cards.length ? "running" : "setup");
     },
-    [],
+    [oralExam],
   );
 
-  const build = useCallback(() => {
+  function build() {
     if (oralExam) {
       start(buildOralExam(level));
       return;
     }
-    // "Najpierw nieopanowane" pulls unseen and previously-missed cards to the front.
-    const ranked = freshFirst
-      ? [...pool].sort((a, b) => rank(a) - rank(b))
-      : pool;
-    const count = size === 0 ? ranked.length : Math.min(size, ranked.length);
-    const head = freshFirst ? ranked.slice(0, Math.max(count * 2, count)) : ranked;
-    start(sample(head, count));
+    start(selectStudyCards(pool, store.stats, size, freshFirst), onlyWeak);
+  }
 
-    function rank(q: OpenQuestion) {
-      const stat = store.stats[q.id];
-      if (!stat) return 0;
-      return stat.lastOk ? 2 : 1;
+  function grade(ok: boolean) {
+    const card = deck[index];
+    recordAnswer(card.id, ok);
+    const nextKnown = [...known, ok];
+    setKnown(nextKnown);
+    setShown(false);
+    if (index + 1 < deck.length) setIndex(index + 1);
+    else {
+      recordSession({
+        ...summarizeStudyResults(deck, nextKnown),
+        categories: [...new Set(deck.map((question) => question.category))],
+        level,
+        mode: sessionMode,
+      });
+      setStage("done");
     }
-  }, [oralExam, pool, size, freshFirst, store, start, level]);
-
-  const grade = useCallback(
-    (ok: boolean) => {
-      const card = deck[index];
-      recordAnswer(card.id, ok);
-      const nextKnown = [...known, ok];
-      setKnown(nextKnown);
-      setShown(false);
-      if (index + 1 < deck.length) setIndex(index + 1);
-      else setStage("done");
-    },
-    [deck, index, known],
-  );
+  }
 
   useEffect(() => {
     if (stage !== "running") return;
     function onKey(e: KeyboardEvent) {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (!acceptsStudyShortcut(e)) return;
       const key = e.key.toLowerCase();
       if (!shown && (key === " " || key === "enter")) {
         e.preventDefault();
@@ -111,17 +108,17 @@ function LevelFiszki({ query }: { query: string }) {
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [stage, shown, grade]);
+  });
 
   if (stage === "setup") {
     return (
       <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
-        <Eyebrow>Część ustna</Eyebrow>
+        <Eyebrow>{oralExam ? "Część ustna" : "Odpowiedzi otwarte · samoocena"}</Eyebrow>
         <h1 className="optotype mt-3 text-4xl sm:text-5xl">
           {oralExam ? "Egzamin ustny" : "Złóż talię"}
         </h1>
         <p className="mt-4 max-w-xl text-ink-soft">
-          Przeczytaj pytanie, odpowiedz na głos, dopiero potem odsłoń wzorcową
+          Przeczytaj pytanie, odpowiedz na głos, dopiero potem odsłoń źródłową
           odpowiedź i oceń się sam.
         </p>
 
@@ -131,6 +128,8 @@ function LevelFiszki({ query }: { query: string }) {
             const mode = new URLSearchParams(query);
             if (oralExam) mode.set("egzamin", "1");
             else mode.delete("egzamin");
+            if (onlyWeak) mode.set("tryb", "bledne");
+            else mode.delete("tryb");
             window.history.pushState(null, "", `?${levelQuery(mode.toString(), next, "open")}`);
           }} />
         </div>
@@ -143,7 +142,10 @@ function LevelFiszki({ query }: { query: string }) {
             <button
               key={label}
               aria-pressed={oralExam === exam}
-              onClick={() => setOralExam(exam)}
+              onClick={() => {
+                setOralExam(exam);
+                if (exam) setOnlyWeak(false);
+              }}
               className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
                 oralExam === exam
                   ? "border-ink bg-ink text-paper"
@@ -173,6 +175,20 @@ function LevelFiszki({ query }: { query: string }) {
           </div>
         ) : (
           <>
+            <div className="flex flex-wrap items-center gap-3 border-b rule py-5">
+              <button
+                aria-pressed={onlyWeak}
+                onClick={() => setOnlyWeak(!onlyWeak)}
+                className={`ui rounded-full border px-4 py-2 text-[13px] font-medium ${onlyWeak ? "border-flash bg-flash text-white" : "border-ink/20 bg-card text-ink-soft"}`}
+              >
+                Tylko do powtórki
+              </button>
+              {onlyWeak && (
+                <p className="text-sm text-ink-soft">
+                  {!ready ? "Wczytuję postępy…" : pool.length ? `${pool.length} fiszek z ostatnią oceną „do powtórki”.` : "Brak fiszek do powtórki w wybranych działach. Wyłącz filtr lub wybierz inne działy."}
+                </p>
+              )}
+            </div>
             <div className="border-b rule py-6">
               <Eyebrow className="mb-3">Działy</Eyebrow>
               <div className="flex flex-wrap gap-2">
@@ -229,7 +245,7 @@ function LevelFiszki({ query }: { query: string }) {
                       : "border-ink/20 bg-card text-ink-soft hover:border-ink/45 hover:text-ink"
                   }`}
                 >
-                  Najpierw nieopanowane
+                  Najpierw nowe i do powtórki
                 </button>
               </div>
             </div>
@@ -240,7 +256,7 @@ function LevelFiszki({ query }: { query: string }) {
           <Btn
             variant="accent"
             className="px-7 py-3 text-base"
-            disabled={oralExam ? !oralAvailable : !pool.length}
+            disabled={oralExam ? !oralAvailable : !pool.length || (onlyWeak && !ready)}
             onClick={build}
           >
             {oralExam ? "Losuj egzamin ustny" : "Losuj fiszki"}
@@ -298,8 +314,7 @@ function LevelFiszki({ query }: { query: string }) {
           {shown ? (
             <>
               <div className="resolve surface mt-8 rounded-md p-5 sm:p-6">
-                <Eyebrow className="mb-3">Wzorcowa odpowiedź</Eyebrow>
-                <p className="text-[15.5px] leading-[1.75] sm:text-base">{card.answer}</p>
+                <QuestionAnswer question={card} />
               </div>
               <div className="mt-8 flex flex-wrap items-center gap-3">
                 <button
@@ -343,10 +358,11 @@ function LevelFiszki({ query }: { query: string }) {
         </p>
         <p className="optotype text-3xl text-flash">umiem</p>
       </div>
+      <p className="mt-4 text-sm text-ink-soft">Wynik samooceny odpowiedzi otwartych.</p>
 
       <div className="mt-8 flex flex-wrap gap-3">
         {repeats.length > 0 && (
-          <Btn variant="accent" onClick={() => start(repeats)}>
+          <Btn variant="accent" onClick={() => start(repeats, true)}>
             Powtórz {repeats.length} {plural(repeats.length)}
           </Btn>
         )}
@@ -369,6 +385,7 @@ function LevelFiszki({ query }: { query: string }) {
                 </p>
                 <p className="mt-1.5 text-[16px] leading-snug">{card.prompt}</p>
                 {card.image && <div className="mt-4"><QuestionImage image={card.image} alt={`Rysunek do pytania: ${card.prompt}`} /></div>}
+                <div className="mt-4"><QuestionAnswer question={card} /></div>
               </li>
             ))}
           </ul>

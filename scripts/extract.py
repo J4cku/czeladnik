@@ -1,5 +1,7 @@
 """Extracts both final workbooks and their drawings into the question catalog."""
 import hashlib, json, re, unicodedata
+from datetime import date, datetime
+from decimal import Decimal
 from pathlib import Path
 
 DEPENDENCY_ERROR = (
@@ -71,6 +73,35 @@ def clean(v):
     return s or None
 
 
+def clean_explanation(value):
+    if value is None:
+        return None
+    text = unicodedata.normalize("NFC", str(value).replace("\r\n", "\n").replace("\r", "\n"))
+    text = "\n".join(re.sub(r"[^\S\n]+", " ", line).strip() for line in text.split("\n"))
+    return text.strip() or None
+
+
+def display_option(cell):
+    value = cell.value
+    percent = re.fullmatch(r"0(?:\.(0+))?%", cell.number_format)
+    if isinstance(value, (int, float)) and not isinstance(value, bool) and percent:
+        decimals = len(percent.group(1) or "")
+        return f"{Decimal(str(value)) * 100:.{decimals}f}".replace(".", ",") + "%"
+    if isinstance(value, (date, datetime)) and cell.number_format.lower() == "d mmmm":
+        months = (
+            "stycznia", "lutego", "marca", "kwietnia", "maja", "czerwca",
+            "lipca", "sierpnia", "września", "października", "listopada", "grudnia",
+        )
+        return f"{value.day} {months[value.month - 1]}"
+    text = clean(value)
+    if text and re.fullmatch(r"[+-]?\d+\.\d{12,}%", text):
+        amount = Decimal(text[:-1])
+        rounded = amount.to_integral_value()
+        if abs(amount - rounded) < Decimal("1e-12"):
+            return f"{rounded}%"
+    return text
+
+
 def as_index(v):
     """'1.0' -> 1"""
     s = clean(v)
@@ -124,8 +155,9 @@ def extract_workbook(source, level, sheets, seen_ids, assets):
             }
         count = 0
 
-        for row_number, row in enumerate(ws.iter_rows(min_row=2, values_only=True), start=2):
-            cells = dict(zip(header, row))
+        for row_number, row in enumerate(ws.iter_rows(min_row=2), start=2):
+            source_cells = dict(zip(header, row))
+            cells = {key: cell.value for key, cell in source_cells.items()}
             prompt = clean(cells.get("pytanie") or cells.get("zadanie"))
             if not prompt:
                 continue
@@ -167,6 +199,13 @@ def extract_workbook(source, level, sheets, seen_ids, assets):
                 raise SystemExit(f"Duplikat id: {qid} (wiersz {row_number})")
             seen_ids.add(qid)
             q = {"id": qid, **q, "level": level}
+
+            if kind == "abc":
+                q["options"] = [display_option(source_cells[key]) for key in ("a", "b", "c")]
+            elif kind == "open":
+                explanation = clean_explanation(cells.get("odpowiedz"))
+                if explanation and clean(explanation) != q["answer"]:
+                    q["explanation"] = explanation
 
             difficulty = clean(cells.get("trudnosc")) or ""
             diff = DIFFICULTY.get(difficulty.upper())

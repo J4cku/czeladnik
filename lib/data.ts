@@ -37,7 +37,11 @@ export type AbcQuestion = BaseQuestion & {
   answer: number;
 };
 
-export type OpenQuestion = BaseQuestion & { kind: "open"; answer: string };
+export type OpenQuestion = BaseQuestion & {
+  kind: "open";
+  answer: string;
+  explanation?: string;
+};
 export type TaskQuestion = BaseQuestion & { kind: "task"; time: string };
 export type Question = AbcQuestion | OpenQuestion | TaskQuestion;
 

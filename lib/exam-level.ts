@@ -1,5 +1,5 @@
-import { getCatalog, type ExamLevel, type Kind } from "./data";
-import { isWeak, type QuestionStat } from "./progress";
+import { getCatalog, type ExamLevel, type Kind, type Question } from "./data";
+import { isWeak, type QuestionStat, type SessionRecord } from "./progress";
 
 export function normalizeLevel(value?: string | null): ExamLevel {
   return value === "mistrz" ? "mistrz" : "czeladnik";
@@ -30,11 +30,45 @@ export function levelProgress(level: ExamLevel, stats: Record<string, QuestionSt
   const own = catalog.questions.flatMap((question) =>
     stats[question.id] ? [stats[question.id]] : [],
   );
-  const ok = own.reduce((sum, stat) => sum + stat.ok, 0);
-  const total = own.reduce((sum, stat) => sum + stat.ok + stat.bad, 0);
+  const abc = summarize(catalog.abcQuestions, stats);
   return {
     answered: own.length,
     weak: catalog.abcQuestions.filter((question) => isWeak(stats[question.id])).length,
-    accuracy: total ? Math.round((ok / total) * 100) : 0,
+    accuracy: abc.accuracy ?? 0,
   };
+}
+
+function summarize(questions: Question[], stats: Record<string, QuestionStat>) {
+  const own = questions.flatMap((question) => stats[question.id] ? [stats[question.id]] : []);
+  const ok = own.reduce((sum, stat) => sum + stat.ok, 0);
+  const attempts = own.reduce((sum, stat) => sum + stat.ok + stat.bad, 0);
+  return {
+    total: questions.length,
+    answered: own.length,
+    attempts,
+    accuracy: attempts ? Math.round(ok / attempts * 100) : null,
+    weak: questions.filter((question) => isWeak(stats[question.id])).length,
+  };
+}
+
+export function studyProgress(level: ExamLevel, stats: Record<string, QuestionStat>) {
+  const catalog = getCatalog(level);
+  return {
+    ...summarize(catalog.questions.filter((question) => question.kind !== "task"), stats),
+    abc: summarize(catalog.abcQuestions, stats),
+    open: summarize(catalog.openQuestions, stats),
+    difficulties: {
+      latwe: summarize(catalog.abcQuestions.filter((question) => question.difficulty === "latwe"), stats),
+      srednie: summarize(catalog.abcQuestions.filter((question) => question.difficulty === "srednie"), stats),
+      trudne: summarize(catalog.abcQuestions.filter((question) => question.difficulty === "trudne"), stats),
+    },
+  };
+}
+
+export function recentSessions(level: ExamLevel, history: SessionRecord[]) {
+  const ids = new Set(getCatalog(level).categories.map((category) => category.id));
+  return history.filter((session) => session.level
+    ? session.level === level
+    : session.categories.length > 0 && session.categories.every((id) => ids.has(id)),
+  ).slice(0, 5);
 }

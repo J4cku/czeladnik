@@ -16,7 +16,6 @@ import {
   EXAM_SPLIT,
   examPlan,
   examLength,
-  PASS_THRESHOLD,
   type WrittenExamQuestion,
 } from "@/lib/exam";
 import { sample, shuffle } from "@/lib/rng";
@@ -24,16 +23,16 @@ import { isWeak, recordAnswer, recordSession, useProgress } from "@/lib/progress
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
 import { QuestionMeta } from "@/components/QuestionMeta";
 import { QuestionImage } from "@/components/QuestionImage";
+import { QuestionAnswer } from "@/components/QuestionAnswer";
 import { ExamLevelToggle } from "@/components/ExamLevelToggle";
 import { normalizeLevel, selectedCategories, levelQuery } from "@/lib/exam-level";
+import { acceptsStudyShortcut, canChooseAnswer, isStudyCorrect, summarizeStudyResults } from "@/lib/study";
 
 type Item = { q: WrittenExamQuestion; order: number[] };
 type Pick = number | boolean | null;
 type Stage = "setup" | "running" | "done";
 
-function isCorrect(question: WrittenExamQuestion, pick: Pick) {
-  return question.kind === "abc" ? pick === question.answer : pick === true;
-}
+const isCorrect = isStudyCorrect;
 
 const LENGTHS = [10, 20, 40, 0] as const;
 const lengthLabel = (n: number) => (n === 0 ? "wszystkie" : String(n));
@@ -59,6 +58,7 @@ function LevelTest({ query }: { query: string }) {
 
   const [stage, setStage] = useState<Stage>("setup");
   const [activeSheet, setActiveSheet] = useState(false);
+  const [sessionMode, setSessionMode] = useState<"practice" | "exam" | "retry">("practice");
   const [items, setItems] = useState<Item[]>([]);
   const [index, setIndex] = useState(0);
   const [picks, setPicks] = useState<Pick[]>([]);
@@ -78,7 +78,7 @@ function LevelTest({ query }: { query: string }) {
   );
 
   const start = useCallback(
-    (questions: WrittenExamQuestion[], count: number, keepOrder = false, fullSheet = false) => {
+    (questions: WrittenExamQuestion[], count: number, keepOrder = false, fullSheet = false, retry = false) => {
       const picked = keepOrder
         ? questions
         : sample(questions, count > 0 ? count : questions.length);
@@ -86,22 +86,20 @@ function LevelTest({ query }: { query: string }) {
       setPicks(new Array(picked.length).fill(null));
       setIndex(0);
       setActiveSheet(fullSheet);
+      setSessionMode(retry ? "retry" : exam ? "exam" : "practice");
       setStage("running");
     },
-    [],
+    [exam],
   );
 
   const finish = useCallback(
     (finalPicks: Pick[], list: Item[]) => {
-      const score = list.reduce(
-        (sum, item, i) => sum + (isCorrect(item.q, finalPicks[i]) ? 1 : 0),
-        0,
-      );
+      const result = summarizeStudyResults(list.map(({ q }) => q), finalPicks);
       const covered = [...new Set(list.map((item) => item.q.category))];
-      recordSession({ score, total: list.length, categories: covered });
+      recordSession({ ...result, categories: covered, level, mode: sessionMode });
       setStage("done");
     },
-    [],
+    [level, sessionMode],
   );
 
   if (stage === "setup") {
@@ -134,7 +132,7 @@ function LevelTest({ query }: { query: string }) {
         setOnlyWeak={setOnlyWeak}
         poolSize={pool.length}
         weakSize={ready ? weakIds.size : 0}
-        onStart={() => (sheet ? start(buildExam(level), 0, true, true) : start(pool, length))}
+        onStart={() => (sheet ? start(buildExam(level), 0, true, true) : start(pool, length, false, false, onlyWeak))}
       />
     );
   }
@@ -176,7 +174,7 @@ function LevelTest({ query }: { query: string }) {
         const wrong = items
           .filter((item, i) => !isCorrect(item.q, picks[i]))
           .map((item) => item.q);
-        start(wrong, wrong.length);
+        start(wrong, wrong.length, false, false, true);
       }}
       onNewTest={() => setStage("setup")}
     />
@@ -464,7 +462,7 @@ function Scale({ total, index }: { total: number; index: number }) {
   );
 }
 
-function Runner({
+export function Runner({
   items,
   index,
   picks,
@@ -494,10 +492,10 @@ function Runner({
 
   useEffect(() => {
     function onKey(e: KeyboardEvent) {
-      if (e.metaKey || e.ctrlKey || e.altKey) return;
+      if (!acceptsStudyShortcut(e)) return;
       const key = e.key.toLowerCase();
       const slot = ["a", "1"].includes(key) ? 0 : ["b", "2"].includes(key) ? 1 : ["c", "3"].includes(key) ? 2 : -1;
-      if (slot >= 0 && !answered && item.q.kind === "abc") {
+      if (slot >= 0 && canChooseAnswer(pick, exam) && item.q.kind === "abc") {
         e.preventDefault();
         onPick(item.order[slot]);
       } else if (key === "enter" && answered) {
@@ -507,7 +505,7 @@ function Runner({
     }
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [answered, item, onPick, onNext]);
+  }, [answered, pick, exam, item, onPick, onNext]);
 
   const category = getCatalog(item.q.level).categoryById.get(item.q.category);
 
@@ -555,14 +553,14 @@ function Runner({
               } else if (chosen) {
                 tone = "border-flash bg-flash/[0.07]";
                 marker = "border-flash bg-flash text-white";
-              } else if (answered) {
+              } else if (reveal) {
                 tone = "border-ink/14 bg-card opacity-55";
               }
 
               return (
                 <li key={optionIndex}>
                   <button
-                    disabled={answered}
+                    disabled={!canChooseAnswer(pick, exam)}
                     onClick={() => onPick(optionIndex)}
                     className={`flex w-full items-start gap-4 rounded-md border p-4 text-left transition-colors disabled:cursor-default ${tone}`}
                   >
@@ -610,6 +608,9 @@ function Runner({
               Wybierz odpowiedź — klawisze A, B, C lub 1, 2, 3
             </p>
           )}
+          {answered && exam && question.kind === "abc" && (
+            <p className="meta text-ink-faint">Możesz zmienić odpowiedź przed przejściem dalej.</p>
+          )}
         </div>
       </article>
     </main>
@@ -635,10 +636,7 @@ function DrawingResponse({
       {revealed ? (
         <>
           <div className="mt-6 rounded-md border rule bg-card p-5">
-            <Eyebrow>Odpowiedź źródłowa</Eyebrow>
-            <p className="mt-3 whitespace-pre-line text-[15.5px] leading-relaxed">
-              {question.answer}
-            </p>
+            <QuestionAnswer question={question} />
           </div>
           <div className="mt-6 flex flex-wrap items-center gap-3">
             <Btn variant="solid" disabled={pick !== null} onClick={() => onPick(true)}>
@@ -665,14 +663,7 @@ function DrawingResponse({
 
 /* -------------------------------------------------------------- summary */
 
-function verdict(pct: number) {
-  if (pct >= 90) return "Gotowe na egzamin.";
-  if (pct >= 75) return "Blisko. Domknij słabe działy.";
-  if (pct >= 50) return "Materiał siedzi połowicznie — powtórz błędy.";
-  return "Za wcześnie na egzamin. Wróć do działów po kolei.";
-}
-
-function Summary({
+export function Summary({
   level,
   sheet,
   items,
@@ -690,23 +681,14 @@ function Summary({
   const wrong = items.filter((item, i) => !isCorrect(item.q, picks[i]));
   const score = items.length - wrong.length;
   const pct = Math.round((score / items.length) * 100);
-  const passed = score / items.length >= PASS_THRESHOLD;
+  const result = summarizeStudyResults(items.map(({ q }) => q), picks);
 
   const { categoryById } = getCatalog(level);
-  const perCategory = examPlan(level).map(({ category }) => category)
-    .map((category) => {
-      const own = items.filter((item) => item.q.category === category.id);
-      return {
-        category,
-        total: own.length,
-        ok: own.filter((item) => isCorrect(item.q, picks[items.indexOf(item)])).length,
-      };
-    })
-    .filter((row) => row.total > 0);
+  const perCategory = result.perCategory;
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
-      <Eyebrow>Wynik</Eyebrow>
+      <Eyebrow>{sheet ? "Wynik treningowego arkusza" : "Wynik treningowy"}</Eyebrow>
 
       <div className="resolve mt-4 flex flex-wrap items-baseline gap-x-6 gap-y-2 border-b rule pb-6">
         <p className="optotype text-[clamp(3.5rem,16vw,7rem)]">
@@ -716,49 +698,38 @@ function Summary({
         <p className="optotype text-3xl text-flash">{pct}%</p>
       </div>
 
-      {sheet ? (
-        <p
-          className={`resolve-1 resolve ui mt-5 text-lg font-semibold ${
-            passed ? "text-duo-green" : "text-duo-red"
-          }`}
-        >
-          {passed ? "Zdane" : "Niezdane"}
-          <span className="ml-3 font-normal text-ink-soft">
-            próg przyjęty w aplikacji: {Math.round(PASS_THRESHOLD * 100)}%
-          </span>
-        </p>
-      ) : (
-        <p className="resolve-1 resolve mt-5 text-lg text-ink-soft">{verdict(pct)}</p>
+      <p className="resolve-1 resolve mt-5 text-sm leading-relaxed text-ink-soft">
+        Wynik służy do nauki. O zaliczeniu egzaminu decydują zasady właściwej izby i wyniki poszczególnych przedmiotów.
+      </p>
+
+      {result.selfAssessedTotal > 0 && (
+        <div className="mt-4 space-y-2 text-sm text-ink-soft">
+          <p>Odpowiedzi ABC: <strong>{result.objectiveScore}/{result.objectiveTotal}</strong> poprawnych.</p>
+          <p>Rysunek zawodowy · samoocena: <strong>{result.selfAssessedScore}/{result.selfAssessedTotal}</strong> „umiem”.</p>
+        </div>
       )}
 
-      {items.some((item) => item.q.kind === "open") && (
-        <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-          Wynik obejmuje samoocenę pytań z rysunku zawodowego.
-        </p>
-      )}
-
-      {perCategory.length > 1 && (
+      {perCategory.length > 0 && (
         <section className="mt-10">
           <Eyebrow>Wynik po tematach</Eyebrow>
           <ul className="mt-4 border-t rule">
             {perCategory.map((row) => (
               <li
-                key={row.category.id}
+                key={row.category}
                 className="grid grid-cols-[1fr_auto] items-center gap-x-4 border-b rule py-3"
               >
                 <div>
-                  <p className="text-[15px]">{row.category.label}</p>
+                  <p className="text-[15px]">{categoryById.get(row.category)?.label}</p>
+                  <p className="mt-1 text-xs text-ink-faint">{row.kind === "open" ? "Samoocena · umiem" : "Poprawne odpowiedzi ABC"}</p>
                   <div className="mt-2 h-[3px] w-full max-w-xs bg-ink/10">
                     <div
-                      className={`h-full ${
-                        row.ok / row.total >= PASS_THRESHOLD ? "bg-duo-green" : "bg-duo-red"
-                      }`}
-                      style={{ width: `${(row.ok / row.total) * 100}%` }}
+                      className="h-full bg-flash"
+                      style={{ width: `${(row.score / row.total) * 100}%` }}
                     />
                   </div>
                 </div>
                 <span className="font-mono text-[14px]">
-                  {row.ok}/{row.total}
+                  {row.score}/{row.total}
                 </span>
               </li>
             ))}
@@ -796,10 +767,14 @@ function Summary({
                     {item.q.prompt}
                   </p>
                   {item.q.image && <div className="mt-4"><QuestionImage image={item.q.image} alt={`Rysunek do pytania: ${item.q.prompt}`} /></div>}
-                  <p className="mt-4 border-l-2 border-duo-green pl-4 text-[15px] leading-relaxed">
-                    <span className="meta mr-2 text-duo-green">poprawna</span>
-                    {item.q.kind === "abc" ? item.q.options[item.q.answer] : item.q.answer}
-                  </p>
+                  {item.q.kind === "abc" ? (
+                    <p className="mt-4 border-l-2 border-duo-green pl-4 text-[15px] leading-relaxed">
+                      <span className="meta mr-2 text-duo-green">poprawna</span>
+                      {item.q.options[item.q.answer]}
+                    </p>
+                  ) : (
+                    <div className="mt-4 border-l-2 border-ink/20 pl-4"><QuestionAnswer question={item.q} /></div>
+                  )}
                   {item.q.kind === "abc" && typeof pick === "number" && (
                     <p className="mt-2 border-l-2 border-duo-red pl-4 text-[15px] leading-relaxed text-ink-soft">
                       <span className="meta mr-2 text-duo-red">twoja</span>

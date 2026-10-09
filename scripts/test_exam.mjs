@@ -386,3 +386,51 @@ test("the reset control names both qualifications and requires confirmation of t
   control.props.onClick();
   assert.equal(resets, 1, "confirmation must invoke the existing global reset exactly once");
 });
+
+test("ABC accuracy is not inflated by oral or drawing self-assessment", () => {
+  const { levelProgress } = load("../lib/exam-level.ts");
+  const stats = {
+    "bhp-81331": { seen: 2, ok: 1, bad: 1, lastOk: false, ts: 1 },
+    "ustny-technologia-249086": { seen: 100, ok: 100, bad: 0, lastOk: true, ts: 1 },
+    "rysunek-269004": { seen: 100, ok: 100, bad: 0, lastOk: true, ts: 1 },
+  };
+  assert.deepEqual(levelProgress("czeladnik", stats), { answered: 3, weak: 1, accuracy: 50 });
+});
+
+test("study analytics distinguish coverage, self-assessment and unseen difficulties", () => {
+  const { studyProgress } = load("../lib/exam-level.ts");
+  assert.equal(typeof studyProgress, "function");
+  const stats = {
+    "bhp-81331": { seen: 2, ok: 1, bad: 1, lastOk: false, ts: 1 },
+    "ustny-technologia-249086": { seen: 1, ok: 1, bad: 0, lastOk: true, ts: 1 },
+    "mistrz-bhp-81410": { seen: 1, ok: 1, bad: 0, lastOk: true, ts: 1 },
+    "removed": { seen: 10, ok: 10, bad: 0, lastOk: true, ts: 1 },
+  };
+  const summary = studyProgress("czeladnik", stats);
+  assert.equal(summary.total, 702);
+  assert.equal(summary.answered, 2);
+  assert.equal(summary.abc.attempts, 2);
+  assert.equal(summary.abc.accuracy, 50);
+  assert.equal(summary.open.attempts, 1);
+  assert.equal(summary.open.accuracy, 100);
+  assert.equal(summary.open.weak, 0);
+  assert.equal(summary.difficulties.latwe.attempts, 2);
+  assert.equal(summary.difficulties.latwe.accuracy, 50);
+  assert.equal(summary.difficulties.srednie.accuracy, null);
+  assert.equal(studyProgress("czeladnik", {}).abc.accuracy, null);
+});
+
+test("recent sessions are level-scoped and do not combine retries with full exams", () => {
+  const { recentSessions } = load("../lib/exam-level.ts");
+  assert.equal(typeof recentSessions, "function");
+  const history = [
+    { ts: 5, score: 1, total: 1, categories: ["bhp"], level: "czeladnik", mode: "retry" },
+    { ts: 4, score: 50, total: 63, categories: ["mistrz-bhp"], level: "mistrz", mode: "exam" },
+    { ts: 3, score: 7, total: 10, categories: ["bhp"] },
+    { ts: 2, score: 8, total: 9, categories: ["ustny-technologia"], level: "czeladnik", mode: "oral" },
+    { ts: 1, score: 8, total: 10, categories: ["bhp"], level: "czeladnik", mode: "practice" },
+  ];
+  assert.deepEqual(recentSessions("czeladnik", history).map((s) => s.ts), [5, 3, 2, 1]);
+  assert.deepEqual(recentSessions("mistrz", history).map((s) => s.ts), [4]);
+  assert.equal(recentSessions("czeladnik", history)[1].mode, undefined);
+});

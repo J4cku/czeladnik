@@ -91,6 +91,3 @@ export function buildExam(level: ExamLevel = "czeladnik"): WrittenExamQuestion[]
 
   return exam;
 }
-
-/** Próg przyjęty w aplikacji dla części pisemnej. */
-export const PASS_THRESHOLD = 0.5;

@@ -2,6 +2,7 @@ import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
 import { Suspense } from "react";
 import { SiteNavigation } from "./SiteNavigation";
+import { StorageNotice } from "./StorageNotice";
 
 /** The duochrome target: red on one side, green on the other. */
 export function Mark({ size = 22 }: { size?: number }) {
@@ -70,6 +71,7 @@ export function SiteHeader({ current }: { current?: "test" | "fiszki" | "zadania
           </SiteNavigation>
         </Suspense>
       </div>
+      <StorageNotice />
     </header>
   );
 }

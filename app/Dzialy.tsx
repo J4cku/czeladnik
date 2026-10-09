@@ -25,12 +25,17 @@ export function StudyLinks() {
   const params = useSearchParams();
   const level = normalizeLevel(params.get("poziom"));
   return (
-    <div className="resolve resolve-4 mt-8 flex flex-wrap items-center gap-3">
+    <div className="resolve resolve-4 mt-8">
+      <ExamLevelToggle level={level} onChange={(next) => {
+        window.history.pushState(null, "", `?${levelQuery(params.toString(), next)}`);
+      }} />
+      <div className="mt-5 flex flex-wrap items-center gap-3">
       <LinkBtn href={`/test?poziom=${level}`} variant="accent" className="px-6 py-3 text-base">Losuj test ABC</LinkBtn>
       <LinkBtn href={`/test?poziom=${level}&arkusz=1`} variant="ghost">Arkusz egzaminacyjny</LinkBtn>
-      <LinkBtn href={`/fiszki?poziom=${level}`} variant="ghost">Fiszki ustne</LinkBtn>
+      <LinkBtn href={`/fiszki?poziom=${level}`} variant="ghost">Fiszki i rysunki</LinkBtn>
       <LinkBtn href={`/fiszki?poziom=${level}&egzamin=1`} variant="ghost">Egzamin ustny · 9 pytań</LinkBtn>
       <LinkBtn href="/zadania" variant="ghost">Zadania praktyczne · Czeladnik</LinkBtn>
+      </div>
     </div>
   );
 }
@@ -65,6 +70,7 @@ export function Dzialy() {
         {categories.map((cat) => {
           const done = ready ? (known[cat.id] ?? 0) : 0;
           const pct = Math.round((done / cat.count) * 100);
+          const attempted = ready && questions.some((question) => question.category === cat.id && store.stats[question.id]?.seen > 0);
           return (
             <li key={cat.id} className="bg-card">
               <Link
@@ -72,7 +78,7 @@ export function Dzialy() {
                 className="group flex h-full flex-col gap-3 p-5 transition-colors hover:bg-ink/[0.03]"
               >
                 <div className="flex items-baseline justify-between gap-3">
-                  <span className="meta text-ink-faint">{kindLabel[cat.kind]}</span>
+                  <span className="meta text-ink-faint">{cat.id === "rysunek" ? "pisemny · odpowiedź otwarta" : kindLabel[cat.kind]}</span>
                   <span className="meta text-ink-faint">
                     {cat.count}{" "}
                     {cat.kind === "task"
@@ -88,7 +94,7 @@ export function Dzialy() {
                   {cat.description}
                 </p>
 
-                <div className="mt-auto pt-3">
+                {cat.kind !== "task" && <div className="mt-auto pt-3">
                   <div className="h-[3px] w-full bg-ink/10">
                     <div
                       className="h-full bg-duo-green transition-[width] duration-500"
@@ -96,9 +102,9 @@ export function Dzialy() {
                     />
                   </div>
                   <p className="meta mt-2 text-ink-faint">
-                    {done > 0 ? `${pct}% opanowane` : "jeszcze nie zaczęte"}
+                    {attempted ? `${pct}% ostatnio poprawne` : "jeszcze nie zaczęte"}
                   </p>
-                </div>
+                </div>}
               </Link>
             </li>
           );

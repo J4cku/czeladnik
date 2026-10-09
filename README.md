@@ -18,12 +18,19 @@ przeglądarki — bez logowania i bez backendu.
   materiałoznawstwa i maszynoznawstwa. Każdy poziom korzysta z własnego skoroszytu.
 - **Fiszki** — 241 pytań opisowych dla czeladnika (część ustna i rysunek zawodowy)
   lub 177 pytań z części ustnej dla mistrza.
-  Samoocena „umiem / do powtórki”.
+  Samoocena „umiem / do powtórki”. Odpowiedź z klucza i rozwinięte objaśnienie
+  są dostępne osobno. Talia priorytetowa zaczyna się od pytań nowych i do powtórki.
 - **Rysunki** — ilustracje przy wszystkich 59 pytaniach rysunkowych czeladnika
   i 60 pytaniach rysunkowych mistrza, również w podsumowaniach powtórek.
 - **Zadania praktyczne** — 30 zadań czeladniczych wraz z czasem wykonania, z losowaniem.
 
 Postępy zapisują się w `localStorage` pod kluczem `ostrosc.progress.v2`.
+Trafność ABC jest liczona osobno od samooceny fiszek i rysunków. Ekran główny
+pokazuje pokrycie bazy, wyniki według trudności i ostatnie sesje z oznaczeniem trybu.
+Wynik arkusza jest wynikiem treningowym, bez deklaracji oficjalnego zaliczenia egzaminu.
+Zapis między kartami jest kolejkowany przez Web Locks w obsługujących go przeglądarkach.
+Bez tego API zapis pozostaje lokalny i może kolidować przy jednoczesnej pracy w kilku kartach.
+Jeśli przeglądarka blokuje zapis, aplikacja pokazuje komunikat i zachowuje wyniki w pamięci.
 Dotychczasowe identyfikatory czeladnika pozostają bez zmian; identyfikatory mistrza
 mają prefiks `mistrz-`. Statystyki i powtórka błędów ABC dotyczą wybranego poziomu.
 Adresy bez parametru `poziom` domyślnie otwierają czeladnika; mistrza można otworzyć
