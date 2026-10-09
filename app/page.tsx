@@ -1,13 +1,11 @@
-import {
-  abcQuestions,
-  categories,
-  openQuestions,
-  taskQuestions,
-  totalCount,
-} from "@/lib/data";
-import { LinkBtn, SiteFooter, SiteHeader } from "@/components/ui";
-import { Dzialy } from "./Dzialy";
-import { ProgressStrip } from "./ProgressStrip";
+import { Suspense } from "react";
+import { getCatalog } from "@/lib/data";
+import { SiteFooter, SiteHeader } from "@/components/ui";
+import { Dzialy, StudyLinks } from "./Dzialy";
+
+const apprentice = getCatalog("czeladnik");
+const master = getCatalog("mistrz");
+const totalCount = apprentice.totalCount + master.totalCount;
 
 const chart = [
   { acuity: "6/60", node: <span className="optotype text-[clamp(2.4rem,11vw,8.5rem)]">Ostrość</span> },
@@ -23,7 +21,7 @@ const chart = [
     acuity: "6/12",
     node: (
       <span className="optotype text-[clamp(0.95rem,2.6vw,1.35rem)] text-ink-soft">
-        Egzamin czeladniczy · optyk okularowy
+        Czeladnik i Mistrz · optyk okularowy
       </span>
     ),
   },
@@ -31,8 +29,9 @@ const chart = [
     acuity: "6/6",
     node: (
       <span className="block max-w-xl text-[15px] leading-relaxed text-ink-soft">
-        Złóż arkusz z 49 pytaniami albo własny zestaw, ćwicz egzamin ustny
-        z 9 pytaniami i odpowiedzi na fiszkach, przeglądaj zadania praktyczne. Kolejność pytań i odpowiedzi
+        Złóż arkusz czeladniczy z 49 pytaniami lub mistrzowski z 63 pytaniami,
+        ćwicz egzamin ustny z 9 pytaniami i odpowiedzi na fiszkach.
+        Zadania praktyczne dotyczą czeladnika. Kolejność pytań i odpowiedzi
         jest inna przy każdym podejściu.
       </span>
     ),
@@ -67,35 +66,17 @@ export default function Home() {
               ))}
             </dl>
 
-            <div className="resolve resolve-4 mt-8 flex flex-wrap items-center gap-3">
-              <LinkBtn href="/test" variant="accent" className="px-6 py-3 text-base">
-                Losuj test ABC
-              </LinkBtn>
-              <LinkBtn href="/test?arkusz=1" variant="ghost">
-                Arkusz egzaminacyjny
-              </LinkBtn>
-              <LinkBtn href="/fiszki" variant="ghost">
-                Fiszki ustne
-              </LinkBtn>
-              <LinkBtn href="/fiszki?egzamin=1" variant="ghost">
-                Egzamin ustny · 9 pytań
-              </LinkBtn>
-              <LinkBtn href="/zadania" variant="ghost">
-                Zadania praktyczne
-              </LinkBtn>
-            </div>
+            <Suspense><StudyLinks /></Suspense>
 
             <ul className="meta mt-8 flex flex-wrap gap-x-6 gap-y-2 text-ink-faint">
-              <li>{abcQuestions.length} pytań ABC</li>
-              <li>{openQuestions.length} pytań opisowych</li>
-              <li>{taskQuestions.length} zadań praktycznych</li>
-              <li>{categories.length} działów</li>
+              <li>{apprentice.totalCount} pytań i zadań · Czeladnik</li>
+              <li>{master.totalCount} pytania · Mistrz</li>
+              <li>{apprentice.taskQuestions.length} zadań praktycznych · Czeladnik</li>
             </ul>
           </div>
         </section>
 
-        <ProgressStrip />
-        <Dzialy />
+        <Suspense><Dzialy /></Suspense>
       </main>
 
       <SiteFooter />

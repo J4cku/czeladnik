@@ -20,9 +20,9 @@ const plex = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Ostrość — pytania na egzamin czeladniczy, optyk okularowy",
+  title: "Ostrość — egzamin czeladniczy i mistrzowski, optyk okularowy",
   description:
-    "732 pytania i zadania na egzamin czeladniczy z optyki okularowej. Losowane testy ABC, fiszki do części ustnej i lista zadań praktycznych.",
+    "1585 pytań i zadań na egzamin czeladniczy i mistrzowski z optyki okularowej. Arkusze z 49 lub 63 pytaniami, egzamin ustny, fiszki i zadania praktyczne dla czeladnika.",
 };
 
 export const viewport: Viewport = {

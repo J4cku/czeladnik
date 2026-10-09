@@ -2,9 +2,17 @@ import raw from "./questions.json";
 
 export type Kind = "abc" | "open" | "task";
 export type Difficulty = "latwe" | "srednie" | "trudne";
+export type ExamLevel = "czeladnik" | "mistrz";
+
+export type QuestionImageData = {
+  src: string;
+  width: number;
+  height: number;
+};
 
 export type Category = {
   id: string;
+  level: ExamLevel;
   kind: Kind;
   label: string;
   description: string;
@@ -13,12 +21,14 @@ export type Category = {
 
 export type BaseQuestion = {
   id: string;
+  level: ExamLevel;
   category: string;
   kind: Kind;
   nr: number;
   prompt: string;
   difficulty?: Difficulty;
   officialNr?: number;
+  image?: QuestionImageData;
 };
 
 export type AbcQuestion = BaseQuestion & {
@@ -33,25 +43,43 @@ export type Question = AbcQuestion | OpenQuestion | TaskQuestion;
 
 const data = raw as unknown as { categories: Category[]; questions: Question[] };
 
-export const categories = data.categories;
-export const questions = data.questions;
+function createCatalog(level: ExamLevel) {
+  const categories = data.categories.filter((category) => category.level === level);
+  const questions = data.questions.filter((question) => question.level === level);
 
-export const categoryById = new Map(categories.map((c) => [c.id, c]));
+  return {
+    categories,
+    questions,
+    categoryById: new Map(categories.map((category) => [category.id, category])),
+    abcCategories: categories.filter((category) => category.kind === "abc"),
+    openCategories: categories.filter((category) => category.kind === "open"),
+    abcQuestions: questions.filter((question): question is AbcQuestion => question.kind === "abc"),
+    openQuestions: questions.filter((question): question is OpenQuestion => question.kind === "open"),
+    taskQuestions: questions.filter((question): question is TaskQuestion => question.kind === "task"),
+    totalCount: questions.length,
+  };
+}
 
-export const abcCategories = categories.filter((c) => c.kind === "abc");
-export const openCategories = categories.filter((c) => c.kind === "open");
+const catalogs = {
+  czeladnik: createCatalog("czeladnik"),
+  mistrz: createCatalog("mistrz"),
+};
 
-export const abcQuestions = questions.filter(
-  (q): q is AbcQuestion => q.kind === "abc",
-);
-export const openQuestions = questions.filter(
-  (q): q is OpenQuestion => q.kind === "open",
-);
-export const taskQuestions = questions.filter(
-  (q): q is TaskQuestion => q.kind === "task",
-);
+export function getCatalog(level: ExamLevel = "czeladnik") {
+  return catalogs[level];
+}
 
-export const totalCount = questions.length;
+export const {
+  categories,
+  questions,
+  categoryById,
+  abcCategories,
+  openCategories,
+  abcQuestions,
+  openQuestions,
+  taskQuestions,
+  totalCount,
+} = getCatalog();
 
 export const difficultyLabel: Record<Difficulty, string> = {
   latwe: "łatwe",

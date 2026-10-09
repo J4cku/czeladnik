@@ -1,8 +1,8 @@
 import {
-  categoryById,
-  openQuestions,
+  getCatalog,
   type Category,
   type Difficulty,
+  type ExamLevel,
   type OpenQuestion,
 } from "./data";
 import { sample, shuffle } from "./rng";
@@ -22,8 +22,10 @@ export type OralCategoryPlan = {
   available: Record<Difficulty, number>;
 };
 
-export function oralExamPlan(): OralCategoryPlan[] {
-  return ORAL_CATEGORY_IDS.map((categoryId) => {
+export function oralExamPlan(level: ExamLevel = "czeladnik"): OralCategoryPlan[] {
+  const { categoryById, openQuestions } = getCatalog(level);
+  return ORAL_CATEGORY_IDS.map((id) => {
+    const categoryId = level === "mistrz" ? `mistrz-${id}` : id;
     const category = categoryById.get(categoryId);
     if (!category) throw new Error(`Brak działu ustnego: ${categoryId}`);
     const pool = openQuestions.filter((question) => question.category === categoryId);
@@ -38,8 +40,9 @@ export function oralExamPlan(): OralCategoryPlan[] {
   });
 }
 
-export function buildOralExam(): OpenQuestion[] {
-  return oralExamPlan().flatMap(({ category, available }) => {
+export function buildOralExam(level: ExamLevel = "czeladnik"): OpenQuestion[] {
+  const { openQuestions } = getCatalog(level);
+  return oralExamPlan(level).flatMap(({ category, available }) => {
     for (const difficulty of ORAL_DIFFICULTIES) {
       if (available[difficulty] < 1) {
         throw new Error(`Brak pytań ${difficulty} w dziale: ${category.label}`);

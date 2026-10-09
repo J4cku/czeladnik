@@ -1,11 +1,9 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  categoryById,
-  openCategories,
-  openQuestions,
+  getCatalog,
   questionsWord,
   type OpenQuestion,
 } from "@/lib/data";
@@ -14,6 +12,9 @@ import { buildOralExam, oralExamPlan, ORAL_EXAM_LENGTH } from "@/lib/oral-exam";
 import { recordAnswer, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
 import { QuestionMeta } from "@/components/QuestionMeta";
+import { QuestionImage } from "@/components/QuestionImage";
+import { ExamLevelToggle } from "@/components/ExamLevelToggle";
+import { levelQuery, normalizeLevel, selectedCategories } from "@/lib/exam-level";
 
 type Stage = "setup" | "running" | "done";
 
@@ -21,20 +22,22 @@ const SIZES = [10, 20, 0] as const;
 
 export default function FiszkiClient() {
   const params = useSearchParams();
-  const { store, ready } = useProgress();
+  return <LevelFiszki key={params.toString()} query={params.toString()} />;
+}
+
+function LevelFiszki({ query }: { query: string }) {
+  const params = new URLSearchParams(query);
+  const level = normalizeLevel(params.get("poziom"));
+  const { openCategories, openQuestions, categoryById } = getCatalog(level);
+  const { store } = useProgress();
   const [oralExam, setOralExam] = useState(() => params.get("egzamin") === "1");
-  const oralPlan = useMemo(() => oralExamPlan(), []);
+  const oralPlan = oralExamPlan(level);
   const oralAvailable = oralPlan.every(({ available }) =>
     Object.values(available).every((count) => count >= 1),
   );
 
   // Deep link: /fiszki?dzialy=ustny-technologia
-  const [selected, setSelected] = useState<string[]>(() => {
-    const ids = (params.get("dzialy") ?? "")
-      .split(",")
-      .filter((id) => categoryById.get(id)?.kind === "open");
-    return ids.length ? ids : openCategories.map((c) => c.id);
-  });
+  const [selected, setSelected] = useState<string[]>(() => selectedCategories(level, "open", params.get("dzialy")));
   const [size, setSize] = useState<number>(10);
   const [freshFirst, setFreshFirst] = useState(true);
 
@@ -44,10 +47,7 @@ export default function FiszkiClient() {
   const [shown, setShown] = useState(false);
   const [known, setKnown] = useState<boolean[]>([]);
 
-  const pool = useMemo(
-    () => openQuestions.filter((q) => selected.includes(q.category)),
-    [selected],
-  );
+  const pool = openQuestions.filter((q) => selected.includes(q.category));
 
   const start = useCallback(
     (cards: OpenQuestion[]) => {
@@ -62,7 +62,7 @@ export default function FiszkiClient() {
 
   const build = useCallback(() => {
     if (oralExam) {
-      start(buildOralExam());
+      start(buildOralExam(level));
       return;
     }
     // "Najpierw nieopanowane" pulls unseen and previously-missed cards to the front.
@@ -78,7 +78,7 @@ export default function FiszkiClient() {
       if (!stat) return 0;
       return stat.lastOk ? 2 : 1;
     }
-  }, [oralExam, pool, size, freshFirst, store, start]);
+  }, [oralExam, pool, size, freshFirst, store, start, level]);
 
   const grade = useCallback(
     (ok: boolean) => {
@@ -124,6 +124,16 @@ export default function FiszkiClient() {
           Przeczytaj pytanie, odpowiedz na głos, dopiero potem odsłoń wzorcową
           odpowiedź i oceń się sam.
         </p>
+
+        <div className="border-b rule py-6">
+          <Eyebrow className="mb-3">Poziom egzaminu</Eyebrow>
+          <ExamLevelToggle level={level} onChange={(next) => {
+            const mode = new URLSearchParams(query);
+            if (oralExam) mode.set("egzamin", "1");
+            else mode.delete("egzamin");
+            window.history.pushState(null, "", `?${levelQuery(mode.toString(), next, "open")}`);
+          }} />
+        </div>
 
         <div className="flex flex-wrap gap-2 border-b rule py-6" aria-label="Tryb ćwiczenia">
           {[
@@ -246,10 +256,9 @@ export default function FiszkiClient() {
           </p>
         </div>
 
-        {!oralExam && ready && selected.includes("rysunek") && (
+        {!oralExam && selected.includes("rysunek") && (
           <p className="mt-8 border-l-2 border-amber pl-4 text-sm leading-relaxed text-ink-soft">
-            Dział „Rysunek zawodowy” odsyła do rysunków z arkusza egzaminacyjnego.
-            Rysunków nie ma jeszcze w bazie. Znajdziesz tu opis prawidłowej odpowiedzi.
+            W dziale „Rysunek zawodowy” oglądasz rysunek, odkrywasz odpowiedź źródłową i oceniasz się sam.
           </p>
         )}
       </main>
@@ -283,6 +292,8 @@ export default function FiszkiClient() {
           <h1 className="mt-4 font-body text-[1.5rem] leading-snug font-medium sm:text-[1.9rem]">
             {card.prompt}
           </h1>
+
+          {card.image && <div className="mt-6"><QuestionImage image={card.image} alt={`Rysunek do pytania: ${card.prompt}`} /></div>}
 
           {shown ? (
             <>
@@ -342,7 +353,7 @@ export default function FiszkiClient() {
         <Btn variant="ghost" onClick={() => setStage("setup")}>
           {oralExam ? "Nowy zestaw ustny" : "Nowa talia"}
         </Btn>
-        <LinkBtn href="/" variant="quiet" className="px-3">
+        <LinkBtn href={`/?poziom=${level}`} variant="quiet" className="px-3">
           Strona główna
         </LinkBtn>
       </div>
@@ -357,6 +368,7 @@ export default function FiszkiClient() {
                   {categoryById.get(card.category)?.label}
                 </p>
                 <p className="mt-1.5 text-[16px] leading-snug">{card.prompt}</p>
+                {card.image && <div className="mt-4"><QuestionImage image={card.image} alt={`Rysunek do pytania: ${card.prompt}`} /></div>}
               </li>
             ))}
           </ul>

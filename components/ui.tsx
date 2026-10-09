@@ -1,5 +1,7 @@
 import Link from "next/link";
 import type { ComponentProps, ReactNode } from "react";
+import { Suspense } from "react";
+import { SiteNavigation } from "./SiteNavigation";
 
 /** The duochrome target: red on one side, green on the other. */
 export function Mark({ size = 22 }: { size?: number }) {
@@ -56,37 +58,17 @@ export function Eyebrow({
 }
 
 export function SiteHeader({ current }: { current?: "test" | "fiszki" | "zadania" }) {
-  const nav = [
-    { href: "/test", key: "test", label: "Test ABC" },
-    { href: "/fiszki", key: "fiszki", label: "Fiszki" },
-    { href: "/zadania", key: "zadania", label: "Zadania" },
-  ] as const;
-
   return (
     <header className="border-b rule">
       <div className="mx-auto flex max-w-5xl items-center justify-between gap-3 px-4 py-4 sm:px-8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <Mark />
-          <span className="ui text-[14px] font-bold tracking-[0.12em] uppercase sm:text-[15px] sm:tracking-[0.16em]">
-            Ostrość
-          </span>
-        </Link>
-        <nav className="flex items-center gap-1">
-          {nav.map((item) => (
-            <Link
-              key={item.key}
-              href={item.href}
-              aria-current={current === item.key ? "page" : undefined}
-              className={`ui rounded-full px-2.5 py-1.5 text-[12px] font-medium whitespace-nowrap transition-colors sm:px-3 sm:text-[13px] ${
-                current === item.key
-                  ? "bg-ink text-paper"
-                  : "text-ink-soft hover:bg-ink/[0.06] hover:text-ink"
-              }`}
-            >
-              {item.label}
-            </Link>
-          ))}
-        </nav>
+        <Suspense>
+          <SiteNavigation current={current}>
+            <Mark />
+            <span className="ui text-[14px] font-bold tracking-[0.12em] uppercase sm:text-[15px] sm:tracking-[0.16em]">
+              Ostrość
+            </span>
+          </SiteNavigation>
+        </Suspense>
       </div>
     </header>
   );
@@ -97,8 +79,8 @@ export function SiteFooter() {
     <footer className="mt-20 border-t rule">
       <div className="mx-auto flex max-w-5xl flex-col gap-2 px-5 py-8 text-[13px] text-ink-faint sm:flex-row sm:items-center sm:justify-between sm:px-8">
         <p>
-          Pytania pochodzą z arkusza przygotowanego do egzaminu czeladniczego —
-          optyk okularowy.
+          Pytania pochodzą z końcowych arkuszy egzaminu czeladniczego i mistrzowskiego —
+          optyk okularowy. Zadania praktyczne dotyczą czeladnika.
         </p>
         <p className="meta">Postępy zapisują się w tej przeglądarce</p>
       </div>
