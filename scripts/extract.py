@@ -1,7 +1,19 @@
 """Extracts both final workbooks and their drawings into the question catalog."""
 import hashlib, json, re, unicodedata
 from pathlib import Path
-import openpyxl
+
+DEPENDENCY_ERROR = (
+    "Brak zależności lub obsługi obrazów (openpyxl i Pillow). "
+    "Zainstaluj zależności: python3 -m pip install -r requirements.txt"
+)
+
+try:
+    import openpyxl
+    from PIL import Image as PillowImage
+    from openpyxl.drawing import image as workbook_images
+    from openpyxl.reader import drawings as workbook_drawings
+except ImportError:
+    raise SystemExit(DEPENDENCY_ERROR)
 
 ROOT = Path(__file__).resolve().parent.parent
 OUT = ROOT / "lib" / "questions.json"
@@ -178,6 +190,8 @@ def extract_workbook(source, level, sheets, seen_ids, assets):
 
 
 def main():
+    if not PillowImage or not workbook_images.PILImage or not workbook_drawings.PILImage:
+        raise SystemExit(DEPENDENCY_ERROR)
     categories, questions = [], []
     seen_ids, assets = set(), {}
     for level, (filename, sheets) in LEVELS.items():

@@ -1,10 +1,14 @@
 import hashlib
 import json
 import re
+import subprocess
+import sys
+import textwrap
 import unittest
 import unicodedata
 from collections import Counter
 from pathlib import Path
+from tempfile import TemporaryDirectory
 
 import openpyxl
 from PIL import Image
@@ -36,6 +40,55 @@ def clean(value):
 
 
 class QuestionsDataTest(unittest.TestCase):
+    def test_extraction_preserves_outputs_when_image_support_is_unavailable(self):
+        runner = textwrap.dedent("""
+            import builtins
+            import sys
+            from pathlib import Path
+
+            sandbox = Path(sys.argv[1])
+            if sys.argv[2] == "pillow":
+                original_import = builtins.__import__
+                def without_pillow(name, *args, **kwargs):
+                    if name == "PIL" or name.startswith("PIL."):
+                        raise ImportError("Pillow is unavailable")
+                    return original_import(name, *args, **kwargs)
+                builtins.__import__ = without_pillow
+            else:
+                import openpyxl.reader.drawings
+                openpyxl.reader.drawings.PILImage = None
+
+            from scripts import extract
+            extract.ROOT = sandbox
+            extract.OUT = sandbox / "lib/questions.json"
+            extract.IMAGE_OUT = sandbox / "public/question-images"
+            extract.main()
+        """)
+        for unavailable in ("pillow", "image_support"):
+            with self.subTest(unavailable=unavailable), TemporaryDirectory() as directory:
+                sandbox = Path(directory)
+                (sandbox / "data").symlink_to(ROOT / "data", target_is_directory=True)
+                output = sandbox / "lib/questions.json"
+                output.parent.mkdir()
+                output.write_bytes(b"existing catalog")
+                asset = sandbox / "public/question-images/existing.png"
+                asset.parent.mkdir(parents=True)
+                asset.write_bytes(b"existing image")
+
+                result = subprocess.run(
+                    [sys.executable, "-B", "-c", runner, str(sandbox), unavailable],
+                    cwd=ROOT,
+                    text=True,
+                    capture_output=True,
+                )
+
+                self.assertNotEqual(0, result.returncode, result.stdout + result.stderr)
+                self.assertIn("Pillow", result.stderr)
+                self.assertIn("requirements.txt", result.stderr)
+                self.assertEqual(b"existing catalog", output.read_bytes())
+                self.assertEqual({asset}, set(asset.parent.iterdir()))
+                self.assertEqual(b"existing image", asset.read_bytes())
+
     def test_question_content_matches_checked_workbook_snapshot(self):
         data = catalog("czeladnik")
         for category in data["categories"]:

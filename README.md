@@ -27,16 +27,19 @@ npm run dev
 
 ## Dane
 
-Pytania pochodzą z `data/Czeladnik_optyk_pytania_odpowiedzi.xlsx`. Po zmianie
-arkusza przelicz `lib/questions.json`:
+Pytania i rysunki pochodzą z `data/Czeladnik_optyk_pytania_odpowiedzi.xlsx`
+oraz `data/Mistrz_optyk_pytania_odpowiedzi.xlsx`. Przed przeliczeniem danych
+zainstaluj zależności Pythona (openpyxl i Pillow) z `requirements.txt`:
 
 ```bash
-npm run data     # wymaga pythona z openpyxl
+python3 -m pip install -r requirements.txt
+npm run data
 ```
 
 Skrypt (`scripts/extract.py`) waliduje dane po drodze — przerywa, gdy w pytaniu
 ABC brakuje wariantu odpowiedzi, litera odpowiedzi jest inna niż A/B/C albo
-powtórzy się identyfikator pytania.
+powtórzy się identyfikator pytania. Bez obsługi obrazów Pillow przerywa przed
+zmianą `lib/questions.json` i plików `public/question-images/`.
 
 ## Ograniczenia danych
 
