@@ -2,8 +2,9 @@
 
 import Link from "next/link";
 import { useMemo } from "react";
-import { isWeak, useProgress } from "@/lib/progress";
-import { questionsWord } from "@/lib/data";
+import { useProgress } from "@/lib/progress";
+import { questionsWord, type ExamLevel } from "@/lib/data";
+import { levelProgress } from "@/lib/exam-level";
 import { Btn } from "@/components/ui";
 
 function Stat({ value, label }: { value: string; label: string }) {
@@ -17,23 +18,10 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
-export function ProgressStrip() {
+export function ProgressStrip({ level }: { level: ExamLevel }) {
   const { store, ready, reset } = useProgress();
 
-  const summary = useMemo(() => {
-    const stats = Object.values(store.stats);
-    const answered = stats.length;
-    const ok = stats.reduce((sum, s) => sum + s.ok, 0);
-    const bad = stats.reduce((sum, s) => sum + s.bad, 0);
-    const weak = Object.values(store.stats).filter(isWeak).length;
-    const total = ok + bad;
-    return {
-      answered,
-      weak,
-      accuracy: total ? Math.round((ok / total) * 100) : 0,
-      total,
-    };
-  }, [store]);
+  const summary = useMemo(() => levelProgress(level, store.stats), [level, store]);
 
   if (!ready || summary.answered === 0) return null;
 
@@ -49,7 +37,7 @@ export function ProgressStrip() {
         <div className="flex flex-wrap items-center gap-3">
           {summary.weak > 0 && (
             <Link
-              href="/test?tryb=bledne"
+              href={`/test?poziom=${level}&tryb=bledne`}
               className="ui inline-flex items-center gap-2 rounded-full bg-duo-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-duo-red/88"
             >
               Powtórz {summary.weak} {questionsWord(summary.weak)}

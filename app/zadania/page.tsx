@@ -15,7 +15,7 @@ export default function ZadaniaPage() {
       <SiteHeader current="zadania" />
 
       <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
-        <p className="meta text-ink-faint">Część praktyczna</p>
+        <p className="meta text-ink-faint">Część praktyczna · Czeladnik</p>
         <h1 className="optotype mt-3 text-4xl sm:text-5xl">
           {taskQuestions.length} zadań
         </h1>

@@ -3,27 +3,29 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import {
-  abcCategories,
-  abcQuestions,
-  categoryById,
+  getCatalog,
   LETTERS,
   questionsWord,
   type OpenQuestion,
+  type ExamLevel,
+  type Category,
 } from "@/lib/data";
 import {
   buildExam,
-  EXAM_LENGTH,
   EXAM_PER_CATEGORY,
   EXAM_SPLIT,
   examPlan,
+  examLength,
   PASS_THRESHOLD,
-  writtenCategories,
   type WrittenExamQuestion,
 } from "@/lib/exam";
 import { sample, shuffle } from "@/lib/rng";
 import { isWeak, recordAnswer, recordSession, useProgress } from "@/lib/progress";
 import { Btn, Eyebrow, LinkBtn } from "@/components/ui";
 import { QuestionMeta } from "@/components/QuestionMeta";
+import { QuestionImage } from "@/components/QuestionImage";
+import { ExamLevelToggle } from "@/components/ExamLevelToggle";
+import { normalizeLevel, selectedCategories, levelQuery } from "@/lib/exam-level";
 
 type Item = { q: WrittenExamQuestion; order: number[] };
 type Pick = number | boolean | null;
@@ -38,15 +40,17 @@ const lengthLabel = (n: number) => (n === 0 ? "wszystkie" : String(n));
 
 export default function TestClient() {
   const params = useSearchParams();
+  return <LevelTest key={params.toString()} query={params.toString()} />;
+}
+
+function LevelTest({ query }: { query: string }) {
+  const params = new URLSearchParams(query);
+  const level = normalizeLevel(params.get("poziom"));
+  const { abcQuestions } = getCatalog(level);
   const { store, ready } = useProgress();
 
   // Deep links: /test?dzialy=bhp,prawo-pracy or /test?tryb=bledne
-  const [selected, setSelected] = useState<string[]>(() => {
-    const ids = (params.get("dzialy") ?? "")
-      .split(",")
-      .filter((id) => categoryById.get(id)?.kind === "abc");
-    return ids.length ? ids : abcCategories.map((c) => c.id);
-  });
+  const [selected, setSelected] = useState<string[]>(() => selectedCategories(level, "abc", params.get("dzialy")));
   const [length, setLength] = useState<number>(20);
   // /test?arkusz=1 otwiera od razu tryb arkusza egzaminacyjnego
   const [sheet, setSheet] = useState(() => params.get("arkusz") === "1");
@@ -63,14 +67,14 @@ export default function TestClient() {
     const set = new Set<string>();
     for (const q of abcQuestions) if (isWeak(store.stats[q.id])) set.add(q.id);
     return set;
-  }, [store]);
+  }, [store, abcQuestions]);
 
   const pool = useMemo(
     () =>
       abcQuestions.filter(
         (q) => selected.includes(q.category) && (!onlyWeak || weakIds.has(q.id)),
       ),
-    [selected, onlyWeak, weakIds],
+    [selected, onlyWeak, weakIds, abcQuestions],
   );
 
   const start = useCallback(
@@ -102,7 +106,16 @@ export default function TestClient() {
 
   if (stage === "setup") {
     return (
-      <Setup
+      <TestSetup
+        level={level}
+        onLevelChange={(next) => {
+          const mode = new URLSearchParams(query);
+          if (sheet) mode.set("arkusz", "1");
+          else mode.delete("arkusz");
+          if (onlyWeak) mode.set("tryb", "bledne");
+          else mode.delete("tryb");
+          window.history.pushState(null, "", `?${levelQuery(mode.toString(), next, "abc")}`);
+        }}
         sheet={sheet}
         setSheet={(next) => {
           setSheet(next);
@@ -121,7 +134,7 @@ export default function TestClient() {
         setOnlyWeak={setOnlyWeak}
         poolSize={pool.length}
         weakSize={ready ? weakIds.size : 0}
-        onStart={() => (sheet ? start(buildExam(), 0, true, true) : start(pool, length))}
+        onStart={() => (sheet ? start(buildExam(level), 0, true, true) : start(pool, length))}
       />
     );
   }
@@ -155,6 +168,7 @@ export default function TestClient() {
 
   return (
     <Summary
+      level={level}
       sheet={activeSheet}
       items={items}
       picks={picks}
@@ -200,8 +214,8 @@ function Field({ label, children }: { label: string; children: React.ReactNode }
   );
 }
 
-function SheetPlan() {
-  const plan = examPlan();
+function SheetPlan({ level }: { level: ExamLevel }) {
+  const plan = examPlan(level);
   const split = EXAM_SPLIT.map((s) => s.count).join(" / ");
 
   return (
@@ -228,18 +242,21 @@ function SheetPlan() {
       </table>
 
       <p className="mt-5 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
-        {writtenCategories.length} działów po {EXAM_PER_CATEGORY} pytań: 3 łatwe,
-        2 średnie i 2 trudne w każdym dziale. Razem {EXAM_LENGTH} pytań.
+        {plan.length} działów po {EXAM_PER_CATEGORY} pytań: 3 łatwe,
+        2 średnie i 2 trudne w każdym dziale. Razem {examLength(level)} pytań.
       </p>
       <p className="mt-3 border-l-2 border-amber pl-4 text-[13.5px] leading-relaxed text-ink-soft">
-        Rysunki zawodowe czekają na uzupełnienie ilustracji. Odpowiedzi w tym
-        dziale sprawdzasz z odpowiedzią źródłową i oceniasz samodzielnie.
+        {level === "czeladnik"
+          ? "Odpowiedzi w dziale Rysunek zawodowy sprawdzasz z odpowiedzią źródłową i oceniasz samodzielnie."
+          : "Rysunek zawodowy zawiera pytania A/B/C sprawdzane tak samo jak pozostałe działy."}
       </p>
     </div>
   );
 }
 
-function Setup({
+export function TestSetup({
+  level,
+  onLevelChange,
   sheet,
   setSheet,
   selected,
@@ -254,6 +271,8 @@ function Setup({
   weakSize,
   onStart,
 }: {
+  level: ExamLevel;
+  onLevelChange: (level: ExamLevel) => void;
   sheet: boolean;
   setSheet: (v: boolean) => void;
   selected: string[];
@@ -268,13 +287,18 @@ function Setup({
   weakSize: number;
   onStart: () => void;
 }) {
+  const { abcCategories } = getCatalog(level);
   const all = selected.length === abcCategories.length;
-  const planned = sheet ? EXAM_LENGTH : length === 0 ? poolSize : Math.min(length, poolSize);
+  const planned = sheet ? examLength(level) : length === 0 ? poolSize : Math.min(length, poolSize);
 
   return (
     <main className="mx-auto max-w-3xl px-5 py-12 sm:px-8">
       <Eyebrow>Część pisemna</Eyebrow>
       <h1 className="optotype mt-3 text-4xl sm:text-5xl">Ustaw test</h1>
+
+      <Field label="Poziom egzaminu">
+        <ExamLevelToggle level={level} onChange={onLevelChange} />
+      </Field>
 
       <Field label="Rodzaj">
         <div className="flex flex-wrap gap-2">
@@ -283,17 +307,18 @@ function Setup({
           </Toggle>
           <Toggle active={sheet} onClick={() => setSheet(true)}>
             Arkusz egzaminacyjny
-            <span className="ml-2 font-mono text-[11px] opacity-60">{EXAM_LENGTH}</span>
+            <span className="ml-2 font-mono text-[11px] opacity-60">{examLength(level)}</span>
           </Toggle>
         </div>
       </Field>
 
       {sheet ? (
         <Field label="Skład arkusza">
-          <SheetPlan />
+          <SheetPlan level={level} />
         </Field>
       ) : (
         <SetupCustom
+          abcCategories={abcCategories}
           selected={selected}
           setSelected={setSelected}
           all={all}
@@ -311,13 +336,13 @@ function Setup({
             Egzamin — wynik na końcu
           </Toggle>
         </div>
-        {sheet && exam && (
+        {sheet && exam && level === "czeladnik" && (
           <p className="mt-4 text-sm leading-relaxed text-ink-soft">
             Pytania A/B/C sprawdzisz na końcu. W rysunku zawodowym odpowiedź
             odkrywasz przed samooceną.
           </p>
         )}
-        {!sheet && weakSize > 0 && (
+        {!sheet && (weakSize > 0 || onlyWeak) && (
           <div className="mt-4">
             <Toggle active={onlyWeak} onClick={() => setOnlyWeak(!onlyWeak)}>
               Tylko pytania z błędami
@@ -349,12 +374,14 @@ function Setup({
 }
 
 function SetupCustom({
+  abcCategories,
   selected,
   setSelected,
   all,
   length,
   setLength,
 }: {
+  abcCategories: Category[];
   selected: string[];
   setSelected: (v: string[]) => void;
   all: boolean;
@@ -482,7 +509,7 @@ function Runner({
     return () => window.removeEventListener("keydown", onKey);
   }, [answered, item, onPick, onNext]);
 
-  const category = categoryById.get(item.q.category);
+  const category = getCatalog(item.q.level).categoryById.get(item.q.category);
 
   return (
     <main className="mx-auto flex min-h-[calc(100dvh-4.25rem)] max-w-3xl flex-col px-5 py-8 sm:px-8">
@@ -504,6 +531,12 @@ function Runner({
         <h1 className="mt-4 text-[1.4rem] leading-snug font-medium sm:text-[1.65rem]">
           {item.q.prompt}
         </h1>
+
+        {question.image && (
+          <div className="mt-6">
+            <QuestionImage image={question.image} alt={`Rysunek do pytania: ${question.prompt}`} />
+          </div>
+        )}
 
         {question.kind === "abc" ? (
           <ul className="mt-8 space-y-3">
@@ -597,8 +630,7 @@ function DrawingResponse({
   return (
     <div className="mt-8">
       <p className="border-l-2 border-amber pl-4 text-sm leading-relaxed text-ink-soft">
-        Ilustracja do tego pytania czeka na uzupełnienie. Odpowiedź z arkusza
-        możesz sprawdzić poniżej; wynik tego pytania opiera się na Twojej samoocenie.
+        Odpowiedź z arkusza możesz sprawdzić poniżej; wynik tego pytania opiera się na Twojej samoocenie.
       </p>
       {revealed ? (
         <>
@@ -641,12 +673,14 @@ function verdict(pct: number) {
 }
 
 function Summary({
+  level,
   sheet,
   items,
   picks,
   onRetryWrong,
   onNewTest,
 }: {
+  level: ExamLevel;
   sheet: boolean;
   items: Item[];
   picks: Pick[];
@@ -658,7 +692,8 @@ function Summary({
   const pct = Math.round((score / items.length) * 100);
   const passed = score / items.length >= PASS_THRESHOLD;
 
-  const perCategory = writtenCategories
+  const { categoryById } = getCatalog(level);
+  const perCategory = examPlan(level).map(({ category }) => category)
     .map((category) => {
       const own = items.filter((item) => item.q.category === category.id);
       return {
@@ -698,8 +733,7 @@ function Summary({
 
       {items.some((item) => item.q.kind === "open") && (
         <p className="mt-4 text-sm leading-relaxed text-ink-soft">
-          Wynik obejmuje samoocenę pytań z rysunku zawodowego. Ilustracje do tych
-          pytań czekają na uzupełnienie.
+          Wynik obejmuje samoocenę pytań z rysunku zawodowego.
         </p>
       )}
 
@@ -741,7 +775,7 @@ function Summary({
         <Btn variant="ghost" onClick={onNewTest}>
           Nowy test
         </Btn>
-        <LinkBtn href="/" variant="quiet" className="px-3">
+        <LinkBtn href={`/?poziom=${level}`} variant="quiet" className="px-3">
           Strona główna
         </LinkBtn>
       </div>
@@ -761,6 +795,7 @@ function Summary({
                   <p className="mt-2 text-[17px] leading-snug font-medium">
                     {item.q.prompt}
                   </p>
+                  {item.q.image && <div className="mt-4"><QuestionImage image={item.q.image} alt={`Rysunek do pytania: ${item.q.prompt}`} /></div>}
                   <p className="mt-4 border-l-2 border-duo-green pl-4 text-[15px] leading-relaxed">
                     <span className="meta mr-2 text-duo-green">poprawna</span>
                     {item.q.kind === "abc" ? item.q.options[item.q.answer] : item.q.answer}

@@ -1,28 +1,33 @@
 import assert from "node:assert/strict";
-import { existsSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import test from "node:test";
 import { fileURLToPath } from "node:url";
 import React from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import requireHook from "next/dist/build/next-config-ts/require-hook.js";
 
 const load = createRequire(import.meta.url);
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 
-requireHook.registerHook({
+const { transformSync } = load("next/dist/build/swc");
+const swcOptions = {
   jsc: {
     parser: { syntax: "typescript", tsx: true },
     transform: { react: { runtime: "automatic" } },
-    paths: { "@/*": ["./*"] },
+    paths: { "@/*": [`${ROOT}/*`] },
     baseUrl: ROOT,
   },
   module: { type: "commonjs" },
   isModule: "unknown",
   env: { targets: { node: process.versions.node } },
-});
-load.extensions[".tsx"] = load.extensions[".ts"];
+};
+for (const extension of [".ts", ".tsx"]) {
+  load.extensions[extension] = (module, filename) => {
+    const { code } = transformSync(readFileSync(filename, "utf8"), { ...swcOptions, filename });
+    module._compile(code, filename);
+  };
+}
 
 test("the apprentice written exam uses 7 sections with a 3/2/2 split", () => {
   const { buildExam, examPlan, EXAM_LENGTH } = load("../lib/exam.ts");
@@ -220,4 +225,88 @@ test("the latest dataset uses a fresh progress store", () => {
   const { PROGRESS_STORAGE_KEY } = load("../lib/progress.ts");
 
   assert.equal(PROGRESS_STORAGE_KEY, "ostrosc.progress.v2");
+});
+
+test("the level control identifies its two qualifications and active choice accessibly", () => {
+  assert.ok(existsSync(path.join(ROOT, "components/ExamLevelToggle.tsx")), "the shared level control must exist");
+  const { ExamLevelToggle } = load("../components/ExamLevelToggle.tsx");
+  for (const level of ["czeladnik", "mistrz"]) {
+    const html = renderToStaticMarkup(React.createElement(ExamLevelToggle, { level, onChange() {} }));
+    assert.match(html, /role="group"/);
+    assert.match(html, /aria-label="Poziom egzaminu"/);
+    const buttons = [...html.matchAll(/<button\b([^>]*)>(.*?)<\/button>/g)];
+    assert.equal(buttons.length, 2);
+    assert.match(buttons[0][2], /Czeladnik/);
+    assert.match(buttons[1][2], /Mistrz/);
+    assert.match(buttons[level === "mistrz" ? 1 : 0][1], /aria-pressed="true"/);
+    assert.match(buttons[level === "mistrz" ? 0 : 1][1], /aria-pressed="false"/);
+  }
+});
+
+test("level normalization retains legacy URLs and rejects unknown qualifications", () => {
+  assert.ok(existsSync(path.join(ROOT, "lib/exam-level.ts")), "level query helpers must exist");
+  const { normalizeLevel } = load("../lib/exam-level.ts");
+  for (const input of [undefined, null, "", "unknown", "Mistrz", "czeladnik"]) {
+    assert.equal(normalizeLevel(input), "czeladnik");
+  }
+  assert.equal(normalizeLevel("mistrz"), "mistrz");
+});
+
+test("category selection filters invalid levels and kinds and falls back to the requested catalog", () => {
+  assert.ok(existsSync(path.join(ROOT, "lib/exam-level.ts")), "level query helpers must exist");
+  const { selectedCategories } = load("../lib/exam-level.ts");
+  assert.deepEqual(selectedCategories("mistrz", "abc", "bhp,mistrz-bhp,mistrz-ustny-technologia,mistrz-bhp"), ["mistrz-bhp"]);
+  assert.deepEqual(selectedCategories("czeladnik", "open", "rysunek,bhp"), ["rysunek"]);
+  assert.deepEqual(selectedCategories("mistrz", "open", "rysunek"), ["mistrz-ustny-technologia", "mistrz-ustny-materialy", "mistrz-ustny-maszyny"]);
+});
+
+test("level switches discard old category IDs and retain written and oral mode parameters", () => {
+  assert.ok(existsSync(path.join(ROOT, "lib/exam-level.ts")), "level query helpers must exist");
+  const { levelQuery } = load("../lib/exam-level.ts");
+  const written = new URLSearchParams(levelQuery("dzialy=bhp&arkusz=1&tryb=bledne", "mistrz", "abc"));
+  assert.equal(written.get("poziom"), "mistrz");
+  assert.equal(written.has("dzialy"), false);
+  assert.equal(written.get("arkusz"), "1");
+  assert.equal(written.get("tryb"), "bledne");
+  const oral = new URLSearchParams(levelQuery("egzamin=1&dzialy=mistrz-ustny-maszyny,ustny-maszyny", "mistrz", "open"));
+  assert.equal(oral.get("egzamin"), "1");
+  assert.equal(oral.get("dzialy"), "mistrz-ustny-maszyny");
+  assert.equal(new URLSearchParams(levelQuery("poziom=mistrz", "czeladnik")).get("poziom"), "czeladnik");
+});
+
+test("progress summaries count only questions belonging to the selected qualification", () => {
+  assert.ok(existsSync(path.join(ROOT, "lib/exam-level.ts")), "level query helpers must exist");
+  const { levelProgress } = load("../lib/exam-level.ts");
+  const stats = {
+    "bhp-81331": { seen: 2, ok: 1, bad: 1, lastOk: false, ts: 1 },
+    "mistrz-bhp-81410": { seen: 1, ok: 1, bad: 0, lastOk: true, ts: 1 },
+    "removed-1": { seen: 1, ok: 0, bad: 1, lastOk: false, ts: 1 },
+  };
+  assert.deepEqual(levelProgress("czeladnik", stats), { answered: 1, weak: 1, accuracy: 50 });
+  assert.deepEqual(levelProgress("mistrz", stats), { answered: 1, weak: 0, accuracy: 100 });
+});
+
+test("written setup renders the selected level's sheet and apprentice-only self-assessment", () => {
+  const { TestSetup } = load("../app/test/TestClient.tsx");
+  assert.equal(typeof TestSetup, "function", "written setup must render independently of URL hooks");
+  const props = { sheet: true, selected: [], length: 20, exam: true, onlyWeak: false, poolSize: 0, weakSize: 0 };
+  for (const name of ["onLevelChange", "setSheet", "setSelected", "setLength", "setExam", "setOnlyWeak", "onStart"]) props[name] = () => {};
+  const master = renderToStaticMarkup(React.createElement(TestSetup, { ...props, level: "mistrz" }));
+  assert.match(master, /63 pyta/);
+  assert.match(master, /9 działów/);
+  assert.match(master, /Psychologia/);
+  assert.doesNotMatch(master, /odkrywasz przed samooceną/);
+  const apprentice = renderToStaticMarkup(React.createElement(TestSetup, { ...props, level: "czeladnik" }));
+  assert.match(apprentice, /49 pyta/);
+  assert.match(apprentice, /7 działów/);
+  assert.match(apprentice, /odkrywasz przed samooceną/);
+});
+
+test("active weak-only mode remains removable when a level has no weak questions", () => {
+  const { TestSetup } = load("../app/test/TestClient.tsx");
+  assert.equal(typeof TestSetup, "function", "written setup must render independently of URL hooks");
+  const props = { level: "mistrz", sheet: false, selected: ["mistrz-bhp"], length: 20, exam: false, onlyWeak: true, poolSize: 0, weakSize: 0 };
+  for (const name of ["onLevelChange", "setSheet", "setSelected", "setLength", "setExam", "setOnlyWeak", "onStart"]) props[name] = () => {};
+  const html = renderToStaticMarkup(React.createElement(TestSetup, props));
+  assert.match(html, /<button[^>]*aria-pressed="true"[^>]*>Tylko pytania z błędami/);
 });
