@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { existsSync } from "node:fs";
 import { createRequire } from "node:module";
 import path from "node:path";
 import test from "node:test";
@@ -66,6 +67,139 @@ test("the oral exam uses one question per difficulty from each oral section", ()
       category,
     );
   }
+});
+
+for (const { level, count, sections, writtenIds, drawingKind } of [
+  {
+    level: "czeladnik",
+    count: 49,
+    sections: 7,
+    writtenIds: ["rachunkowosc", "dokumentacja", "rysunek", "bhp", "srodowisko", "prawo-pracy", "dzialalnosc"],
+    drawingKind: "open",
+  },
+  {
+    level: "mistrz",
+    count: 63,
+    sections: 9,
+    writtenIds: ["mistrz-rachunkowosc", "mistrz-dokumentacja", "mistrz-rysunek", "mistrz-bhp", "mistrz-srodowisko", "mistrz-prawo-pracy", "mistrz-dzialalnosc", "mistrz-psychologia", "mistrz-metodyka"],
+    drawingKind: "abc",
+  },
+]) {
+  test(`${level} written exams contain ${count} questions in ${sections} sections`, () => {
+    const { buildExam, examPlan, examLength } = load("../lib/exam.ts");
+    const plan = examPlan(level);
+    const exam = buildExam(level);
+
+    assert.equal(exam.length, count);
+    assert.equal(plan.length, sections);
+    assert.deepEqual(plan.map(({ category }) => category.id), writtenIds);
+    assert.ok(plan.every(({ category, graded }) => category.level === level && graded));
+    assert.ok(exam.every((question) => question.level === level));
+    assert.equal(new Set(exam.map(({ id }) => id)).size, count);
+    assert.equal(typeof examLength, "function", "the UI needs a level-specific exam length");
+    assert.equal(examLength(level), count);
+
+    for (const category of writtenIds) {
+      const picked = exam.filter((question) => question.category === category);
+      assert.equal(picked.length, 7, category);
+      assert.equal(picked.filter(({ difficulty }) => difficulty === "latwe").length, 3, category);
+      assert.equal(picked.filter(({ difficulty }) => difficulty === "srednie").length, 2, category);
+      assert.equal(picked.filter(({ difficulty }) => difficulty === "trudne").length, 2, category);
+    }
+
+    const drawing = exam.filter(({ category }) => category.endsWith("rysunek"));
+    assert.ok(drawing.every(({ kind, image }) => kind === drawingKind && image));
+  });
+
+  test(`${level} oral exams contain nine level-scoped questions with one per difficulty`, () => {
+    const { buildOralExam, oralExamPlan } = load("../lib/oral-exam.ts");
+    const plan = oralExamPlan(level);
+    const exam = buildOralExam(level);
+    const prefix = level === "mistrz" ? "mistrz-" : "";
+    const ids = ["ustny-technologia", "ustny-materialy", "ustny-maszyny"].map((id) => prefix + id);
+
+    assert.equal(plan.length, 3);
+    assert.deepEqual(plan.map(({ category }) => category.id), ids);
+    assert.ok(plan.every(({ category }) => category.level === level));
+    assert.equal(exam.length, 9);
+    assert.equal(new Set(exam.map(({ id }) => id)).size, 9);
+    assert.ok(exam.every(({ level: questionLevel, kind }) => questionLevel === level && kind === "open"));
+    for (const category of ids) {
+      assert.deepEqual(
+        exam.filter((question) => question.category === category).map(({ difficulty }) => difficulty).sort(),
+        ["latwe", "srednie", "trudne"],
+        category,
+      );
+    }
+  });
+}
+
+test("level-scoped catalogs keep undifficultied master questions in custom practice", () => {
+  const { getCatalog } = load("../lib/data.ts");
+  assert.equal(typeof getCatalog, "function", "catalog selectors must accept an exam level");
+
+  for (const { level, total, categoryCount } of [
+    { level: "czeladnik", total: 732, categoryCount: 11 },
+    { level: "mistrz", total: 853, categoryCount: 12 },
+  ]) {
+    const catalog = getCatalog(level);
+    assert.equal(catalog.totalCount, total);
+    assert.equal(catalog.questions.length, total);
+    assert.equal(catalog.categories.length, categoryCount);
+    assert.ok(catalog.categories.every((category) => category.level === level));
+    assert.ok(catalog.questions.every((question) => question.level === level));
+    assert.equal(catalog.categoryById.size, categoryCount);
+    assert.ok(catalog.questions.every(({ category }) => catalog.categoryById.has(category)));
+    assert.ok(catalog.abcCategories.every(({ kind, level: categoryLevel }) => kind === "abc" && categoryLevel === level));
+    assert.ok(catalog.openCategories.every(({ kind, level: categoryLevel }) => kind === "open" && categoryLevel === level));
+    assert.ok(catalog.abcQuestions.every(({ kind, level: questionLevel }) => kind === "abc" && questionLevel === level));
+    assert.ok(catalog.openQuestions.every(({ kind, level: questionLevel }) => kind === "open" && questionLevel === level));
+    assert.ok(catalog.taskQuestions.every(({ kind, level: questionLevel }) => kind === "task" && questionLevel === level));
+    assert.equal(catalog.taskQuestions.length, level === "czeladnik" ? 30 : 0);
+  }
+
+  const master = getCatalog("mistrz");
+  const undifficultied = master.abcQuestions.filter(({ category, difficulty }) =>
+    category === "mistrz-dzialalnosc" && difficulty === undefined,
+  );
+  assert.equal(undifficultied.length, 2);
+  const { buildExam } = load("../lib/exam.ts");
+  assert.ok(buildExam("mistrz").every(({ id }) => !undifficultied.some((question) => question.id === id)));
+});
+
+test("legacy catalog exports and default builders remain apprentice-only", () => {
+  const data = load("../lib/data.ts");
+  assert.equal(data.totalCount, 732);
+  assert.ok(data.categories.every(({ level }) => level === "czeladnik"));
+  assert.ok(data.questions.every(({ level }) => level === "czeladnik"));
+  assert.equal(typeof data.getCatalog, "function");
+  assert.deepEqual(data.getCatalog(), data.getCatalog("czeladnik"));
+  const { examLength, examPlan } = load("../lib/exam.ts");
+  assert.equal(examLength(), 49);
+  assert.ok(examPlan().every(({ category }) => category.level === "czeladnik"));
+});
+
+test("question images render stored intrinsic dimensions and an accessible description", () => {
+  assert.ok(existsSync(path.join(ROOT, "components/QuestionImage.tsx")), "question images need a shared renderer");
+  const { QuestionImage } = load("../components/QuestionImage.tsx");
+  const html = renderToStaticMarkup(React.createElement(QuestionImage, {
+    image: { src: "/question-images/drawing.png", width: 320, height: 180 },
+    alt: "Schemat soczewki",
+  }));
+  assert.match(html, /<img\b/);
+  assert.match(html, /width="320"/);
+  assert.match(html, /height="180"/);
+  assert.match(html, /alt="Schemat soczewki"/);
+  assert.match(html, /drawing\.png/);
+  assert.match(html, /data-nimg="1"/);
+  assert.match(html, /h-auto/);
+  assert.match(html, /max-w-full/);
+});
+
+test("questions without drawing metadata render no image", () => {
+  assert.ok(existsSync(path.join(ROOT, "components/QuestionImage.tsx")), "question images need a shared renderer");
+  const { QuestionImage } = load("../components/QuestionImage.tsx");
+  assert.equal(renderToStaticMarkup(React.createElement(QuestionImage)), "");
 });
 
 test("question metadata renders the oral difficulty badge", () => {
