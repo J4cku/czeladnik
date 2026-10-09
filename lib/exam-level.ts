@@ -26,14 +26,15 @@ export function levelQuery(query: string, level: ExamLevel, kind?: Kind) {
 }
 
 export function levelProgress(level: ExamLevel, stats: Record<string, QuestionStat>) {
-  const own = getCatalog(level).questions.flatMap((question) =>
+  const catalog = getCatalog(level);
+  const own = catalog.questions.flatMap((question) =>
     stats[question.id] ? [stats[question.id]] : [],
   );
   const ok = own.reduce((sum, stat) => sum + stat.ok, 0);
   const total = own.reduce((sum, stat) => sum + stat.ok + stat.bad, 0);
   return {
     answered: own.length,
-    weak: own.filter(isWeak).length,
+    weak: catalog.abcQuestions.filter((question) => isWeak(stats[question.id])).length,
     accuracy: total ? Math.round((ok / total) * 100) : 0,
   };
 }

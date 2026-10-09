@@ -18,6 +18,18 @@ function Stat({ value, label }: { value: string; label: string }) {
   );
 }
 
+export function ProgressRepeat({ level, count }: { level: ExamLevel; count: number }) {
+  if (count === 0) return null;
+  return (
+    <Link
+      href={`/test?poziom=${level}&tryb=bledne`}
+      className="ui inline-flex items-center gap-2 rounded-full bg-duo-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-duo-red/88"
+    >
+      Powtórz {count} {questionsWord(count)} ABC
+    </Link>
+  );
+}
+
 export function ProgressStrip({ level }: { level: ExamLevel }) {
   const { store, ready, reset } = useProgress();
 
@@ -31,18 +43,11 @@ export function ProgressStrip({ level }: { level: ExamLevel }) {
         <div className="grid grid-cols-3 gap-4 sm:flex sm:gap-14">
           <Stat value={String(summary.answered)} label="poznanych pytań" />
           <Stat value={`${summary.accuracy}%`} label="trafnych odpowiedzi" />
-          <Stat value={String(summary.weak)} label="do powtórki" />
+          <Stat value={String(summary.weak)} label="ABC do powtórki" />
         </div>
 
         <div className="flex flex-wrap items-center gap-3">
-          {summary.weak > 0 && (
-            <Link
-              href={`/test?poziom=${level}&tryb=bledne`}
-              className="ui inline-flex items-center gap-2 rounded-full bg-duo-red px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-duo-red/88"
-            >
-              Powtórz {summary.weak} {questionsWord(summary.weak)}
-            </Link>
-          )}
+          <ProgressRepeat level={level} count={summary.weak} />
           <Btn
             variant="quiet"
             className="px-3"

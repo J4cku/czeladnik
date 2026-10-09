@@ -310,3 +310,52 @@ test("active weak-only mode remains removable when a level has no weak questions
   const html = renderToStaticMarkup(React.createElement(TestSetup, props));
   assert.match(html, /<button[^>]*aria-pressed="true"[^>]*>Tylko pytania z błędami/);
 });
+
+test("clicking the active qualification leaves legacy and explicit setup queries untouched", () => {
+  const { ExamLevelToggle } = load("../components/ExamLevelToggle.tsx");
+  const { normalizeLevel, levelQuery } = load("../lib/exam-level.ts");
+  for (const query of ["dzialy=bhp", "egzamin=1&dzialy=ustny-maszyny", "poziom=czeladnik", "poziom=mistrz&dzialy=mistrz-bhp"]) {
+    const params = new URLSearchParams(query);
+    const level = normalizeLevel(params.get("poziom"));
+    let navigatedQuery = query;
+    const transitions = [];
+    const control = ExamLevelToggle({ level, onChange(next) {
+      transitions.push(next);
+      navigatedQuery = levelQuery(query, next);
+    } });
+    const active = level === "mistrz" ? 1 : 0;
+    control.props.children[active].props.onClick();
+    assert.equal(navigatedQuery, query, "the active option must not write a query and remount setup");
+    assert.deepEqual(transitions, []);
+    control.props.children[1 - active].props.onClick();
+    assert.deepEqual(transitions, [level === "mistrz" ? "czeladnik" : "mistrz"]);
+  }
+});
+
+test("repeat progress counts only weak ABC questions available to its written-practice destination", () => {
+  const { levelProgress } = load("../lib/exam-level.ts");
+  const weak = { seen: 1, ok: 0, bad: 1, lastOk: false, ts: 1 };
+  const stats = {
+    "bhp-81331": weak,
+    "ustny-technologia-249086": weak,
+    "rysunek-269004": weak,
+    "mistrz-bhp-81410": weak,
+    "mistrz-ustny-technologia-250510": weak,
+    "removed-1": weak,
+  };
+  assert.deepEqual(levelProgress("czeladnik", stats), { answered: 3, weak: 1, accuracy: 0 });
+  assert.deepEqual(levelProgress("mistrz", stats), { answered: 2, weak: 1, accuracy: 0 });
+  assert.equal(levelProgress("czeladnik", { "ustny-technologia-249086": weak, "rysunek-269004": weak }).weak, 0);
+  assert.equal(levelProgress("mistrz", { "mistrz-ustny-technologia-250510": weak }).weak, 0);
+});
+
+test("the repeat CTA labels ABC practice and routes to the selected qualification", () => {
+  const { ProgressRepeat } = load("../app/ProgressStrip.tsx");
+  assert.equal(typeof ProgressRepeat, "function", "the repeat CTA must render independently of browser progress hydration");
+  for (const level of ["czeladnik", "mistrz"]) {
+    const html = renderToStaticMarkup(React.createElement(ProgressRepeat, { level, count: 1 }));
+    assert.match(html, new RegExp(`href="/test\\?poziom=${level}&amp;tryb=bledne"`));
+    assert.match(html, /Powtórz 1 pytanie ABC/);
+    assert.equal(renderToStaticMarkup(React.createElement(ProgressRepeat, { level, count: 0 })), "");
+  }
+});

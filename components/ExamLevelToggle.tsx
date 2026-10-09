@@ -16,7 +16,9 @@ export function ExamLevelToggle({ level, onChange }: {
           key={value}
           type="button"
           aria-pressed={level === value}
-          onClick={() => onChange(value)}
+          onClick={() => {
+            if (value !== level) onChange(value);
+          }}
           className={`ui rounded-full border px-4 py-2 text-[13px] font-medium transition-colors ${
             level === value
               ? "border-ink bg-ink text-paper"
